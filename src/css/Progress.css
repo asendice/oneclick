@@ -11,15 +11,16 @@
   align-items: center;
   justify-content: space-between;
   width: 140px;
-  margin: 10px;
-  /* background-color: pink; */
+  color: grey;
 }
 
-.progress-item p {
-  font-size: 1.8rem;
-  color: grey;
+.progress-item h3 {
+  font-size: 1.6rem;
 }
 .progress-arrow {
   font-size: 1.6rem;
-  color: grey;
+}
+
+.completed {
+  color: rgb(19, 125, 88);
 }

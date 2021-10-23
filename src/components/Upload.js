@@ -4,7 +4,7 @@ import { useDropzone } from "react-dropzone";
 import { FaCloudUploadAlt } from "react-icons/fa";
 import FileItem from "./FileItem";
 
-const Upload = ({ setFile, handleCSV }) => {
+const Upload = ({ setFile, handleCSV, setFrame }) => {
   const {
     acceptedFiles,
     fileRejections,
@@ -24,6 +24,7 @@ const Upload = ({ setFile, handleCSV }) => {
     };
     reader.readAsText(file);
     setFile(acceptedFiles[0]);
+    setFrame("Match");
   };
 
   return (

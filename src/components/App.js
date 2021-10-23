@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import "../css/App.css";
-import FileDisplay from "./FileDisplay";
+import Match from "./Match";
 import Upload from "./Upload";
 import Progress from "./Progress";
 const App = () => {
   const [file, setFile] = useState();
   const [data, setData] = useState([]);
   const [headers, setHeaders] = useState([]);
+  const [frame, setFrame] = useState("Upload");
 
   const handleCSV = (str) => {
     const headers = str.slice(0, str.indexOf("\n")).split(",");
@@ -28,14 +29,16 @@ const App = () => {
   return (
     <div className="app">
       <div className="header">
-        <Progress />
+        <Progress frame={frame} />
       </div>
       <div className="content">
-        {file ? (
-          <FileDisplay file={file} headers={headers} data={data} />
-        ) : (
-          <Upload setFile={setFile} handleCSV={handleCSV} />
+        {frame === "Upload" && (
+          <Upload setFile={setFile} handleCSV={handleCSV} setFrame={setFrame} />
         )}
+        {frame === "Match" && (
+          <Match file={file} headers={headers} data={data} />
+        )}
+     
       </div>
     </div>
   );
