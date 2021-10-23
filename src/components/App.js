@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "../css/App.css";
 import FileDisplay from "./FileDisplay";
 import Upload from "./Upload";
+import Progress from "./Progress";
 const App = () => {
   const [file, setFile] = useState();
   const [data, setData] = useState([]);
@@ -22,15 +23,20 @@ const App = () => {
     setData(arr);
   };
 
-  console.log(data, "data")
+  console.log(data, "data");
 
   return (
     <div className="app">
-      {file ? (
-        <FileDisplay file={file} headers={headers} data={data} />
-      ) : (
-        <Upload setFile={setFile} handleCSV={handleCSV} />
-      )}
+      <div className="header">
+        <Progress />
+      </div>
+      <div className="content">
+        {file ? (
+          <FileDisplay file={file} headers={headers} data={data} />
+        ) : (
+          <Upload setFile={setFile} handleCSV={handleCSV} />
+        )}
+      </div>
     </div>
   );
 };
