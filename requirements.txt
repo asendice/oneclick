@@ -17,8 +17,11 @@ For the purpose of this exercise assume that inputs are provided with a CSV uplo
 
 Future State
 Utilize inputs to predictive match (MSRP inside of uploaded data will propose a match to MSRP in required inputs)
-Analyze all CSV rows for missing data (ex: Customer uploads csv w/ SIZE missing from 20 rows - Identify those rows and present an error)
+
+#2) Analyze all CSV rows for missing data (ex: Customer uploads csv w/ SIZE missing from 20 rows - Identify those rows and present an error)
+ 
 Analyze data for duplicated information (compare duplicated SKU and ask user to select source of truth)
+
 Automated Data Feed with consideration for duplication/missing data as above 2 bullet points outline
 
 

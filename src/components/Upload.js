@@ -6,8 +6,17 @@ import FileItem from "./FileItem";
 
 const Upload = () => {
   const [fileNames, setFileNames] = useState([]);
-  const { acceptedFiles, getRootProps, getInputProps, isDragActive } =
-    useDropzone();
+  const {
+    acceptedFiles,
+    fileRejections,
+    getRootProps,
+    getInputProps,
+    isDragActive,
+  } = useDropzone({
+    accept: ".csv",
+  });
+
+  console.log(fileRejections, "file");
 
   const handleCSV = (str) => {
     const headers = str.slice(0, str.indexOf("\n")).split(",");
@@ -34,7 +43,7 @@ const Upload = () => {
         {...getRootProps(isDragActive)}
         className={`dropzone ${isDragActive && "active-dropzone"} `}
       >
-        <input {...getInputProps()} />
+        <input {...getInputProps()} accept=".csv" />
         <div
           className={`dropzone-content ${
             isDragActive && "active-dropzone-content"
@@ -42,9 +51,15 @@ const Upload = () => {
         >
           <FaCloudUploadAlt className="upload-icon" />
           <p>Drag and drop to upload!</p>
+          <p style={{ fontStyle: "italic" }}>
+            (Only *.csv files will be accepted)
+          </p>
         </div>
       </div>
       {acceptedFiles[0] && <FileItem submit={submit} file={acceptedFiles[0]} />}
+      {fileRejections[0] && (
+        <FileItem file={fileRejections[0].file} rejected={true} />
+      )}
     </div>
   );
 };
