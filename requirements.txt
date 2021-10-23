@@ -1,0 +1,26 @@
+// One Click Onboarding //
+
+##Overview of Business Problem
+Company X is looking for a way to simplify the process by which new customers are onboarded.  
+The current process requires multiple employees multiple hours across multiple days to collect, 
+inspect and translate customer provided documents into a digestible format for software to make decisions and drive outputs.
+
+##Product Solution
+One click solution by which the customer can provide inputs and the software will enable the user to match criteria uploaded to requirements.
+
+##Sample of Required Inputs
+Apparel Example
+SKU | Category | Size | Gender | Description | Materials | MSRP | Active_Date | Sunset_Date
+
+For the purpose of this exercise assume that inputs are provided with a CSV upload.
+
+
+Future State
+Utilize inputs to predictive match (MSRP inside of uploaded data will propose a match to MSRP in required inputs)
+Analyze all CSV rows for missing data (ex: Customer uploads csv w/ SIZE missing from 20 rows - Identify those rows and present an error)
+Analyze data for duplicated information (compare duplicated SKU and ask user to select source of truth)
+Automated Data Feed with consideration for duplication/missing data as above 2 bullet points outline
+
+
+
+CSV file will have headers -> Headers become draggable (as icons) to match to required inputs

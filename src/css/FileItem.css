@@ -1,0 +1,28 @@
+.fileItem {
+  display: flex;
+  align-items: center;
+  height: 70px;
+  width: 100%;
+  border: solid 1px #d3d3d3;
+  border-radius: 20px;
+  margin-top: 20px;
+}
+.fileContent {
+  margin-left: 10px;
+}
+.fileIcon {
+  font-size: 3rem;
+  margin-left: 20px;
+}
+.fileButton {
+  margin-left: auto;
+  margin-right: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  width: 80px;
+  border-radius: 10px;
+  background-color: rgb(19, 125, 88);
+  color: #d3d3d3;
+}
