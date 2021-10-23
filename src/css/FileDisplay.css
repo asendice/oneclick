@@ -1,0 +1,11 @@
+.file-display {
+  /* background-color: pink; */
+  width: 1000px;
+  height: 75vh;
+}
+
+.file-header {
+  font-size: 2rem;
+  border-bottom: solid 1px #d3d3d3;
+  padding: 20px;
+}

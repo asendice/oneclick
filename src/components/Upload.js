@@ -1,11 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import "../css/Upload.css";
 import { useDropzone } from "react-dropzone";
 import { FaCloudUploadAlt } from "react-icons/fa";
 import FileItem from "./FileItem";
 
-const Upload = () => {
-  const [fileNames, setFileNames] = useState([]);
+const Upload = ({ setFile, handleCSV }) => {
   const {
     acceptedFiles,
     fileRejections,
@@ -16,22 +15,15 @@ const Upload = () => {
     accept: ".csv",
   });
 
-  console.log(fileRejections, "file");
-
-  const handleCSV = (str) => {
-    const headers = str.slice(0, str.indexOf("\n")).split(",");
-    console.log(headers, "headers");
-  };
-
   const submit = () => {
     const file = acceptedFiles[0];
     const reader = new FileReader();
     reader.onload = function (e) {
       const text = e.target.result;
-      console.log(text);
       handleCSV(text); // plugged in here
     };
     reader.readAsText(file);
+    setFile(acceptedFiles[0]);
   };
 
   return (

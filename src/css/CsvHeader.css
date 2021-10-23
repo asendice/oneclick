@@ -1,0 +1,8 @@
+.csv-header {
+  display: flex;
+  align-items: center;
+  height: 100px;
+  width: 400px;
+  border: solid 1px #d3d3d3;
+  margin: 20px;
+}

@@ -2,7 +2,6 @@ import React from "react";
 import "../css/FileItem.css";
 import { BsFileEarmarkCheckFill, BsFillFileEarmarkXFill } from "react-icons/bs";
 const FileItem = ({ submit, file, rejected }) => {
-  console.log(file);
 
   return (
     <div className="fileItem">
