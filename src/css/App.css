@@ -13,9 +13,13 @@
 }
 
 .header {
-  align-self: flex-end;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
-.content {
-  /* margin-top: 110px; */
+.back-arrow {
+  margin-left: 20px;
+  font-size: 3rem;
+  color: grey;
 }

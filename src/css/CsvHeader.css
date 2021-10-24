@@ -1,8 +1,26 @@
 .csv-header {
   display: flex;
   align-items: center;
-  height: 100px;
+  justify-content: center;
+  height: 140px;
   width: 400px;
   border: solid 1px #d3d3d3;
   margin: 20px;
+}
+
+.csv-header h1 {
+  font-size: 1.2rem;
+  background-color: #d3d3d3;
+}
+
+.csv-header-container {
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  border: solid 1px #d3d3d3;
+  width: 200px;
+}
+
+.cell {
+  border-top: solid 1px #d3d3d3;
 }
