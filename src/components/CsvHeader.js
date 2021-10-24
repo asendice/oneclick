@@ -6,8 +6,6 @@ const CsvHeader = ({ header, newData }) => {
     return item[`${header}`];
   });
 
-  console.log(newArr);
-
   return (
     <div className="csv-header">
       <div className="csv-header-container">

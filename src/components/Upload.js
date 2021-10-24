@@ -18,12 +18,12 @@ const Upload = ({ setFile, handleCSV, setFrame }) => {
   const submit = () => {
     const file = acceptedFiles[0];
     const reader = new FileReader();
-    reader.onload = function (e) {
+    reader.onload = (e) => {
       const text = e.target.result;
-      handleCSV(text); // plugged in here
+      handleCSV(text);
     };
     reader.readAsText(file);
-    setFile(acceptedFiles[0]);
+    setFile(file);
     setFrame("Match");
   };
 
@@ -43,7 +43,7 @@ const Upload = ({ setFile, handleCSV, setFrame }) => {
           } `}
         >
           <FaCloudUploadAlt className="upload-icon" />
-          <p>Drag and drop to upload!</p>
+          <p>Drag and drop to upload, or click anywhere to select a file</p>
           <p style={{ fontStyle: "italic" }}>
             (Only *.csv files will be accepted)
           </p>

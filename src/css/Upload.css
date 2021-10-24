@@ -14,8 +14,11 @@
   border: dashed 3px #d3d3d3;
   height: 300px;
   width: 600px;
-  /* background-color: #d3d3d3; */
   border-radius: 10px;
+}
+.dropzone:hover {
+  background-color: #d3d3d3;
+  cursor: pointer;
 }
 .dropzone-content {
   display: flex;
