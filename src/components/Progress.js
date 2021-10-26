@@ -1,4 +1,5 @@
 import React from "react";
+import { FaCheckCircle } from "react-icons/fa";
 import "../css/Progress.css";
 
 import { MdArrowForwardIos } from "react-icons/md";
@@ -7,6 +8,7 @@ const Progress = ({ frame }) => {
   return (
     <div className="progress">
       <div className={`progress-item ${frame === "Match" && "completed"}`}>
+        {frame === "Match" && <FaCheckCircle className="check-icon" />}
         <h3>Upload</h3>
         <MdArrowForwardIos className="progress-arrow" />
       </div>

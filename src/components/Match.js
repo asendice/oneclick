@@ -1,20 +1,189 @@
-import React, {useState, useEffect} from "react";
-import "../css/Match.css"
-import FileDisplay from "./FileDisplay";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import "../css/Match.css";
+import CsvHeader from "./CsvHeader";
+import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 
+const Match = ({ file, data }) => {
+  const [headers, setHeaders] = useState([]);
+  const [endZoneList, setEndZoneList] = useState([]);
+  // const [selectedHeader, setSelectedHeader] = useState({});
+  const [backEndHeaders, setBackEndHeaders] = useState([]);
 
-const Match = ({file, headers, data}) => {
+  const match = (item, index) => {
+    console.log(item);
+    const endHeaders = backEndHeaders.map((header) => {
+      return header.name;
+    });
+    console.log(endHeaders.includes("Date"), "endHeaders");
+    console.log(item.name.slice(1, item.name.length - 1), ".name? !?");
+    let obj = {
+      name: item.name,
+      values: item.values,
+      headerMatch: endHeaders.includes(
+        item.name.slice(1, item.name.length - 1)
+      ),
+    };
+    // item.values
 
+    let arr = endZoneList;
+    arr.splice(index, 1, obj);
+    console.log(arr, "arr");
+    setEndZoneList(arr);
+  };
 
+  const getBackEndHeaders = async () => {
+    await axios
+      .get("http://localhost:3000/headers")
+      .then((response) => {
+        if (!response) {
+          console.log("error no response");
+        } else {
+          return response;
+        }
+      })
+      .then((response) => setBackEndHeaders(response.data));
+  };
 
+  useEffect(() => {
+    getBackEndHeaders();
+  }, []);
+
+  useEffect(() => {
+    if (data.length > 0) {
+      let arr = Object.keys(data[0]);
+      let newArr = arr.map((header) => {
+        let values = data.map((item) => {
+          return item[`${header}`];
+        });
+        let obj = {
+          name: header,
+          values: values,
+        };
+        return obj;
+      });
+      console.log(newArr);
+      setHeaders(newArr);
+    }
+  }, [data]);
+
+  const handleDragEnd = ({ destination, source }) => {
+    const items = headers;
+    const arr = endZoneList;
+    if (!destination) {
+      return;
+    }
+    if (source.droppableId === destination.droppableId) {
+      if (destination.droppableId === "headers") {
+        const [reorderedItem] = items.splice(source.index, 1);
+        items.splice(destination.index, 0, reorderedItem);
+        setHeaders(items);
+      }
+      if (destination.droppableId === "test") {
+        const [reorderedItem] = arr.splice(source.index, 1);
+        arr.splice(destination.index, 0, reorderedItem);
+        setEndZoneList(arr);
+      }
+    }
+    if (
+      source.droppableId === "headers" &&
+      destination.droppableId === "test"
+    ) {
+      const [reorderedItem] = items.splice(source.index, 1);
+      arr.splice(destination.index, 0, reorderedItem);
+      setEndZoneList(arr);
+      match(reorderedItem, destination.index);
+    }
+    if (
+      destination.droppableId === "headers" &&
+      source.droppableId === "test"
+    ) {
+      const [reorderedItem] = arr.splice(source.index, 1);
+      items.splice(destination.index, 0, reorderedItem);
+      setHeaders(items);
+    }
+  };
 
   return (
     <div className="match">
-      <FileDisplay file={file} headers={headers} data={data} />
+      <div className="match-header">{file.name}</div>
+      <DragDropContext onDragEnd={handleDragEnd}>
+        <div className="main">
+          <Droppable droppableId="headers">
+            {(provided) => {
+              return (
+                <div
+                  {...provided.droppableProps}
+                  ref={provided.innerRef}
+                  className="drop-zone"
+                >
+                  {headers.map((header, index) => {
+                    return (
+                      <Draggable
+                        key={header.name}
+                        draggableId={header.name.toString()}
+                        index={index}
+                      >
+                        {(provided) => {
+                          return (
+                            <div
+                              {...provided.draggableProps}
+                              {...provided.dragHandleProps}
+                              ref={provided.innerRef}
+                            >
+                              <CsvHeader header={header} />
+                            </div>
+                          );
+                        }}
+                      </Draggable>
+                    );
+                  })}
 
+                  {provided.placeholder}
+                </div>
+              );
+            }}
+          </Droppable>
+          <Droppable droppableId="test">
+            {(provided) => {
+              return (
+                <div
+                  {...provided.droppableProps}
+                  ref={provided.innerRef}
+                  className="end-drop-zone"
+                >
+                  {endZoneList.length > 0
+                    ? endZoneList.map((item, index) => {
+                        return (
+                          <Draggable
+                            key={item.name}
+                            draggableId={item.name.toString()}
+                            index={index}
+                          >
+                            {(provided) => {
+                              return (
+                                <div
+                                  {...provided.draggableProps}
+                                  {...provided.dragHandleProps}
+                                  ref={provided.innerRef}
+                                >
+                                  <CsvHeader header={item} />
+                                </div>
+                              );
+                            }}
+                          </Draggable>
+                        );
+                      })
+                    : ""}
+                  {provided.placeholder}
+                </div>
+              );
+            }}
+          </Droppable>
+        </div>
+      </DragDropContext>
     </div>
-  )
-}
-
+  );
+};
 
 export default Match;

@@ -1,0 +1,44 @@
+{
+  "headers": [
+    {
+      "id": 0,
+      "name": "Date"
+    },
+    {
+      "id": 1,
+      "name": "Time"
+    },
+    {
+      "id": 2,
+      "name": "TimeZone"
+    },
+    {
+      "id": 3,
+      "name": "Name"
+    },
+    {
+      "id": 4,
+      "name": "Type"
+    },
+    {
+      "id": 5,
+      "name": "Status"
+    },
+    {
+      "id": 6,
+      "name": "Currency"
+    },
+    {
+      "id": 7,
+      "name": "Amount"
+    },
+    {
+      "id": 8,
+      "name": "ReceiptID"
+    },
+    {
+      "id": 9,
+      "name": "Balance"
+    }
+  ]
+}
