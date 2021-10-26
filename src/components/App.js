@@ -36,7 +36,6 @@ const App = () => {
         ) : (
           <div></div>
         )}
-
         <Progress frame={frame} />
       </div>
       <div className="content">
