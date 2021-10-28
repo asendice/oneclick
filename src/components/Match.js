@@ -7,30 +7,48 @@ import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 const Match = ({ file, data }) => {
   const [headers, setHeaders] = useState([]);
   const [endZoneList, setEndZoneList] = useState([]);
-  // const [selectedHeader, setSelectedHeader] = useState({});
   const [backEndHeaders, setBackEndHeaders] = useState([]);
 
-  const match = (item, index) => {
-    console.log(item);
+  const match = (array) => {
     const endHeaders = backEndHeaders.map((header) => {
       return header.name;
     });
-    console.log(endHeaders.includes("Date"), "endHeaders");
-    console.log(item.name.slice(1, item.name.length - 1), ".name? !?");
-    let obj = {
-      name: item.name,
-      values: item.values,
-      headerMatch: endHeaders.includes(
-        item.name.slice(1, item.name.length - 1)
-      ),
-    };
-    // item.values
-
-    let arr = endZoneList;
-    arr.splice(index, 1, obj);
-    console.log(arr, "arr");
-    setEndZoneList(arr);
+    const matched = array.map((item) => {
+      let obj = {
+        name: item.name,
+        values: item.values,
+        headerMatch: endHeaders.includes(
+          item.name.slice(1, item.name.length - 1)
+        ),
+      };
+      return obj;
+    });
+    setHeaders(matched);
   };
+
+  // const match = (item, index) => {
+  //   let values = item.values.slice(0, item.values.length - 1);
+  //   const endHeaders = backEndHeaders.map((header) => {
+  //     return header.name;
+  //   });
+  //   console.log(
+  //     values.filter((value) => {
+  //       return value.length === 2;
+  //     })
+  //   );
+  //   console.log(values);
+  //   let obj = {
+  //     name: item.name,
+  //     values: item.values,
+  //     headerMatch: endHeaders.includes(
+  //       item.name.slice(1, item.name.length - 1)
+  //     ),
+  //     valuesMatch: { match: false, errors: [] },
+  //   };
+  //   let arr = endZoneList;
+  //   arr.splice(index, 1, obj);
+  //   setEndZoneList(arr);
+  // };
 
   const getBackEndHeaders = async () => {
     await axios
@@ -52,8 +70,8 @@ const Match = ({ file, data }) => {
   useEffect(() => {
     if (data.length > 0) {
       let arr = Object.keys(data[0]);
-      let newArr = arr.map((header) => {
-        let values = data.map((item) => {
+      let newArr = arr.map((header, index) => {
+        let values = data.map((item, index) => {
           return item[`${header}`];
         });
         let obj = {
@@ -62,10 +80,9 @@ const Match = ({ file, data }) => {
         };
         return obj;
       });
-      console.log(newArr);
-      setHeaders(newArr);
+      match(newArr);
     }
-  }, [data]);
+  }, [data, backEndHeaders]);
 
   const handleDragEnd = ({ destination, source }) => {
     const items = headers;
@@ -92,7 +109,7 @@ const Match = ({ file, data }) => {
       const [reorderedItem] = items.splice(source.index, 1);
       arr.splice(destination.index, 0, reorderedItem);
       setEndZoneList(arr);
-      match(reorderedItem, destination.index);
+      // match(reorderedItem, destination.index);
     }
     if (
       destination.droppableId === "headers" &&
