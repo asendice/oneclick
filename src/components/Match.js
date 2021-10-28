@@ -13,42 +13,26 @@ const Match = ({ file, data }) => {
     const endHeaders = backEndHeaders.map((header) => {
       return header.name;
     });
+
     const matched = array.map((item) => {
+      const values = item.values.slice(0, item.values.length - 1);
+      const valueErrors = values.filter((value, index) => value.length < 3);
+
       let obj = {
         name: item.name,
         values: item.values,
         headerMatch: endHeaders.includes(
           item.name.slice(1, item.name.length - 1)
         ),
+        headerValues: {
+          match: valueErrors.length === 0,
+          errors: valueErrors,
+        },
       };
       return obj;
     });
     setHeaders(matched);
   };
-
-  // const match = (item, index) => {
-  //   let values = item.values.slice(0, item.values.length - 1);
-  //   const endHeaders = backEndHeaders.map((header) => {
-  //     return header.name;
-  //   });
-  //   console.log(
-  //     values.filter((value) => {
-  //       return value.length === 2;
-  //     })
-  //   );
-  //   console.log(values);
-  //   let obj = {
-  //     name: item.name,
-  //     values: item.values,
-  //     headerMatch: endHeaders.includes(
-  //       item.name.slice(1, item.name.length - 1)
-  //     ),
-  //     valuesMatch: { match: false, errors: [] },
-  //   };
-  //   let arr = endZoneList;
-  //   arr.splice(index, 1, obj);
-  //   setEndZoneList(arr);
-  // };
 
   const getBackEndHeaders = async () => {
     await axios
