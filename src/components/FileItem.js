@@ -1,6 +1,7 @@
 import React from "react";
 import "../css/FileItem.css";
 import { BsFileEarmarkCheckFill, BsFillFileEarmarkXFill } from "react-icons/bs";
+import { Link } from "react-router-dom";
 const FileItem = ({ submit, file, rejected }) => {
 
   return (
@@ -15,9 +16,9 @@ const FileItem = ({ submit, file, rejected }) => {
         <p>{file.size} bytes</p>
       </div>
       {!rejected ? (
-        <div className="fileButton" onClick={() => submit()}>
+        <Link to="/match" className="fileButton" onClick={() => submit()}>
           Next
-        </div>
+        </Link>
       ) : (
         <div className="fileRejected rejected">File Rejected, Only *.csv files are accepted</div>
       )}

@@ -1,5 +1,4 @@
 .match {
-  /* background-color: pink; */
   width: 1000px;
   height: 75vh;
 }
@@ -27,4 +26,5 @@
 .main {
   display: flex;
   justify-content: space-evenly;
+  
 }

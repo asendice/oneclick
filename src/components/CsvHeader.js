@@ -1,35 +1,52 @@
 import React from "react";
 import { FaCheckCircle } from "react-icons/fa";
+import { BiError } from "react-icons/bi";
+import { MdArrowForwardIos } from "react-icons/md";
 import "../css/CsvHeader.css";
 import LoadingSpinner from "./LoadingSpinner";
 
-const CsvHeader = ({ header }) => {
+const CsvHeader = ({ header, endHeaders }) => {
+  console.log(header, "header");
   return (
     <div className="csv-header">
-      <div className="csv-header-table">
-        <h1>{header.name}</h1>
-        {header.values.slice(0, 3).map((item, index) => {
+      <div className="csv-table">
+        <div className="table-header">
+          <h4>{header.name}</h4>
+          <MdArrowForwardIos />
+          <div></div>
+        </div>
+
+        {header.values.slice(2, 5).map((item, index) => {
           return (
             <div key={index} className="cell">
-              {item}
+              <div className="cell-index">{index + 2}</div>
+              <p>{item}</p>
             </div>
           );
         })}
       </div>
       <div className="csv-results">
-        {/* {!header.headerMatch && <LoadingSpinner />} */}
         {header.headerMatch && header.headerMatch === true ? (
-          <div className="results-header">
-            {" "}
-            <FaCheckCircle />
-            <h1>Matched</h1>
+          <div className="results">
+            <FaCheckCircle style={{ fontSize: "1.2rem" }} />
+            <h1>Header Matched</h1>
           </div>
-        ) : header.headerMatch === false ? (
-          <h4>Failed </h4>
         ) : (
-          ""
+          <div className="results error">
+            <h4>Header Failed </h4>
+          </div>
         )}
-        <div></div>
+        {header.headerValues && header.headerValues.match === true ? (
+          <div className="results">
+            <FaCheckCircle style={{ fontSize: "1.2rem" }} />
+            <h1> Values Confirmed</h1>
+          </div>
+        ) : (
+          <div className="results error">
+            <BiError style={{ fontSize: "1.6rem" }} />
+            <h1>{header.headerValues.errors.length} Value Errors</h1>
+          </div>
+        )}
       </div>
     </div>
   );

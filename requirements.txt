@@ -27,3 +27,7 @@ Automated Data Feed with consideration for duplication/missing data as above 2 b
 
 
 CSV file will have headers -> Headers become draggable (as icons) to match to required inputs
+
+
+Never got the vision for drag and drop,
+well initially I  interpreted it as dragging to match

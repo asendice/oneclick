@@ -1,43 +1,76 @@
 .csv-header {
   display: flex;
   align-items: center;
-  justify-content: center;
-  min-height: 140px;
-  width: 400px;
+  justify-content: space-between;
+  min-height: 240px;
+  width: 1000px;
   border: solid 1px #d3d3d3;
   background-color: #ffffff;
   border-radius: 10px;
 }
-
-.csv-header h1 {
-  font-size: 1.2rem;
+.table-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 40px;
+  font-size: 1rem;
   background-color: #d3d3d3;
 }
-
-.csv-header-table {
+.table-header h4 {
+  font-size: 1rem;
+  margin-left: 30px;
+}
+h1 {
+  font-size: 1rem;
+}
+.csv-table {
+  margin-left: 25px;
   display: flex;
   flex-direction: column;
-  border: solid 1px #d3d3d3;
-  width: 200px;
+  border: solid 1px grey;
+  width: 500px;
 }
 
 .cell {
-  border-top: solid 1px #d3d3d3;
+  display: flex;
+  align-items: center;
+  height: 40px;
+  border-top: solid 1px grey;
+}
+.cell p {
+  margin-left: 10px;
+  font-size: 1rem;
+}
+
+.cell-index {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #d3d3d3;
+  border-right: solid 1px grey;
+  height: 100%;
+  width: 25px;
 }
 
 .csv-results {
+  margin-right: 25px;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   align-items: center;
   height: 100px;
-  width: 140px;
+  width: 500px;
 }
-.results-header {
+.results {
   display: flex;
   align-items: center;
+  justify-content: space-evenly;
   color: #4bb543;
 }
-.results-header h1 {
+.results h1 {
   margin-left: 5px;
   background-color: #ffffff;
+}
+.error {
+  color: grey;
 }
