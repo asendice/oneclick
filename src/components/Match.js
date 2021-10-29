@@ -94,7 +94,6 @@ const Match = ({ file, data }) => {
       const [reorderedItem] = items.splice(source.index, 1);
       arr.splice(destination.index, 0, reorderedItem);
       setEndZoneList(arr);
-      // match(reorderedItem, destination.index);
     }
     if (
       destination.droppableId === "headers" &&

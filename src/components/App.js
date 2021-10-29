@@ -61,10 +61,6 @@ const App = () => {
             path="/match"
             render={() => <Match file={file} data={data} />}
           />
-          {/* {frame === "Upload" && (
-          <Upload setFile={setFile} handleCSV={handleCSV} setFrame={setFrame} />
-        )}
-        {frame === "Match" && <Match file={file} data={data} />} */}
         </div>
       </div>
     </BrowserRouter>
