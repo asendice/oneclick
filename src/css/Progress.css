@@ -7,17 +7,19 @@
 }
 
 .progress-item {
+  width: 160px;
+
   display: flex;
   align-items: center;
+  justify-content: space-evenly;
   color: grey;
-  /* background-color: pink; */
+  /* background-color: pink;  */
 }
 
 .progress-item h3 {
   font-size: 1.6rem;
 }
 .progress-arrow {
-  margin-left: 25px;
   font-size: 1.8rem;
 }
 
