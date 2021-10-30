@@ -1,4 +1,5 @@
 .csv-header {
+  margin-top: 20px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -7,6 +8,7 @@
   border: solid 1px #d3d3d3;
   background-color: #ffffff;
   border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 .table-header {
   display: flex;
@@ -140,7 +142,7 @@ h1 {
   margin-top: 20px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-evenly;
 }
 .confirm {
   background-color: #4bb543;

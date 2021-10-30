@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../css/App.css";
+import axios from "axios";
 import Match from "./Match";
 import Upload from "./Upload";
 import Progress from "./Progress";
@@ -9,6 +10,7 @@ const App = () => {
   const [file, setFile] = useState();
   const [data, setData] = useState([]);
   const [frame, setFrame] = useState("Upload");
+  const [backEndHeaders, setBackEndHeaders] = useState([]);
 
   const handleCSV = (str) => {
     const headers = str.slice(0, str.indexOf("\n")).split(",");
@@ -23,6 +25,23 @@ const App = () => {
     });
     setData(arr);
   };
+
+  const getBackEndHeaders = async () => {
+    await axios
+      .get("http://localhost:3000/headers")
+      .then((response) => {
+        if (!response) {
+          console.log("error no response");
+        } else {
+          return response;
+        }
+      })
+      .then((response) => setBackEndHeaders(response.data));
+  };
+
+  useEffect(() => {
+    getBackEndHeaders();
+  }, []);
 
   console.log(data, "data");
 
@@ -58,7 +77,9 @@ const App = () => {
           <Route
             exact
             path="/match"
-            render={() => <Match file={file} data={data} />}
+            render={() => (
+              <Match file={file} data={data} backEndHeaders={backEndHeaders} />
+            )}
           />
         </div>
       </div>

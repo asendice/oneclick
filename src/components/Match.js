@@ -1,39 +1,28 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
 import "../css/Match.css";
 import CsvHeader from "./CsvHeader";
 import { Redirect } from "react-router";
 
-const Match = ({ file, data }) => {
+const Match = ({ file, data, backEndHeaders }) => {
   const [headers, setHeaders] = useState([]);
-  const [backEndHeaders, setBackEndHeaders] = useState([]);
 
   const updateMatchedHeader = (header, name) => {
+    let arr = headers;
     header.name = name;
-    const filteredHeaders = headers.filter((item) => item !== header);
-
-    setHeaders([...filteredHeaders, header]);
-    console.log(headers, "headers");
-    console.log(header, "header");
-    console.log(name, "name");
-    match(headers);
+    const index = headers.findIndex((item) => item === header);
+    arr.splice(index, 1, header);
+    match(arr);
   };
 
   const match = (array) => {
     const endHeaders = backEndHeaders.map((header) => {
       return header.name;
     });
-
     const matched = array.map((item) => {
-      const values = item.values.slice(0, item.values.length - 3);
+      const values = item.values;
       const valueErrors = values.filter((value, index) => {
-        if (value) {
-          return value.length < 3;
-        } else {
-          return null;
-        }
+        return value.length === 0;
       });
-
       let obj = {
         name: item.name,
         values: item.values,
@@ -51,27 +40,12 @@ const Match = ({ file, data }) => {
     setHeaders(matched);
   };
 
-  const getBackEndHeaders = async () => {
-    await axios
-      .get("http://localhost:3000/headers")
-      .then((response) => {
-        if (!response) {
-          console.log("error no response");
-        } else {
-          return response;
-        }
-      })
-      .then((response) => setBackEndHeaders(response.data));
-  };
-
-  useEffect(() => {
-    getBackEndHeaders();
-  }, []);
+ 
 
   useEffect(() => {
     if (data.length > 0) {
-      let arr = Object.keys(data[0]);
-      let newArr = arr.map((header, index) => {
+      let headers = Object.keys(data[0]);
+      let newArr = headers.map((header, index) => {
         let values = data.map((item, index) => {
           return item[`${header}`];
         });
@@ -84,8 +58,6 @@ const Match = ({ file, data }) => {
       match(newArr);
     }
   }, [data, backEndHeaders]);
-
-  console.log(headers, "headers");
 
   if (file) {
     return (

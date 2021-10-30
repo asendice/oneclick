@@ -8,10 +8,9 @@ import LoadingSpinner from "./LoadingSpinner";
 const CsvHeader = ({ header, endHeaders, updateMatchedHeader }) => {
   const [active, setActive] = useState(false);
 
-  const filteredHeaders = endHeaders.filter((item) =>
-    item.name.includes(header.name)
-  );
-
+  // const filteredHeaders = endHeaders.filter((item) =>
+  //   item.name.includes(header.name)
+  // );
 
   return (
     <div id="csv-header" className="csv-header">
@@ -100,9 +99,13 @@ const CsvHeader = ({ header, endHeaders, updateMatchedHeader }) => {
           </div>
         )}
         <div className="results-button-container">
-          <div className="confirm button">Confirm matching</div>
+          {header.headerMatch.match && header.headerValues.match && (
+            <div className="confirm button">Confirm matching</div>
+          )}
+          {!header.headerValues.match && (
+            <div className="error button">Fix errors</div>
+          )}
           <div className="ignore button">Ignore this column</div>
-          <div className="error button">Fix errors</div>
         </div>
       </div>
     </div>
