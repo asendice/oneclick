@@ -2,39 +2,39 @@
   "headers": [
     {
       "id": 0,
-      "name": "Date"
+      "name": "SKU"
     },
     {
       "id": 1,
-      "name": "Time"
+      "name": "Category"
     },
     {
       "id": 2,
-      "name": "TimeZone"
+      "name": "Size"
     },
     {
       "id": 3,
-      "name": "Name"
+      "name": "Gender"
     },
     {
       "id": 4,
-      "name": "Type"
+      "name": "Description"
     },
     {
       "id": 5,
-      "name": "Status"
+      "name": "Materials"
     },
     {
       "id": 6,
-      "name": "Currency"
+      "name": "MSRP"
     },
     {
       "id": 7,
-      "name": "Amount"
+      "name": "Active_Date"
     },
     {
       "id": 8,
-      "name": "ReceiptID"
+      "name": "Sunset_Date"
     },
     {
       "id": 9,

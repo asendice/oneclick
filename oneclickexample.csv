@@ -1,0 +1,22 @@
+﻿SKU,Category,Size,Gener,Description,Materials,MSRP,Active_Date,Sunset_Date
+123456,Athletic,S,M,blah blah,Cotton,29.99,10/24/21,11/24/21
+463467,Work,M,F,blah blah,wool,45.99,9/23/21,10/21/21
+923923,Athletic,L,F,blah blah,leather,12.99,5/11/21,6/11/21
+895409,Work,XL,,blah blah,polyesther,129.99,4/14/21,5/14/21
+236576,Athletic,S,M,blah blah,nylon,44.99,12/23/21,1/22/22
+123456,Work,M,F,blah blah,Cotton,32.99,10/24/21,11/24/21
+463467,Athletic,L,F,blah blah,wool,24.99,9/23/21,10/21/21
+923923,,XL,M,blah blah,leather,29.99,5/11/21,6/11/21
+895409,,S,M,blah blah,polyesther,45.99,4/14/21,5/14/21
+236576,Work,M,F,blah blah,nylon,12.99,12/23/21,1/22/22
+123456,Athletic,L,F,blah blah,Cotton,129.99,10/24/21,11/24/21
+463467,,XL,M,,wool,44.99,9/23/21,10/21/21
+923923,Athletic,S,M,blah blah,leather,32.99,5/11/21,6/11/21
+895409,,M,F,,polyesther,24.99,4/14/21,5/14/21
+123456,Athletic,L,F,blah blah,nylon,29.99,12/23/21,1/22/22
+463467,Work,XL,M,,Cotton,45.99,10/24/21,11/24/21
+923923,Athletic,S,M,blah blah,wool,12.99,9/23/21,10/21/21
+895409,Work,M,F,blah blah,leather,129.99,5/11/21,6/11/21
+,,,,,,,,
+,,,,,,,,
+,,,,,,,,

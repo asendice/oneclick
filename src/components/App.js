@@ -13,9 +13,8 @@ const App = () => {
   const handleCSV = (str) => {
     const headers = str.slice(0, str.indexOf("\n")).split(",");
     const rows = str.slice(str.indexOf("\n") + 1).split("\n");
-    console.log(rows, "rwos");
     const arr = rows.map((row) => {
-      const values = row.split(`","`);
+      const values = row.split(`,`);
       const eachObject = headers.reduce((obj, header, i) => {
         obj[header] = values[i];
         return obj;

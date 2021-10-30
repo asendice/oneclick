@@ -5,7 +5,6 @@
 
 .match-header {
   font-size: 2rem;
-  border-bottom: solid 1px #d3d3d3;
   padding: 20px;
 }
 .drop-zone {
@@ -14,17 +13,9 @@
   align-items: center;
   width: 100%;
 }
-.end-drop-zone {
-  display: flex;
-  flex-direction: column;
-  /* align-items: center; */
-  background-color: #d3d3d3;
-  width: 90%;
-  height: 100vh;
-}
 
 .main {
   display: flex;
+  flex-direction: column;
   justify-content: space-evenly;
-  
 }

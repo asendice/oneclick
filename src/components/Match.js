@@ -2,13 +2,22 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "../css/Match.css";
 import CsvHeader from "./CsvHeader";
-import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import { Redirect } from "react-router";
 
 const Match = ({ file, data }) => {
   const [headers, setHeaders] = useState([]);
-  const [endZoneList, setEndZoneList] = useState([]);
   const [backEndHeaders, setBackEndHeaders] = useState([]);
+
+  const updateMatchedHeader = (header, name) => {
+    header.name = name;
+    const filteredHeaders = headers.filter((item) => item !== header);
+
+    setHeaders([...filteredHeaders, header]);
+    console.log(headers, "headers");
+    console.log(header, "header");
+    console.log(name, "name");
+    match(headers);
+  };
 
   const match = (array) => {
     const endHeaders = backEndHeaders.map((header) => {
@@ -16,15 +25,22 @@ const Match = ({ file, data }) => {
     });
 
     const matched = array.map((item) => {
-      const values = item.values.slice(0, item.values.length - 1);
-      const valueErrors = values.filter((value, index) => value.length < 3);
+      const values = item.values.slice(0, item.values.length - 3);
+      const valueErrors = values.filter((value, index) => {
+        if (value) {
+          return value.length < 3;
+        } else {
+          return null;
+        }
+      });
 
       let obj = {
         name: item.name,
         values: item.values,
-        headerMatch: endHeaders.includes(
-          item.name.slice(1, item.name.length - 1)
-        ),
+        headerMatch: {
+          match: endHeaders.includes(item.name),
+          name: endHeaders.filter((header) => header.includes(item.name)),
+        },
         headerValues: {
           match: valueErrors.length === 0,
           errors: valueErrors,
@@ -69,124 +85,24 @@ const Match = ({ file, data }) => {
     }
   }, [data, backEndHeaders]);
 
-  const handleDragEnd = ({ destination, source }) => {
-    const items = headers;
-    const arr = endZoneList;
-    if (!destination) {
-      return;
-    }
-    if (source.droppableId === destination.droppableId) {
-      if (destination.droppableId === "headers") {
-        const [reorderedItem] = items.splice(source.index, 1);
-        items.splice(destination.index, 0, reorderedItem);
-        setHeaders(items);
-      }
-      if (destination.droppableId === "test") {
-        const [reorderedItem] = arr.splice(source.index, 1);
-        arr.splice(destination.index, 0, reorderedItem);
-        setEndZoneList(arr);
-      }
-    }
-    if (
-      source.droppableId === "headers" &&
-      destination.droppableId === "test"
-    ) {
-      const [reorderedItem] = items.splice(source.index, 1);
-      arr.splice(destination.index, 0, reorderedItem);
-      setEndZoneList(arr);
-    }
-    if (
-      destination.droppableId === "headers" &&
-      source.droppableId === "test"
-    ) {
-      const [reorderedItem] = arr.splice(source.index, 1);
-      items.splice(destination.index, 0, reorderedItem);
-      setHeaders(items);
-    }
-  };
+  console.log(headers, "headers");
 
   if (file) {
     return (
       <div className="match">
         <div className="match-header">{file.name}</div>
-        <DragDropContext onDragEnd={handleDragEnd}>
-          <div className="main">
-            <Droppable droppableId="headers">
-              {(provided) => {
-                return (
-                  <div
-                    {...provided.droppableProps}
-                    ref={provided.innerRef}
-                    className="drop-zone"
-                  >
-                    {headers.map((header, index) => {
-                      return (
-                        <Draggable
-                          key={header.name}
-                          draggableId={header.name.toString()}
-                          index={index}
-                        >
-                          {(provided) => {
-                            return (
-                              <div
-                                {...provided.draggableProps}
-                                {...provided.dragHandleProps}
-                                ref={provided.innerRef}
-                              >
-                                <CsvHeader
-                                  header={header}
-                                  endHeaders={backEndHeaders}
-                                />
-                              </div>
-                            );
-                          }}
-                        </Draggable>
-                      );
-                    })}
-
-                    {provided.placeholder}
-                  </div>
-                );
-              }}
-            </Droppable>
-            {/* <Droppable droppableId="test">
-              {(provided) => {
-                return (
-                  <div
-                    {...provided.droppableProps}
-                    ref={provided.innerRef}
-                    className="end-drop-zone"
-                  >
-                    {endZoneList.length > 0
-                      ? endZoneList.map((item, index) => {
-                          return (
-                            <Draggable
-                              key={item.name}
-                              draggableId={item.name.toString()}
-                              index={index}
-                            >
-                              {(provided) => {
-                                return (
-                                  <div
-                                    {...provided.draggableProps}
-                                    {...provided.dragHandleProps}
-                                    ref={provided.innerRef}
-                                  >
-                                    <CsvHeader header={item} />
-                                  </div>
-                                );
-                              }}
-                            </Draggable>
-                          );
-                        })
-                      : ""}
-                    {provided.placeholder}
-                  </div>
-                );
-              }}
-            </Droppable> */}
-          </div>
-        </DragDropContext>
+        <div className="main">
+          {headers.map((header, index) => {
+            return (
+              <CsvHeader
+                key={index}
+                header={header}
+                endHeaders={backEndHeaders}
+                updateMatchedHeader={updateMatchedHeader}
+              />
+            );
+          })}
+        </div>
       </div>
     );
   } else {
