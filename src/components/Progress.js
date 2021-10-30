@@ -8,21 +8,37 @@ const Progress = ({ frame }) => {
   return (
     <div className="progress">
       <div className={`progress-item ${frame === "Match" && "completed"}`}>
-        {frame === "Match" ? <FaCheckCircle className="check-icon" />  : <div></div>}
+        <FaCheckCircle
+          className={`check-icon ${frame === "Match" ? "completed" : "invis"}`}
+        />
         <h3 style={{ color: frame === "Upload" && "#333" }}>Upload</h3>
         <MdArrowForwardIos className="progress-arrow" />
       </div>
       <div className="progress-item">
-        {frame === "Review" ? <FaCheckCircle className="check-icon" /> : <div></div>}
+        <FaCheckCircle
+          className={`check-icon ${frame === "Review" ? "completed" : "invis"}`}
+        />
         <h3 style={{ color: frame === "Match" && "#333" }}>Match</h3>
-        <MdArrowForwardIos className="progress-arrow" />
+        <MdArrowForwardIos
+          className="progress-arrow"
+          style={{ color: frame === "Match" && "#333" }}
+        />
       </div>
       <div className="progress-item">
-        {frame === "Completed" ? <FaCheckCircle className="check-icon" /> : <div></div>}
+        <FaCheckCircle
+          className={`check-icon ${
+            frame === "Completed" ? "completed" : "invis"
+          }`}
+        />
         <h3>Review</h3>
         <MdArrowForwardIos className="progress-arrow" />
       </div>
       <div className="progress-item">
+        <FaCheckCircle
+          className={`check-icon ${
+            frame === "Completed" ? "completed" : "invis"
+          }`}
+        />
         <h3>Complete</h3>
       </div>
     </div>
