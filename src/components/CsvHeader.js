@@ -1,16 +1,38 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import "../css/CsvHeader.css";
+import FixModal from "./FixModal";
 import { FaCheck } from "react-icons/fa";
 import { BiError, BiX, BiChevronDown } from "react-icons/bi";
-import "../css/CsvHeader.css";
 import { roundPercent } from "../utils/auth";
 import LoadingSpinner from "./LoadingSpinner";
 
-const CsvHeader = ({ header, endHeaders, updateMatchedHeader }) => {
+const CsvHeader = ({
+  header,
+  endHeaders,
+  updateMatchedHeader,
+  setSelectedHeader,
+  selectedHeader,
+  data,
+}) => {
   const [active, setActive] = useState(false);
+  const [open, setOpen] = useState(false);
+  const [errorData, setErrorData] = useState([]);
 
-  // const filteredHeaders = endHeaders.filter((item) =>
-  //   item.name.includes(header.name)
-  // );
+  useEffect(() => {
+    const arrOfErrorIndex = header.values.reduce((array, item, index) => {
+      if (item === "") array.push(index);
+      return array;
+    }, []);
+    const arrOfRowsWithError = arrOfErrorIndex.map((i) => {
+      return data[i];
+    });
+    setErrorData(arrOfRowsWithError);
+  }, []);
+
+  const onFixErrorClick = () => {
+    setSelectedHeader(header);
+    setOpen(!open);
+  };
 
   return (
     <div id="csv-header" className="csv-header">
@@ -103,11 +125,14 @@ const CsvHeader = ({ header, endHeaders, updateMatchedHeader }) => {
             <div className="confirm button">Confirm matching</div>
           )}
           {!header.headerValues.match && (
-            <div className="error button">Fix errors</div>
+            <div className="error button" onClick={() => onFixErrorClick()}>
+              Fix errors
+            </div>
           )}
           <div className="ignore button">Ignore this column</div>
         </div>
       </div>
+      <FixModal open={open} setOpen={setOpen} header={header} errorData={errorData}  />
     </div>
   );
 };

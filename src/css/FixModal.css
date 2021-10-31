@@ -1,0 +1,91 @@
+.fix-modal {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(0, 0, 0, 0.6);
+}
+.fix-modal-content {
+  display: flex;
+  flex-direction: column;
+  width: 1000px;
+  height: 300px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  padding: 10px;
+}
+.modal-index {
+  color: grey;
+  font-style: italic;
+}
+
+.modal-table {
+  display: flex;
+  border-left: solid 1px #333;
+  border-top: solid 1px #333;
+  /* height: 250px; */
+  overflow-x: scroll;
+}
+.modal-table-headers {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.modal-table-header {
+  background-color: #d3d3d3;
+  border-bottom: solid 1px #333;
+  border-right: solid 1px #333;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 40px;
+  width: 120px;
+}
+.modal-table-header h4 {
+  margin-left: 5px;
+}
+
+.modal-table-cells {
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-table-column {
+  display: flex;
+  flex-direction: column;
+}
+.modal-table-cell {
+  background-color: #ffffff;
+  border-right: solid 1px #333;
+  border-bottom: solid 1px #333;
+  height: 30px;
+}
+
+.fix-modal-button-container {
+  margin-top: 40px;
+  width: 200px;
+  align-self: center;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.fix-modal-button {
+  border-radius: 5px;
+  padding: 10px;
+  cursor: pointer;
+}
+.fix-modal-button:active {
+  opacity: 0.7;
+}
+.cancel {
+  border-color: grey;
+  color: grey;
+  border: solid 1px grey;
+}

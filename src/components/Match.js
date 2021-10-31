@@ -5,6 +5,7 @@ import { Redirect } from "react-router";
 
 const Match = ({ file, data, backEndHeaders }) => {
   const [headers, setHeaders] = useState([]);
+  const [selectedHeader, setSelectedHeader] = useState({});
 
   const updateMatchedHeader = (header, name) => {
     let arr = headers;
@@ -18,7 +19,7 @@ const Match = ({ file, data, backEndHeaders }) => {
     const endHeaders = backEndHeaders.map((header) => {
       return header.name;
     });
-    const matched = array.map((item) => {
+    const matched = array.map((item, index) => {
       const values = item.values;
       const valueErrors = values.filter((value, index) => {
         return value.length === 0;
@@ -39,8 +40,6 @@ const Match = ({ file, data, backEndHeaders }) => {
     });
     setHeaders(matched);
   };
-
- 
 
   useEffect(() => {
     if (data.length > 0) {
@@ -68,9 +67,12 @@ const Match = ({ file, data, backEndHeaders }) => {
             return (
               <CsvHeader
                 key={index}
+                data={data}
                 header={header}
                 endHeaders={backEndHeaders}
                 updateMatchedHeader={updateMatchedHeader}
+                setSelectedHeader={setSelectedHeader}
+                selectedHeader={selectedHeader}
               />
             );
           })}
