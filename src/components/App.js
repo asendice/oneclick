@@ -4,6 +4,7 @@ import axios from "axios";
 import Match from "./Match";
 import Upload from "./Upload";
 import Progress from "./Progress";
+import Footer from "./Footer";
 import { MdArrowBack } from "react-icons/md";
 import { BrowserRouter, Route, Link } from "react-router-dom";
 const App = () => {
@@ -46,8 +47,8 @@ const App = () => {
   console.log(data, "data");
 
   return (
-    <BrowserRouter>
-      <div className="app">
+    <div className="app">
+      <BrowserRouter>
         <div className="header">
           {frame === "Match" ? (
             <Link
@@ -78,12 +79,19 @@ const App = () => {
             exact
             path="/match"
             render={() => (
-              <Match file={file} data={data} setData={setData} backEndHeaders={backEndHeaders} />
+              <Match
+                file={file}
+                data={data}
+                setData={setData}
+                backEndHeaders={backEndHeaders}
+              />
             )}
           />
         </div>
-      </div>
-    </BrowserRouter>
+      <Footer />
+
+      </BrowserRouter>
+    </div>
   );
 };
 
