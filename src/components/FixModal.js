@@ -48,9 +48,11 @@ const FixModal = ({ header, errorData, open, setOpen }) => {
                     <h4>{error.name}</h4>
                   </div>
                   {error.values.map((value, index) => {
-                    return (
+                    return header.name === error.name ? (
+                      <input placeholder="fix me" className="modal-table-input"/>
+                    ) : (
                       <div key={index} className="modal-table-cell">
-                        {value}
+                        <p>{value}</p>
                       </div>
                     );
                   })}
@@ -65,7 +67,7 @@ const FixModal = ({ header, errorData, open, setOpen }) => {
             >
               Cancel
             </div>
-            <div className="fix-modal-button confirm">Confirm</div>
+            <div className="fix-modal-button confirm">Confirm Changes</div>
           </div>
         </div>
       </div>

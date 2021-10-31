@@ -7,6 +7,10 @@ const Match = ({ file, data, backEndHeaders }) => {
   const [headers, setHeaders] = useState([]);
   const [selectedHeader, setSelectedHeader] = useState({});
 
+  const updateData = () => {
+
+  }
+
   const updateMatchedHeader = (header, name) => {
     let arr = headers;
     header.name = name;
@@ -57,6 +61,7 @@ const Match = ({ file, data, backEndHeaders }) => {
       match(newArr);
     }
   }, [data, backEndHeaders]);
+
 
   if (file) {
     return (

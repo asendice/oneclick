@@ -5,7 +5,6 @@
   top: 0;
   bottom: 0;
   height: 100%;
-  overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -66,11 +65,15 @@
   border-right: solid 1px #333;
   border-bottom: solid 1px #333;
   height: 30px;
+  width: 120px;
+}
+.modal-table-cell p {
+  margin-left: 3px;
 }
 
 .fix-modal-button-container {
   margin-top: 40px;
-  width: 200px;
+  width: 300px;
   align-self: center;
   display: flex;
   align-items: center;
@@ -80,6 +83,7 @@
   border-radius: 5px;
   padding: 10px;
   cursor: pointer;
+  border: solid 1px;
 }
 .fix-modal-button:active {
   opacity: 0.7;
@@ -87,5 +91,15 @@
 .cancel {
   border-color: grey;
   color: grey;
-  border: solid 1px grey;
+  border-color: grey;
+}
+.modal-table-input {
+  height: 10px;
+  width: 110px;
+  padding: 10px 5px 10px;
+  border: none;
+  outline: none;
+  border-bottom: solid 1px #333;
+  border-right: solid 1px #333;
+  background-color: rgb(249, 204, 121);
 }

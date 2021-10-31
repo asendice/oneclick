@@ -78,7 +78,7 @@ const App = () => {
             exact
             path="/match"
             render={() => (
-              <Match file={file} data={data} backEndHeaders={backEndHeaders} />
+              <Match file={file} data={data} setData={setData} backEndHeaders={backEndHeaders} />
             )}
           />
         </div>

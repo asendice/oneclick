@@ -24,8 +24,10 @@ const CsvHeader = ({
       return array;
     }, []);
     const arrOfRowsWithError = arrOfErrorIndex.map((i) => {
+      data[i].i = i;
       return data[i];
     });
+    console.log(arrOfRowsWithError, "asdasd ")
     setErrorData(arrOfRowsWithError);
   }, []);
 
@@ -80,10 +82,10 @@ const CsvHeader = ({
             )}
           </div>
         </div>
-        {header.values.slice(2, 5).map((item, index) => {
+        {header.values.slice(1, 4).map((item, index) => {
           return (
             <div key={index} className="cell">
-              <div className="cell-index">{index + 2}</div>
+              <div className="cell-index">{index + 1}</div>
               <p>{item}</p>
             </div>
           );

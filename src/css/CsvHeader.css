@@ -146,6 +146,7 @@ h1 {
 }
 .confirm {
   background-color: #4bb543;
+  border-color: #4bb543;
   color: #ffffff;
 }
 .ignore {
