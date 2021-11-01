@@ -3,23 +3,30 @@ import "../css/Match.css";
 import CsvHeader from "./CsvHeader";
 import { Redirect } from "react-router";
 
-const Match = ({ file, data, backEndHeaders }) => {
+const Match = ({ file, data, backEndHeaders, updateData, updateHeader }) => {
   const [headers, setHeaders] = useState([]);
   const [selectedHeader, setSelectedHeader] = useState({});
+  console.log(headers, "headers");
 
-  const updateData = () => {
-
-  }
-
-  const updateMatchedHeader = (header, name) => {
-    let arr = headers;
-    header.name = name;
-    const index = headers.findIndex((item) => item === header);
-    arr.splice(index, 1, header);
-    match(arr);
-  };
+  useEffect(() => {
+    if (data.length > 0) {
+      let headers = Object.keys(data[0]);
+      let newArr = headers.map((header, index) => {
+        let values = data.map((item, index) => {
+          return item[header];
+        });
+        let obj = {
+          name: header,
+          values: values,
+        };
+        return obj;
+      });
+      match(newArr);
+    }
+  }, [data, backEndHeaders]);
 
   const match = (array) => {
+    console.log(array, "array from match");
     const endHeaders = backEndHeaders.map((header) => {
       return header.name;
     });
@@ -45,42 +52,27 @@ const Match = ({ file, data, backEndHeaders }) => {
     setHeaders(matched);
   };
 
-  useEffect(() => {
-    if (data.length > 0) {
-      let headers = Object.keys(data[0]);
-      let newArr = headers.map((header, index) => {
-        let values = data.map((item, index) => {
-          return item[`${header}`];
-        });
-        let obj = {
-          name: header,
-          values: values,
-        };
-        return obj;
-      });
-      match(newArr);
-    }
-  }, [data, backEndHeaders]);
-
-
   if (file) {
     return (
       <div className="match">
         <div className="match-header">{file.name}</div>
         <div className="main">
-          {headers.map((header, index) => {
-            return (
-              <CsvHeader
-                key={index}
-                data={data}
-                header={header}
-                endHeaders={backEndHeaders}
-                updateMatchedHeader={updateMatchedHeader}
-                setSelectedHeader={setSelectedHeader}
-                selectedHeader={selectedHeader}
-              />
-            );
-          })}
+          {headers
+            .sort((a, b) => a.name.localeCompare(b.name))
+            .map((header, index) => {
+              return (
+                <CsvHeader
+                  key={index}
+                  data={data}
+                  header={header}
+                  endHeaders={backEndHeaders}
+                  updateHeader={updateHeader}
+                  setSelectedHeader={setSelectedHeader}
+                  selectedHeader={selectedHeader}
+                  updateData={updateData}
+                />
+              );
+            })}
         </div>
       </div>
     );

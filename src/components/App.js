@@ -13,6 +13,35 @@ const App = () => {
   const [frame, setFrame] = useState("Upload");
   const [backEndHeaders, setBackEndHeaders] = useState([]);
 
+  const updateData = (arr) => {
+    let key = Object.keys(arr[0])[0];
+    const chosenToUpdate = arr.map((item) => {
+      let newData = [...data];
+      let i = item.index;
+      newData[i][key] = item[key];
+      return newData;
+    });
+    // console.log(chosenToUpdate[0])
+    setData(chosenToUpdate[0]);
+  };
+
+  const updateHeader = (oldHeader, name) => {
+    const checkIt = data.map((obj) => {
+      obj[name] = obj[oldHeader];
+      delete obj[oldHeader];
+      return obj;
+      // const { [oldHeader]: [name], ...otherProps } = obj;
+      // const newObj = { [name], ...otherProps };
+      // return newObj;
+    });
+    setData(checkIt);
+    // const { header, ...otherProps } = data;
+    // const newObj = { [name]: header, ...otherProps };
+    // console.log(newObj, "newObj");
+    // console.log(oldHeader, "oldHeader");
+    // console.log(name, "name")
+  };
+
   const handleCSV = (str) => {
     const headers = str.slice(0, str.indexOf("\n")).split(",");
     const rows = str.slice(str.indexOf("\n") + 1).split("\n");
@@ -43,8 +72,6 @@ const App = () => {
   useEffect(() => {
     getBackEndHeaders();
   }, []);
-
-  console.log(data, "data");
 
   return (
     <div className="app">
@@ -84,12 +111,13 @@ const App = () => {
                 data={data}
                 setData={setData}
                 backEndHeaders={backEndHeaders}
+                updateData={updateData}
+                updateHeader={updateHeader}
               />
             )}
           />
         </div>
-      <Footer />
-
+        <Footer />
       </BrowserRouter>
     </div>
   );

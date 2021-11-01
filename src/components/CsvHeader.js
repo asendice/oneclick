@@ -9,9 +9,9 @@ import LoadingSpinner from "./LoadingSpinner";
 const CsvHeader = ({
   header,
   endHeaders,
-  updateMatchedHeader,
+  updateHeader,
   setSelectedHeader,
-  selectedHeader,
+  updateData,
   data,
 }) => {
   const [active, setActive] = useState(false);
@@ -27,9 +27,8 @@ const CsvHeader = ({
       data[i].i = i;
       return data[i];
     });
-    console.log(arrOfRowsWithError, "asdasd ")
     setErrorData(arrOfRowsWithError);
-  }, []);
+  }, [data, header]);
 
   const onFixErrorClick = () => {
     setSelectedHeader(header);
@@ -70,7 +69,7 @@ const CsvHeader = ({
                 {endHeaders.map((item, index) => {
                   return (
                     <div
-                      onClick={() => updateMatchedHeader(header, item.name)}
+                      onClick={() => updateHeader(header.name, item.name)}
                       key={index}
                       className="drop-down-item"
                     >
@@ -134,7 +133,14 @@ const CsvHeader = ({
           <div className="ignore button">Ignore this column</div>
         </div>
       </div>
-      <FixModal open={open} setOpen={setOpen} header={header} errorData={errorData}  />
+      {open && (
+        <FixModal
+          setOpen={setOpen}
+          header={header}
+          errorData={errorData}
+          updateData={updateData}
+        />
+      )}
     </div>
   );
 };
