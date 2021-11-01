@@ -8,15 +8,16 @@ import LoadingSpinner from "./LoadingSpinner";
 
 const CsvHeader = ({
   header,
-  endHeaders,
   updateHeader,
   setSelectedHeader,
   updateData,
+  dropDownData,
   data,
 }) => {
   const [active, setActive] = useState(false);
   const [open, setOpen] = useState(false);
   const [errorData, setErrorData] = useState([]);
+
 
   useEffect(() => {
     const arrOfErrorIndex = header.values.reduce((array, item, index) => {
@@ -66,7 +67,7 @@ const CsvHeader = ({
                 className="drop-down"
                 style={{ display: `${active ? "block" : "none"}` }}
               >
-                {endHeaders.map((item, index) => {
+                {dropDownData.map((item, index) => {
                   return (
                     <div
                       onClick={() => updateHeader(header.name, item.name)}

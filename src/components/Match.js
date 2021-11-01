@@ -6,7 +6,6 @@ import { Redirect } from "react-router";
 const Match = ({ file, data, backEndHeaders, updateData, updateHeader }) => {
   const [headers, setHeaders] = useState([]);
   const [selectedHeader, setSelectedHeader] = useState({});
-  console.log(headers, "headers");
 
   useEffect(() => {
     if (data.length > 0) {
@@ -26,7 +25,6 @@ const Match = ({ file, data, backEndHeaders, updateData, updateHeader }) => {
   }, [data, backEndHeaders]);
 
   const match = (array) => {
-    console.log(array, "array from match");
     const endHeaders = backEndHeaders.map((header) => {
       return header.name;
     });
@@ -65,11 +63,13 @@ const Match = ({ file, data, backEndHeaders, updateData, updateHeader }) => {
                   key={index}
                   data={data}
                   header={header}
-                  endHeaders={backEndHeaders}
                   updateHeader={updateHeader}
                   setSelectedHeader={setSelectedHeader}
                   selectedHeader={selectedHeader}
                   updateData={updateData}
+                  dropDownData={backEndHeaders.filter((item) =>
+                    !Object.keys(data[0]).includes(item.name)
+                  )}
                 />
               );
             })}

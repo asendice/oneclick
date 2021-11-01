@@ -21,7 +21,6 @@ const App = () => {
       newData[i][key] = item[key];
       return newData;
     });
-    // console.log(chosenToUpdate[0])
     setData(chosenToUpdate[0]);
   };
 
@@ -30,16 +29,8 @@ const App = () => {
       obj[name] = obj[oldHeader];
       delete obj[oldHeader];
       return obj;
-      // const { [oldHeader]: [name], ...otherProps } = obj;
-      // const newObj = { [name], ...otherProps };
-      // return newObj;
     });
     setData(checkIt);
-    // const { header, ...otherProps } = data;
-    // const newObj = { [name]: header, ...otherProps };
-    // console.log(newObj, "newObj");
-    // console.log(oldHeader, "oldHeader");
-    // console.log(name, "name")
   };
 
   const handleCSV = (str) => {
