@@ -107,6 +107,7 @@ const App = () => {
                 backEndHeaders={backEndHeaders}
                 updateData={updateData}
                 updateHeader={updateHeader}
+                setFrame={setFrame}
               />
             )}
           />

@@ -3,7 +3,7 @@ import "../css/Match.css";
 import CsvHeader from "./CsvHeader";
 import { Redirect, Link } from "react-router-dom";
 
-const Match = ({ file, data, backEndHeaders, updateData, updateHeader }) => {
+const Match = ({ file, data, backEndHeaders, updateData, updateHeader, setFrame }) => {
   const [headers, setHeaders] = useState([]);
   const [confirmed, setConfirmed] = useState(false);
 
@@ -65,7 +65,7 @@ const Match = ({ file, data, backEndHeaders, updateData, updateHeader }) => {
           <h3>{file.name}</h3>
           {confirmed && (
             <Link to="/review">
-              <div className="review-button">Review</div>{" "}
+              <div className="review-button" onClick={() => setFrame("Review")}>Review</div>
             </Link>
           )}
         </div>
