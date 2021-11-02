@@ -13,7 +13,7 @@
 .fileIcon {
   font-size: 3rem;
   margin-left: 20px;
-  color: rgb(19, 125, 88);
+  color: #4BB543;
 }
 .fileButton {
   margin-left: auto;
@@ -24,7 +24,7 @@
   height: 40px;
   width: 80px;
   border-radius: 10px;
-  background-color: rgb(19, 125, 88);
+  background-color: #4BB543;
   color: #ffffff;
   cursor: pointer;
 }

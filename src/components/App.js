@@ -5,6 +5,7 @@ import Match from "./Match";
 import Upload from "./Upload";
 import Progress from "./Progress";
 import Review from "./Review";
+import Complete from "./Complete";
 import Footer from "./Footer";
 import { MdArrowBack } from "react-icons/md";
 import { BrowserRouter, Route, Link } from "react-router-dom";
@@ -114,11 +115,18 @@ const App = () => {
           <Route
             exact
             path="/review"
-            render={() => <Review file={file} data={data} />}
+            render={() => (
+              <Review file={file} data={data} setFrame={setFrame} />
+            )}
+          />
+          <Route
+            exact
+            path="/complete"
+            render={() => <Complete file={file} data={data} />}
           />
         </div>
-        <Footer />
       </BrowserRouter>
+      <Footer />
     </div>
   );
 };

@@ -30,7 +30,7 @@ const Upload = ({ setFile, handleCSV, setFrame }) => {
   return (
     <div className="upload">
       <div className="upload-header">
-        <h2>Upload .csv file for onboard</h2>
+        <h3>Upload .csv file for onboard</h3>
       </div>
       <div
         {...getRootProps(isDragActive)}
@@ -43,7 +43,9 @@ const Upload = ({ setFile, handleCSV, setFrame }) => {
           } `}
         >
           <FaCloudUploadAlt className="upload-icon" />
-          <p>Drag and drop to upload, or click anywhere to select a file</p>
+          <p>Drag and drop to upload</p>
+          <p>Or</p>
+          <div className="upload-file-button"><p>Browse Files</p></div>
           <p style={{ fontStyle: "italic" }}>
             (Only *.csv files will be accepted)
           </p>
