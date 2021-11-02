@@ -1,5 +1,6 @@
 import React from "react";
 import { FaCheckCircle } from "react-icons/fa";
+import { MdArrowForwardIos } from "react-icons/md";
 import "../css/Progress.css";
 
 const Progress = ({ frame }) => {
@@ -12,13 +13,15 @@ const Progress = ({ frame }) => {
       {progressHeaders.map((header, index) => {
         return (
           <div key={index} className="progress-item">
-            <FaCheckCircle
-              className="check-icon"
-              style={{
-                color:
-                  index < progressHeaders.indexOf(frame) ? "#4BB543" : "#fff",
-              }}
-            />
+            {index < progressHeaders.indexOf(frame) ? (
+              <FaCheckCircle className="check-icon" />
+            ) : (
+              <MdArrowForwardIos
+                className="progress-arrow"
+                style={{ color: frame === header ? "#333" : "#d3d3d3" }}
+              />
+            )}
+
             <h3
               style={{
                 color:

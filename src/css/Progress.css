@@ -9,8 +9,9 @@
   width: 160px;
   display: flex;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: flex-start;
   color: grey;
+  /* background-color: pink  */
 }
 
 .progress-item h3 {
@@ -18,14 +19,13 @@
 }
 .progress-arrow {
   font-size: 1.8rem;
+  color: #d3d3d3;
 }
-.completed {
-  color: #4BB543;
-}
+
 .invis {
   color: #fff;
 }
 .check-icon {
-  margin-right: 5px;
   font-size: 2rem;
+  color: #4BB543;
 }
