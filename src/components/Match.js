@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from "react";
 import "../css/Match.css";
 import CsvHeader from "./CsvHeader";
-import { Redirect } from "react-router";
+import { Redirect, Link } from "react-router-dom";
 
 const Match = ({ file, data, backEndHeaders, updateData, updateHeader }) => {
   const [headers, setHeaders] = useState([]);
-  const [selectedHeader, setSelectedHeader] = useState({});
+  const [confirmed, setConfirmed] = useState(false);
 
   useEffect(() => {
     if (data.length > 0) {
-      let headers = Object.keys(data[0]);
-      let newArr = headers.map((header, index) => {
+      let keys = Object.keys(data[0]);
+      let newArr = keys.map((header, index) => {
         let values = data.map((item, index) => {
           return item[header];
         });
@@ -24,11 +24,11 @@ const Match = ({ file, data, backEndHeaders, updateData, updateHeader }) => {
     }
   }, [data, backEndHeaders]);
 
-  const match = (array) => {
+  const match = (arr) => {
     const endHeaders = backEndHeaders.map((header) => {
       return header.name;
     });
-    const matched = array.map((item, index) => {
+    const matched = arr.map((item, index) => {
       const values = item.values;
       const valueErrors = values.filter((value, index) => {
         return value.length === 0;
@@ -48,12 +48,27 @@ const Match = ({ file, data, backEndHeaders, updateData, updateHeader }) => {
       return obj;
     });
     setHeaders(matched);
+    const notConfirmed = matched.filter((item) => {
+      return (
+        item.headerValues.match === false || item.headerMatch.match === false
+      );
+    });
+    if (notConfirmed.length === 0) {
+      setConfirmed(true);
+    }
   };
 
   if (file) {
     return (
       <div className="match">
-        <div className="match-header">{file.name}</div>
+        <div className="match-header">
+          <h3>{file.name}</h3>
+          {confirmed && (
+            <Link to="/review">
+              <div className="review-button">Review</div>{" "}
+            </Link>
+          )}
+        </div>
         <div className="main">
           {headers
             .sort((a, b) => a.name.localeCompare(b.name))
@@ -62,13 +77,13 @@ const Match = ({ file, data, backEndHeaders, updateData, updateHeader }) => {
                 <CsvHeader
                   key={index}
                   data={data}
+                  headers={headers}
                   header={header}
                   updateHeader={updateHeader}
-                  setSelectedHeader={setSelectedHeader}
-                  selectedHeader={selectedHeader}
+                  setHeaders={setHeaders}
                   updateData={updateData}
-                  dropDownData={backEndHeaders.filter((item) =>
-                    !Object.keys(data[0]).includes(item.name)
+                  dropDownData={backEndHeaders.filter(
+                    (item) => !Object.keys(data[0]).includes(item.name)
                   )}
                 />
               );

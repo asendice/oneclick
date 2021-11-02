@@ -8,8 +8,9 @@ import LoadingSpinner from "./LoadingSpinner";
 
 const CsvHeader = ({
   header,
+  headers,
+  setHeaders,
   updateHeader,
-  setSelectedHeader,
   updateData,
   dropDownData,
   data,
@@ -18,6 +19,13 @@ const CsvHeader = ({
   const [open, setOpen] = useState(false);
   const [errorData, setErrorData] = useState([]);
 
+  const onConfirmClick = () => {
+    const headersArr = headers;
+    const newHeader = header;
+    const filteredHeaders = headersArr.filter((header) => header !== newHeader);
+    newHeader.confirmed = true;
+    setHeaders([...filteredHeaders, newHeader]);
+  };
 
   useEffect(() => {
     const arrOfErrorIndex = header.values.reduce((array, item, index) => {
@@ -25,14 +33,13 @@ const CsvHeader = ({
       return array;
     }, []);
     const arrOfRowsWithError = arrOfErrorIndex.map((i) => {
-      data[i].i = i;
+      data[i].index = i;
       return data[i];
     });
     setErrorData(arrOfRowsWithError);
   }, [data, header]);
 
   const onFixErrorClick = () => {
-    setSelectedHeader(header);
     setOpen(!open);
   };
 
@@ -122,9 +129,10 @@ const CsvHeader = ({
             </h1>
           </div>
         )}
+
         <div className="results-button-container">
           {header.headerMatch.match && header.headerValues.match && (
-            <div className="confirm button">Confirm matching</div>
+            <div className="confirm button">Matching Confirmed</div>
           )}
           {!header.headerValues.match && (
             <div className="error button" onClick={() => onFixErrorClick()}>

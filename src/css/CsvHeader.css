@@ -168,3 +168,15 @@ h1 {
 .button:active {
   opacity: 0.6;
 }
+
+.header-confirmed {
+  display: flex;
+  align-items: center;
+}
+.header-confirmed h2 {
+  margin-left: 5px;
+}
+.large-check-icon {
+  font-size: 1.4rem;
+  color: #4bb543;
+}

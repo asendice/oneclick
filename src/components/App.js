@@ -13,6 +13,8 @@ const App = () => {
   const [frame, setFrame] = useState("Upload");
   const [backEndHeaders, setBackEndHeaders] = useState([]);
 
+  console.log(data, "data")
+
   const updateData = (arr) => {
     let key = Object.keys(arr[0])[0];
     const chosenToUpdate = arr.map((item) => {

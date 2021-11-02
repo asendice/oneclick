@@ -6,7 +6,7 @@ const FixModal = ({ header, updateData, errorData, setOpen }) => {
     errorData.map((obj) => {
       return {
         [header.name]: obj[header.name],
-        index: obj.i,
+        index: obj.index,
       };
     })
   );
