@@ -64,7 +64,7 @@ const Match = ({ file, data, backEndHeaders, updateData, updateHeader, setFrame 
         <div className="match-header">
           <h3>{file.name}</h3>
           {confirmed && (
-            <Link to="/review">
+            <Link style={{textDecoration: "none"}} to="/review">
               <div className="review-button" onClick={() => setFrame("Review")}>Review</div>
             </Link>
           )}

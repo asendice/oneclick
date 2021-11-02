@@ -16,7 +16,7 @@ const FileItem = ({ submit, file, rejected }) => {
         <p>{file.size} bytes</p>
       </div>
       {!rejected ? (
-        <Link to="/match" className="fileButton" onClick={() => submit()}>
+        <Link style={{textDecoration: "none"}} to="/match" className="fileButton" onClick={() => submit()}>
           Next
         </Link>
       ) : (

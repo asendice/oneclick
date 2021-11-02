@@ -42,7 +42,7 @@ const Review = ({ file, data, setFrame }) => {
       <div className="review">
         <div className="review-header">
           <h3>{file.name} Review</h3>
-          <Link onClick={() => setFrame("Complete")} to="/complete">
+          <Link style={{textDecoration: "none"}} onClick={() => setFrame("Complete")} to="/complete">
             <div className="complete-button">Complete</div>
           </Link>
         </div>
