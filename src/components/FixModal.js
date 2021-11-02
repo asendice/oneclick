@@ -62,24 +62,22 @@ const FixModal = ({ header, updateData, errorData, setOpen }) => {
                   <div className="modal-table-header">
                     <h4>{error.name}</h4>
                   </div>
-                  <form>
-                    {error.values.map((value, index) => {
-                      return header.name === error.name ? (
-                        <input
-                          key={index}
-                          type="text"
-                          name={index}
-                          placeholder="fix me"
-                          className="modal-table-input"
-                          onChange={(e) => updateValue(e.target.value, index)}
-                        />
-                      ) : (
-                        <div key={index} className="modal-table-cell">
-                          <p>{value}</p>
-                        </div>
-                      );
-                    })}{" "}
-                  </form>
+                  {error.values.map((value, index) => {
+                    return header.name === error.name ? (
+                      <input
+                        key={index}
+                        type="text"
+                        name={index}
+                        placeholder="fix me"
+                        className="modal-table-input"
+                        onChange={(e) => updateValue(e.target.value, index)}
+                      />
+                    ) : (
+                      <div key={index} className="modal-table-cell">
+                        <p>{value}</p>
+                      </div>
+                    );
+                  })}{" "}
                 </div>
               );
             })}

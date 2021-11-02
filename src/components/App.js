@@ -4,6 +4,7 @@ import axios from "axios";
 import Match from "./Match";
 import Upload from "./Upload";
 import Progress from "./Progress";
+import Review from "./Review";
 import Footer from "./Footer";
 import { MdArrowBack } from "react-icons/md";
 import { BrowserRouter, Route, Link } from "react-router-dom";
@@ -13,7 +14,7 @@ const App = () => {
   const [frame, setFrame] = useState("Upload");
   const [backEndHeaders, setBackEndHeaders] = useState([]);
 
-  console.log(data, "data")
+  console.log(data, "data");
 
   const updateData = (arr) => {
     let key = Object.keys(arr[0])[0];
@@ -39,7 +40,7 @@ const App = () => {
     const headers = str.slice(0, str.indexOf("\n")).split(",");
     const rows = str.slice(str.indexOf("\n") + 1).split("\n");
     const arr = rows.map((row) => {
-      const values = row.split(`,`);
+      const values = row.split(",");
       const eachObject = headers.reduce((obj, header, i) => {
         obj[header] = values[i];
         return obj;
@@ -108,6 +109,11 @@ const App = () => {
                 updateHeader={updateHeader}
               />
             )}
+          />
+          <Route
+            exact
+            path="/review"
+            render={() => <Review file={file} data={data} />}
           />
         </div>
         <Footer />
