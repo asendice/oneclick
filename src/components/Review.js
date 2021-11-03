@@ -1,21 +1,25 @@
 import React, { useState, useEffect } from "react";
 import { Redirect, Link } from "react-router-dom";
+import { FixedSizeList as List } from 'react-window';
 import "../css/Review.css";
 const Review = ({ file, data, setFrame }) => {
   const [reviewData, setReviewData] = useState([]);
+  // const [headers, setHeaders] = useState([]);
+  // const [rows, setRows] = useState([]);
 
-  console.log(data, "data");
+
 
   // useEffect(() => {
   //   const headers = Object.keys(data[0]);
   //   const rows = data.map((row) => {
-  //     console.log(row);
   //     const values = headers.map((header) => {
   //       return row[header];
   //     });
   //     return values;
   //   });
-  //   console.log(rows, "rows");
+  //   console.log(rows, "rose")
+  //   setHeaders(headers);
+  //   setRows(rows);
   // }, [data]);
 
   useEffect(() => {
@@ -35,18 +39,26 @@ const Review = ({ file, data, setFrame }) => {
     }
   }, []);
 
-  console.log(reviewData, "reviewData");
 
   if (data.length > 0) {
     return (
       <div className="review">
         <div className="review-header">
           <h3>{file.name} Review</h3>
-          <Link style={{textDecoration: "none"}} onClick={() => setFrame("Complete")} to="/complete">
+          <Link
+            style={{ textDecoration: "none" }}
+            onClick={() => setFrame("Complete")}
+            to="/complete"
+          >
             <div className="complete-button">Complete</div>
           </Link>
         </div>
         <div className="review-table">
+          {/* <List height={rows.length === 0 ? 20: rows.length}>
+            {rows.map((row, index) => {
+              return <div> </div>
+            })}
+          </List> */}
           {reviewData.map((item, index) => {
             return (
               <div key={index} className="review-table-col">

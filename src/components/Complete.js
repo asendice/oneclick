@@ -35,7 +35,7 @@ const Complete = ({ data, file }) => {
         </div>
         <div className="complete-main">
           {status === 200 || (201 && <h1>Data Post Successful</h1>)}
-          <div>{JSON.stringify(sentData)}ƒ</div>
+          <p>{JSON.stringify(sentData)}</p>
         </div>
       </div>
     );

@@ -1,8 +1,15 @@
 .complete {
   height: 75vh;
-  width: 100%;
+  width: 1200px;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
+}
+
+.complete-main {
+  width: 1200px;
+}
+.complete-main p {
+  font-size: 12px;
 }

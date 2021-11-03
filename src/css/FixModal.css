@@ -61,6 +61,8 @@
   flex-direction: column;
 }
 .modal-table-cell {
+  display: flex;
+  align-items: center;
   background-color: #ffffff;
   border-right: solid 1px #333;
   border-bottom: solid 1px #333;
