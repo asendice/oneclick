@@ -12,7 +12,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  border: dashed 3px #d3d3d3;
+  border: dashed 3px #383634;
   height: 300px;
   width: 600px;
   border-radius: 10px;
@@ -47,4 +47,7 @@
   background-color: #383634;
   color: #fff;
   padding: 10px;
+}
+.upload-file-button:active {
+  opacity: 0.7;
 }

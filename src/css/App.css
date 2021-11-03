@@ -7,12 +7,14 @@
 .app {
   display: flex;
   flex-direction: column;
+  background-color: #d5cdc2;
 }
 
 .header {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  /* background-color: #383634; */
 }
 
 .content {

@@ -3,6 +3,8 @@
   align-items: center;
   height: 100px;
   width: 800px;
+
+  
 }
 
 .progress-item {
@@ -16,10 +18,11 @@
 
 .progress-item h3 {
   font-size: 1.6rem;
+  color: grey;
+
 }
 .progress-arrow {
   font-size: 1.8rem;
-  color: #d3d3d3;
 }
 
 .invis {

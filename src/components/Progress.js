@@ -18,7 +18,7 @@ const Progress = ({ frame }) => {
             ) : (
               <MdArrowForwardIos
                 className="progress-arrow"
-                style={{ color: frame === header ? "#333" : "#d3d3d3" }}
+                style={{ color: frame === header ? "#333" : "grey" }}
               />
             )}
 
@@ -29,7 +29,7 @@ const Progress = ({ frame }) => {
                     ? "#4BB543"
                     : header === frame
                     ? "#333"
-                    : "#d3d3d3",
+                    : "grey",
               }}
             >
               {header}

@@ -1,15 +1,38 @@
 .complete {
-  height: 75vh;
-  width: 1200px;
+  width: 1000px;
+  min-height: 90vh;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
 }
 
+.match-header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 2rem;
+  padding: 20px;
+}
+
 .complete-main {
-  width: 1200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  flex-wrap: wrap;
 }
 .complete-main p {
+  text-align: center;
   font-size: 12px;
+}
+.complete-post-button {
+  padding: 10px;
+  border-radius: 5px;
+  /* border: solid 1px #333; */
+  cursor: pointer;
+  background-color: #4BB543;
+  color: #ffff;
+}
+.complete-post-button:active {
+  opacity: 0.7;
 }

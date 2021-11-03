@@ -19,13 +19,13 @@ const CsvHeader = ({
   const [open, setOpen] = useState(false);
   const [errorData, setErrorData] = useState([]);
 
-  const onConfirmClick = () => {
-    const headersArr = headers;
-    const newHeader = header;
-    const filteredHeaders = headersArr.filter((header) => header !== newHeader);
-    newHeader.confirmed = true;
-    setHeaders([...filteredHeaders, newHeader]);
-  };
+  // const onConfirmClick = () => {
+  //   const headersArr = headers;
+  //   const newHeader = header;
+  //   const filteredHeaders = headersArr.filter((header) => header !== newHeader);
+  //   newHeader.confirmed = true;
+  //   setHeaders([...filteredHeaders, newHeader]);
+  // };
 
   useEffect(() => {
     const arrOfErrorIndex = header.values.reduce((array, item, index) => {
@@ -103,7 +103,7 @@ const CsvHeader = ({
           <div className="results">
             <FaCheck className="small-check-icon" />
             <h1>
-              Matched to the <p>{header.headerMatch.name}</p> field.{" "}
+              Matched to the <p>{header.headerMatch.name}</p> field{" "}
             </h1>
           </div>
         ) : (
@@ -132,7 +132,11 @@ const CsvHeader = ({
 
         <div className="results-button-container">
           {header.headerMatch.match && header.headerValues.match && (
-            <div className="confirm button">Matching Confirmed</div>
+            <div className="results">
+              {" "}
+              <FaCheck className="large-check-icon" />
+              <h1> Matching Confirmed</h1>{" "}
+            </div>
           )}
           {!header.headerValues.match && (
             <div className="error button" onClick={() => onFixErrorClick()}>

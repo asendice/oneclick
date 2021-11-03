@@ -67,6 +67,7 @@ const FixModal = ({ header, updateData, errorData, setOpen }) => {
                       <input
                         key={index}
                         type="text"
+                        autocomplete="off"
                         name={index}
                         placeholder="fix me"
                         className="modal-table-input"

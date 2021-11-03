@@ -1,7 +1,0 @@
-App.js (
-
-  file state
-  frame state
-  fileData state
-
-)
