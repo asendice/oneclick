@@ -8,8 +8,6 @@ import LoadingSpinner from "./LoadingSpinner";
 
 const CsvHeader = ({
   header,
-  headers,
-  setHeaders,
   updateHeader,
   updateData,
   dropDownData,
@@ -18,14 +16,6 @@ const CsvHeader = ({
   const [active, setActive] = useState(false);
   const [open, setOpen] = useState(false);
   const [errorData, setErrorData] = useState([]);
-
-  // const onConfirmClick = () => {
-  //   const headersArr = headers;
-  //   const newHeader = header;
-  //   const filteredHeaders = headersArr.filter((header) => header !== newHeader);
-  //   newHeader.confirmed = true;
-  //   setHeaders([...filteredHeaders, newHeader]);
-  // };
 
   useEffect(() => {
     const arrOfErrorIndex = header.values.reduce((array, item, index) => {

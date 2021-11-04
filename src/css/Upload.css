@@ -18,7 +18,7 @@
   border-radius: 10px;
 }
 .dropzone:hover {
-  background-color: #d3d3d3;
+  background-color: #383634;
   cursor: pointer;
 }
 .dropzone-content {
@@ -47,6 +47,7 @@
   background-color: #383634;
   color: #fff;
   padding: 10px;
+  border: solid 1px #d3d3d3;
 }
 .upload-file-button:active {
   opacity: 0.7;

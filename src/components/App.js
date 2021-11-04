@@ -18,10 +18,10 @@ const App = () => {
   console.log(data, "data");
 
   const updateData = (arr) => {
-    let key = Object.keys(arr[0])[0];
+    const key = Object.keys(arr[0])[0];
+    const newData = [...data];
     const chosenToUpdate = arr.map((item) => {
-      let newData = [...data];
-      let i = item.index;
+      const i = item.index;
       newData[i][key] = item[key];
       return newData;
     });
@@ -32,6 +32,7 @@ const App = () => {
     const checkIt = data.map((obj) => {
       obj[name] = obj[oldHeader];
       delete obj[oldHeader];
+      delete obj.index;
       return obj;
     });
     setData(checkIt);
