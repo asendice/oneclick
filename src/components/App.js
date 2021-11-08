@@ -44,7 +44,7 @@ const App = () => {
     const arr = rows.map((row) => {
       const values = row.split(",");
       const eachObject = headers.reduce((obj, header, i) => {
-        obj[header] = values[i];
+        obj[header] = values[i].replace("\r", "");
         return obj;
       }, {});
       return eachObject;

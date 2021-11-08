@@ -10,6 +10,7 @@
     "json-server": "^0.17.0",
     "react": "^17.0.2",
     "react-beautiful-dnd": "^13.1.0",
+    "react-csv": "^2.0.3",
     "react-dom": "^17.0.2",
     "react-dropzone": "^11.4.2",
     "react-file-drop": "^3.1.2",

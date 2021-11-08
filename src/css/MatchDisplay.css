@@ -1,0 +1,40 @@
+.match-display {
+  border-radius: 10px;
+  border: solid 1px #333;
+  height: 400px;
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.display-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.display-item-icon {
+  font-size: 7rem;
+  color: #333;
+}
+
+.export-button {
+  text-align: center;
+  color: #383634;
+  padding: 15px 30px;
+  border: solid 1px #383634;
+  cursor: pointer;
+  transition: all 0.4s ease-in-out;
+  margin-top: 10px;
+}
+.export-button:active {
+  opacity: 0.7;
+}
+.export-button:hover {
+  background-color: #383634;
+  color: #fff;
+}

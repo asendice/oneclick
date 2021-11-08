@@ -15,6 +15,9 @@ const Match = ({
   const [headers, setHeaders] = useState([]);
   const [errorRows, setErrorRows] = useState([]);
 
+  console.log(headers, "headers")
+  console.log(errorRows, "errorRows")
+
   useEffect(() => {
     const rowsWithMissingValues = data.filter((row) => {
       return Object.keys(row).some((prop) => row[prop] === "");
@@ -51,9 +54,9 @@ const Match = ({
     return (
       <div className="match">
         <div className="match-header">
-          <h3>{file.name}</h3>
+          <h3>{file.name}</h3> 
         </div>
-        <MatchDisplay />
+        <MatchDisplay headers={headers} errorRows={errorRows} dataLength={data.length}/>
       </div>
     );
   } else {
