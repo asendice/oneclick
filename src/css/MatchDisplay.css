@@ -1,15 +1,17 @@
 .match-display {
-  border-radius: 10px;
-  border: solid 1px #333;
-  height: 400px;
-  width: 90%;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+.display-container {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-evenly;
   flex-wrap: wrap;
 }
-
 .display-item {
   display: flex;
   flex-direction: column;
@@ -29,7 +31,8 @@
   border: solid 1px #383634;
   cursor: pointer;
   transition: all 0.4s ease-in-out;
-  margin-top: 10px;
+  margin-top: 20px;
+  margin-right: 6px;
 }
 .export-button:active {
   opacity: 0.7;

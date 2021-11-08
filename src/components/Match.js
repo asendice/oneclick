@@ -56,7 +56,7 @@ const Match = ({
         <div className="match-header">
           <h3>{file.name}</h3> 
         </div>
-        <MatchDisplay headers={headers} errorRows={errorRows} dataLength={data.length}/>
+        <MatchDisplay errorRows={errorRows} dataLength={data.length}/>
       </div>
     );
   } else {
