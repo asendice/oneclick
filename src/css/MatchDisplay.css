@@ -8,7 +8,6 @@
 .display-container {
   display: flex;
   width: 100%;
-  align-items: center;
   justify-content: space-evenly;
   flex-wrap: wrap;
 }
@@ -16,7 +15,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
 }
 
 .display-item-icon {
@@ -24,20 +22,3 @@
   color: #333;
 }
 
-.export-button {
-  text-align: center;
-  color: #383634;
-  padding: 15px 30px;
-  border: solid 1px #383634;
-  cursor: pointer;
-  transition: all 0.4s ease-in-out;
-  margin-top: 20px;
-  margin-right: 6px;
-}
-.export-button:active {
-  opacity: 0.7;
-}
-.export-button:hover {
-  background-color: #383634;
-  color: #fff;
-}

@@ -1,7 +1,7 @@
 * {
   margin: 0;
   padding: 0;
-  font-family: "Noto Sans", sans-serif;
+  font-family: "Montserrat", sans-serif;
 }
 
 .app {
@@ -32,4 +32,22 @@
   font-size: 3rem;
   color: grey;
   cursor: pointer;
+}
+
+.trove-button {
+  text-align: center;
+  color: #383634;
+  padding: 15px 30px;
+  border: solid 1px #383634;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  margin-top: 20px;
+  text-transform: uppercase;
+}
+.trove-button:active {
+  opacity: 0.7;
+}
+.trove-button:hover {
+  background-color: #383634;
+  color: #fff;
 }

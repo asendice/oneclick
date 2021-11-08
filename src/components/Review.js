@@ -50,7 +50,7 @@ const Review = ({ file, data, setFrame }) => {
             onClick={() => setFrame("Complete")}
             to="/complete"
           >
-            <div className="complete-button">Complete</div>
+            <div className="trove-button">Complete</div>
           </Link>
         </div>
         <div className="review-table">

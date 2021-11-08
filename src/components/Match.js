@@ -8,15 +8,25 @@ const Match = ({
   file,
   data,
   backEndHeaders,
+  setData,
   updateData,
   updateHeader,
   setFrame,
 }) => {
+  const [matched, setMatched] = useState(false);
   const [headers, setHeaders] = useState([]);
   const [errorRows, setErrorRows] = useState([]);
 
-  console.log(headers, "headers")
-  console.log(errorRows, "errorRows")
+  console.log(data.filter((row) => !errorRows.includes(row)));
+
+  useEffect(() => {
+    if (headers.length > 0) {
+      const unMatched = headers.filter((header) => header.confirmed === false);
+      if (unMatched.length === 0) {
+        setMatched(true);
+      }
+    }
+  }, [headers]);
 
   useEffect(() => {
     const rowsWithMissingValues = data.filter((row) => {
@@ -28,10 +38,15 @@ const Match = ({
   useEffect(() => {
     if (data.length > 0) {
       const createHeaders = Object.keys(data[0]).map((header) => {
+        // values might be not necessary
+        const values = data.map((row) => {
+          return row[header];
+        });
         const obj = {
           name: header,
           matchedWith: [],
           confirmed: false,
+          values: values,
         };
         return obj;
       });
@@ -50,13 +65,49 @@ const Match = ({
     setHeaders(matching);
   };
 
+  const confirmHeader = (header, index) => {
+    header.confirmed = true;
+    const arr = [...headers];
+    arr.splice(index, 1, header);
+    setHeaders(arr);
+  };
+
   if (file) {
     return (
       <div className="match">
         <div className="match-header">
-          <h3>{file.name}</h3> 
+          <h3>{file.name}</h3>
+          {matched && (
+            <Link
+              to="/review"
+              style={{ textDecoration: "none" }}
+              className="trove-button"
+              onClick={() => {
+                setData(data.filter((row) => !errorRows.includes(row)));
+                setFrame("Review");
+              }}
+            >
+              Review
+            </Link>
+          )}
         </div>
-        <MatchDisplay errorRows={errorRows} dataLength={data.length}/>
+        <MatchDisplay
+          headers={headers}
+          errorRows={errorRows}
+          dataLength={data.length}
+        />
+        <div className="match-main">
+          {headers.map((header, index) => {
+            return (
+              <CsvHeader
+                key={index}
+                header={header}
+                headers={headers}
+                confirmHeader={confirmHeader}
+              />
+            );
+          })}
+        </div>
       </div>
     );
   } else {

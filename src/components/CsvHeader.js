@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import "../css/CsvHeader.css";
-import FixModal from "./FixModal";
 import { FaCheck } from "react-icons/fa";
 import { BiError, BiX, BiChevronDown } from "react-icons/bi";
 import { roundPercent } from "../utils/auth";
@@ -8,30 +7,26 @@ import LoadingSpinner from "./LoadingSpinner";
 
 const CsvHeader = ({
   header,
+  headers,
+  confirmHeader,
   updateHeader,
   updateData,
   dropDownData,
   data,
 }) => {
   const [active, setActive] = useState(false);
-  const [open, setOpen] = useState(false);
-  const [errorData, setErrorData] = useState([]);
 
-  useEffect(() => {
-    const arrOfErrorIndex = header.values.reduce((array, item, index) => {
-      if (item === "") array.push(index);
-      return array;
-    }, []);
-    const arrOfRowsWithError = arrOfErrorIndex.map((i) => {
-      data[i].index = i;
-      return data[i];
-    });
-    setErrorData(arrOfRowsWithError);
-  }, [data, header]);
-
-  const onFixErrorClick = () => {
-    setOpen(!open);
-  };
+  // useEffect(() => {
+  //   const arrOfErrorIndex = header.values.reduce((array, item, index) => {
+  //     if (item === "") array.push(index);
+  //     return array;
+  //   }, []);
+  //   const arrOfRowsWithError = arrOfErrorIndex.map((i) => {
+  //     data[i].index = i;
+  //     return data[i];
+  //   });
+  //   setErrorData(arrOfRowsWithError);
+  // }, [data, header]);
 
   return (
     <div id="csv-header" className="csv-header">
@@ -43,9 +38,9 @@ const CsvHeader = ({
           <div className="table-header-right">
             <div className="table-header-right-content">
               <p>
-                {header.headerMatch.match
-                  ? header.headerMatch.name
-                  : "Lookup matching fields"}
+                {header.matchedWith.length > 0
+                  ? header.matchedWith
+                  : "Look up matching fields"}
               </p>
               <div
                 className=""
@@ -58,25 +53,23 @@ const CsvHeader = ({
                 <BiChevronDown />
               </div>
             </div>
-            {!header.headerMatch.match && (
-              <div
-                id="drop-down"
-                className="drop-down"
-                style={{ display: `${active ? "block" : "none"}` }}
-              >
-                {dropDownData.map((item, index) => {
-                  return (
-                    <div
-                      onClick={() => updateHeader(header.name, item.name)}
-                      key={index}
-                      className="drop-down-item"
-                    >
-                      {item.name}
-                    </div>
-                  );
-                })}
-              </div>
-            )}
+            <div
+              id="drop-down"
+              className="drop-down"
+              style={{ display: `${active ? "block" : "none"}` }}
+            >
+              {/* {dropDownData.map((item, index) => {
+                return (
+                  <div
+                    onClick={() => updateHeader(header.name, item.name)}
+                    key={index}
+                    className="drop-down-item"
+                  >
+                    {item.name}
+                  </div>
+                );
+              })} */}
+            </div>
           </div>
         </div>
         {header.values.slice(1, 4).map((item, index) => {
@@ -89,11 +82,11 @@ const CsvHeader = ({
         })}
       </div>
       <div className="csv-results">
-        {header.headerMatch && header.headerMatch.match === true ? (
+        {header.matchedWith !== "" ? (
           <div className="results">
             <FaCheck className="small-check-icon" />
             <h1>
-              Matched to the <p>{header.headerMatch.name}</p> field{" "}
+              Matched to the <p>{header.matchedWith}</p> field{" "}
             </h1>
           </div>
         ) : (
@@ -102,7 +95,22 @@ const CsvHeader = ({
             <h1>Unable to automatically match</h1>
           </div>
         )}
-        {header.headerValues && header.headerValues.match === true ? (
+        {header.confirmed ? (
+          <div className="results">
+            <FaCheck className="small-check-icon" />
+            <h1>Header Confirmed</h1>
+          </div>
+        ) : (
+          <div className="results-button-container">
+            <div
+              className="confirm button"
+              onClick={() => confirmHeader(header, headers.indexOf(header))}
+            >
+              Confirm Matching
+            </div>
+          </div>
+        )}
+        {/* {header.headerValues && header.headerValues.match === true ? (
           <div className="results">
             <FaCheck className="small-check-icon" />
             <h1>100% of your rows have a value for this column</h1>
@@ -118,32 +126,8 @@ const CsvHeader = ({
               % of your rows have a value for this column
             </h1>
           </div>
-        )}
-
-        <div className="results-button-container">
-          {header.headerMatch.match && header.headerValues.match && (
-            <div className="results">
-              {" "}
-              <FaCheck className="large-check-icon" />
-              <h1> Matching Confirmed</h1>{" "}
-            </div>
-          )}
-          {!header.headerValues.match && (
-            <div className="error button" onClick={() => onFixErrorClick()}>
-              Fix errors
-            </div>
-          )}
-          <div className="ignore button">Ignore this column</div>
-        </div>
+        )} */}
       </div>
-      {open && (
-        <FixModal
-          setOpen={setOpen}
-          header={header}
-          errorData={errorData}
-          updateData={updateData}
-        />
-      )}
     </div>
   );
 };

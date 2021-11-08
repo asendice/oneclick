@@ -3,8 +3,11 @@ import "../css/MatchDisplay.css";
 import { BiError, BiCheck } from "react-icons/bi";
 import { VscTable } from "react-icons/vsc";
 import { CSVLink } from "react-csv";
+import { roundPercent } from "../utils/auth";
 
-const MatchDisplay = ({ errorRows, dataLength }) => {
+const MatchDisplay = ({ headers, errorRows, dataLength }) => {
+  const unMatched = headers.filter((header) => header.matchedWith.length === 0);
+
   return (
     <div className="match-display">
       <div className="display-container">
@@ -17,21 +20,24 @@ const MatchDisplay = ({ errorRows, dataLength }) => {
         </div>
         <div className="display-item">
           <BiError className="display-item-icon" />
-          <h3>{errorRows.length} rows are missing a value</h3>
+          <h3>{errorRows.length} rows are missing value(s)</h3>
+          <CSVLink
+            style={{ textDecoration: "none" }}
+            data={errorRows}
+            className="trove-button"
+            filename="onboardingErrors"
+          >
+            Export Rows
+          </CSVLink>
         </div>
         <div className="display-item">
           <BiCheck className="display-item-icon" />
-          <h3>X % of your headers are matched</h3>
+          <h3>
+            {roundPercent(unMatched.length, headers.length)} % of your headers
+            matched
+          </h3>
         </div>
       </div>
-      <CSVLink
-        style={{ textDecoration: "none" }}
-        data={errorRows}
-        className="export-button"
-        filename="onboardingErrors"
-      >
-        Export Rows
-      </CSVLink>
     </div>
   );
 };

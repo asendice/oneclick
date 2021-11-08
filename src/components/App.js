@@ -39,7 +39,10 @@ const App = () => {
   };
 
   const handleCSV = (str) => {
-    const headers = str.slice(0, str.indexOf("\n")).split(",");
+    const headers = str
+      .slice(0, str.indexOf("\n"))
+      .split(",")
+      .map((header) => header.replace("\r", ""));
     const rows = str.slice(str.indexOf("\n") + 1).split("\n");
     const arr = rows.map((row) => {
       const values = row.split(",");
@@ -113,7 +116,7 @@ const App = () => {
               />
             )}
           />
-          {/* <Route
+          <Route
             exact
             path="/review"
             render={() => (
@@ -124,7 +127,7 @@ const App = () => {
             exact
             path="/complete"
             render={() => <Complete file={file} data={data} />}
-          /> */}
+          />
         </div>
       </BrowserRouter>
       <Footer />
