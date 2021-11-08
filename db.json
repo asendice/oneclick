@@ -2,43 +2,53 @@
   "headers": [
     {
       "id": 0,
-      "name": "SKU"
+      "name": "SKU",
+      "altNames": []
     },
     {
       "id": 1,
-      "name": "Category"
+      "name": "Category",
+      "altNames": []
     },
     {
       "id": 2,
-      "name": "Size"
+      "name": "Size",
+      "altNames": []
     },
     {
       "id": 3,
-      "name": "Gender"
+      "name": "Gender",
+      "altNames": ["Gener"]
     },
     {
       "id": 4,
-      "name": "Description"
+      "name": "Description",
+      "altNames": []
     },
     {
       "id": 5,
-      "name": "Materials"
+      "name": "Materials",
+      "altNames": []
     },
     {
       "id": 6,
-      "name": "MSRP"
+      "name": "MSRP",
+      "altNames": []
     },
     {
       "id": 7,
-      "name": "Active_Date"
+      "name": "Active_Date",
+      "altNames": []
     },
     {
       "id": 8,
-      "name": "Sunset_Date"
+      "name": "Sunset_Date",
+      "altNames": []
     },
     {
       "id": 9,
-      "name": "Balance"
+      "name": "Balance",
+      "altNames": []
     }
   ],
   "userdata": [

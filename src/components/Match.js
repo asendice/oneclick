@@ -1,61 +1,50 @@
 import React, { useEffect, useState } from "react";
 import "../css/Match.css";
+import MatchDisplay from "./MatchDisplay";
 import CsvHeader from "./CsvHeader";
 import { Redirect, Link } from "react-router-dom";
 
-const Match = ({ file, data, backEndHeaders, updateData, updateHeader, setFrame }) => {
+const Match = ({
+  file,
+  data,
+  backEndHeaders,
+  updateData,
+  updateHeader,
+  setFrame,
+}) => {
   const [headers, setHeaders] = useState([]);
-  const [confirmed, setConfirmed] = useState(false);
+  const [errorRows, setErrorRows] = useState([]);
+
+  useEffect(() => {
+    const rowsWithMissingValues = data.filter((row) => {
+      return Object.keys(row).some((prop) => row[prop] === "");
+    });
+    setErrorRows(rowsWithMissingValues);
+  }, [data]);
 
   useEffect(() => {
     if (data.length > 0) {
-      let keys = Object.keys(data[0]);
-      let newArr = keys.map((header, index) => {
-        let values = data.map((item, index) => {
-          return item[header];
-        });
-        let obj = {
+      const createHeaders = Object.keys(data[0]).map((header) => {
+        const obj = {
           name: header,
-          values: values,
+          matchedWith: [],
+          confirmed: false,
         };
         return obj;
       });
-      match(newArr);
+      headerMatch(createHeaders);
     }
-  }, [data, backEndHeaders]);
+  }, [data]);
 
-  const match = (arr) => {
-    const endHeaders = backEndHeaders.map((header) => {
-      return header.name;
-    });
-    const matched = arr.map((item, index) => {
-      const values = item.values;
-      const valueErrors = values.filter((value, index) => {
-        return value.length === 0;
+  const headerMatch = (list) => {
+    const matching = list.map((header) => {
+      const backendMatch = backEndHeaders.filter((item) => {
+        return header.name === item.name || item.altNames.includes(header.name);
       });
-      let obj = {
-        name: item.name,
-        values: item.values,
-        headerMatch: {
-          match: endHeaders.includes(item.name),
-          name: endHeaders.filter((header) => header.includes(item.name)),
-        },
-        headerValues: {
-          match: valueErrors.length === 0,
-          errors: valueErrors,
-        },
-      };
-      return obj;
+      header.matchedWith = backendMatch[0] ? backendMatch[0].name : [];
+      return header;
     });
-    setHeaders(matched);
-    const notConfirmed = matched.filter((item) => {
-      return (
-        item.headerValues.match === false || item.headerMatch.match === false
-      );
-    });
-    if (notConfirmed.length === 0) {
-      setConfirmed(true);
-    }
+    setHeaders(matching);
   };
 
   if (file) {
@@ -63,32 +52,8 @@ const Match = ({ file, data, backEndHeaders, updateData, updateHeader, setFrame 
       <div className="match">
         <div className="match-header">
           <h3>{file.name}</h3>
-          {confirmed && (
-            <Link style={{textDecoration: "none"}} to="/review">
-              <div className="review-button" onClick={() => setFrame("Review")}>Review</div>
-            </Link>
-          )}
         </div>
-        <div className="main">
-          {headers
-            .sort((a, b) => a.name.localeCompare(b.name))
-            .map((header, index) => {
-              return (
-                <CsvHeader
-                  key={index}
-                  data={data}
-                  headers={headers}
-                  header={header}
-                  updateHeader={updateHeader}
-                  setHeaders={setHeaders}
-                  updateData={updateData}
-                  dropDownData={backEndHeaders.filter(
-                    (item) => !Object.keys(data[0]).includes(item.name)
-                  )}
-                />
-              );
-            })}
-        </div>
+        <MatchDisplay />
       </div>
     );
   } else {

@@ -113,7 +113,7 @@ const App = () => {
               />
             )}
           />
-          <Route
+          {/* <Route
             exact
             path="/review"
             render={() => (
@@ -124,7 +124,7 @@ const App = () => {
             exact
             path="/complete"
             render={() => <Complete file={file} data={data} />}
-          />
+          /> */}
         </div>
       </BrowserRouter>
       <Footer />
