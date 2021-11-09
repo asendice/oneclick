@@ -1,26 +1,26 @@
 import React, { useState, useEffect } from "react";
-import { Redirect, Link } from "react-router-dom";
-import { FixedSizeList as List } from 'react-window';
 import "../css/Review.css";
+import { Redirect, Link } from "react-router-dom";
+import { FixedSizeList as List } from "react-window";
+import AutoSizer from "react-virtualized-auto-sizer";
 const Review = ({ file, data, setFrame }) => {
   const [reviewData, setReviewData] = useState([]);
-  // const [headers, setHeaders] = useState([]);
-  // const [rows, setRows] = useState([]);
+  const [headers, setHeaders] = useState([]);
+  const [rows, setRows] = useState([]);
 
-
-
-  // useEffect(() => {
-  //   const headers = Object.keys(data[0]);
-  //   const rows = data.map((row) => {
-  //     const values = headers.map((header) => {
-  //       return row[header];
-  //     });
-  //     return values;
-  //   });
-  //   console.log(rows, "rose")
-  //   setHeaders(headers);
-  //   setRows(rows);
-  // }, [data]);
+  useEffect(() => {
+    if (data.length > 0) {
+      const headers = Object.keys(data[0]);
+      const rows = data.map((row) => {
+        const values = headers.map((header) => {
+          return row[header];
+        });
+        return values;
+      });
+      setHeaders(headers);
+      setRows(rows);
+    }
+  }, [data]);
 
   useEffect(() => {
     if (data.length > 0) {
@@ -39,27 +39,68 @@ const Review = ({ file, data, setFrame }) => {
     }
   }, []);
 
+  const Row = ({ index, style }) => (
+    <div key={index} style={style} className="review-table-row">
+      {rows[index].map((item, index) => {
+        return (
+          <div key={index} className="review-table-cell">
+            <p>{item}</p>
+          </div>
+        );
+      })}
+      {/* <div className="review-table-cell">{rows[index]}</div> */}
+    </div>
+  );
+
+  // const renderRows = () => {
+  //   return (
+
+  //   );
+  // };
 
   if (data.length > 0) {
     return (
       <div className="review">
         <div className="review-header">
-          <h3>{file.name} Review</h3>
+          <h3>{file.name}</h3>
           <Link
+            className="trove-button"
             style={{ textDecoration: "none" }}
             onClick={() => setFrame("Complete")}
             to="/complete"
           >
-            <div className="trove-button">Complete</div>
+            Complete
           </Link>
         </div>
         <div className="review-table">
-          {/* <List height={rows.length === 0 ? 20: rows.length}>
-            {rows.map((row, index) => {
-              return <div> </div>
+          <div className="review-table-headers">
+            {headers.map((header, index) => {
+              return (
+                <div key={index} className="review-table-header">
+                  <p>{header}</p>{" "}
+                </div>
+              );
             })}
-          </List> */}
-          {reviewData.map((item, index) => {
+          </div>
+          {rows.length > 0 && (
+            <AutoSizer>
+              {({ height, width }) => (
+                <>
+                  <List
+                    height={height}
+                    width={width}
+                    itemData={rows}
+                    itemCount={rows.length}
+                    itemSize={41}
+                    className="no-scrollbars"
+                  >
+                    {Row}
+                  </List>
+                </>
+              )}
+            </AutoSizer>
+          )}
+          {/* {reviewData.map((item, index) => {
             return (
               <div key={index} className="review-table-col">
                 <div className="review-table-headers">
@@ -76,7 +117,7 @@ const Review = ({ file, data, setFrame }) => {
                 })}
               </div>
             );
-          })}
+          })} */}
         </div>
       </div>
     );

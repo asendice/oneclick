@@ -45,7 +45,7 @@ const Upload = ({ setFile, handleCSV, setFrame }) => {
           <FaCloudUploadAlt className="upload-icon" />
           <p>Drag and drop to upload</p>
           <p>Or</p>
-          <div className="upload-file-button">Browse Files</div>
+          <div className="trove-button">Browse Files</div>
           <p style={{ fontStyle: "italic" }}>
             (Only *.csv files will be accepted)
           </p>

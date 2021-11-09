@@ -1,14 +1,12 @@
 .progress {
   display: flex;
+  justify-content: space-evenly;
   align-items: center;
-  height: 100px;
+  height: 10vh;
   width: 800px;
-
-  
 }
 
 .progress-item {
-  width: 160px;
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -19,7 +17,6 @@
 .progress-item h3 {
   font-size: 1.6rem;
   color: grey;
-
 }
 .progress-arrow {
   font-size: 1.8rem;
@@ -30,5 +27,5 @@
 }
 .check-icon {
   font-size: 2rem;
-  color: #4BB543;
+  color: rgb(19, 125, 88);
 }

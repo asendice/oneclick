@@ -4,7 +4,6 @@
   height: 70px;
   width: 600px;
   border: solid 1px #383634;
-  border-radius: 20px;
   margin-top: 20px;
 }
 .fileContent {
@@ -13,7 +12,7 @@
 .fileIcon {
   font-size: 3rem;
   margin-left: 20px;
-  color: #4BB543;
+  color: rgb(19, 125, 88);
 }
 .fileButton {
   margin-left: auto;
@@ -23,8 +22,7 @@
   justify-content: center;
   height: 40px;
   width: 80px;
-  border-radius: 10px;
-  background-color: #4BB543;
+  background-color: rgb(19, 125, 88);
   color: #ffffff;
   cursor: pointer;
 }

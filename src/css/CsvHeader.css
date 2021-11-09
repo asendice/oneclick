@@ -53,7 +53,6 @@
   margin-right: 10px;
   font-size: 1.4rem;
   color: grey;
-
 }
 .drop-down {
   margin-top: 40px;
@@ -137,7 +136,7 @@ h1 {
 }
 .small-check-icon {
   font-size: 1.2rem;
-  color: #4bb543;
+  color: rgb(19, 125, 88);
 }
 .results-button-container {
   margin-top: 20px;
@@ -146,8 +145,8 @@ h1 {
   justify-content: flex-start;
 }
 .confirm {
-  background-color: #4bb543;
-  border-color: #4bb543;
+  background-color: rgb(19, 125, 88);
+  border-color: rgb(19, 125, 88);
   color: #ffffff;
 }
 .ignore {
@@ -178,9 +177,9 @@ h1 {
 }
 .large-check-icon {
   font-size: 1.4rem;
-  color: #4bb543;
+  color: rgb(19, 125, 88);
 }
 
 .result-confirmed {
-  color: #4bb543;
+  color: rgb(19, 125, 88);
 }

@@ -26,7 +26,7 @@ const Progress = ({ frame }) => {
               style={{
                 color:
                   index < progressHeaders.indexOf(frame)
-                    ? "#4BB543"
+                    ? "rgb(19, 125, 88)"
                     : header === frame
                     ? "#333"
                     : "grey",
