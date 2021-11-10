@@ -48,7 +48,7 @@ const CsvHeader = ({
               className="drop-down"
               style={{ display: `${active ? "block" : "none"}` }}
             >
-              {/* {dropDownData.map((item, index) => {
+              {dropDownData.map((item, index) => {
                 return (
                   <div
                     // onClick={() => updateHeader(header.name, item.name)}
@@ -58,7 +58,7 @@ const CsvHeader = ({
                     {item.name}
                   </div>
                 );
-              })} */}
+              })}
             </div>
           </div>
         </div>

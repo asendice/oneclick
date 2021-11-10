@@ -18,14 +18,17 @@ const Match = ({
   const [errorRows, setErrorRows] = useState([]);
   const [remainingHeaders, setRemainingHeaders] = useState([]);
 
-  
-
   useEffect(() => {
     if (headers.length > 0) {
       const unMatched = headers.filter((header) => header.confirmed === false);
       if (unMatched.length === 0) {
         setMatched(true);
       }
+      const headerNames = headers.map((header) => header.name);
+      const filteredBackEndHeaders = backEndHeaders.filter(
+        (item) => !headerNames.includes(item.name)
+      );
+      setRemainingHeaders(filteredBackEndHeaders);
     }
   }, [headers]);
 
@@ -109,7 +112,7 @@ const Match = ({
                 header={header}
                 headers={headers}
                 confirmHeader={confirmHeader}
-                // dropDownData={}
+                dropDownData={remainingHeaders}
               />
             );
           })}
