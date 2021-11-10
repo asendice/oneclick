@@ -17,27 +17,6 @@ const App = () => {
 
   console.log(data, "data");
 
-  const updateData = (arr) => {
-    const key = Object.keys(arr[0])[0];
-    const newData = [...data];
-    const chosenToUpdate = arr.map((item) => {
-      const i = item.index;
-      newData[i][key] = item[key];
-      return newData;
-    });
-    setData(chosenToUpdate[0]);
-  };
-
-  const updateHeader = (oldHeader, name) => {
-    const checkIt = data.map((obj) => {
-      obj[name] = obj[oldHeader];
-      delete obj[oldHeader];
-      delete obj.index;
-      return obj;
-    });
-    setData(checkIt);
-  };
-
   const handleCSV = (str) => {
     const headers = str
       .slice(0, str.indexOf("\n"))
@@ -110,8 +89,8 @@ const App = () => {
                 data={data}
                 setData={setData}
                 backEndHeaders={backEndHeaders}
-                updateData={updateData}
-                updateHeader={updateHeader}
+                // updateData={updateData}
+                // updateHeader={updateHeader}
                 setFrame={setFrame}
               />
             )}

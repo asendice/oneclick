@@ -41,12 +41,13 @@ const Match = ({
 
   useEffect(() => {
     if (data.length > 0) {
-      const createHeaders = Object.keys(data[0]).map((header) => {
+      const createHeaders = Object.keys(data[0]).map((header, index) => {
         // values might be not necessary
         const values = data.map((row) => {
           return row[header];
         });
         const obj = {
+          index: index,
           name: header,
           matchedWith: "",
           confirmed: false,
@@ -70,16 +71,30 @@ const Match = ({
   };
 
   const confirmHeader = (header, index) => {
-    header.name = header.matchedWith;
     header.confirmed = true;
     const arr = [...headers];
     arr.splice(index, 1, header);
     setHeaders(arr);
   };
 
+  const updateHeaderName = (header, newName, index) => {
+    const arr = [...headers];
+    header.name = newName;
+    arr.splice(index, 1, header);
+    headerMatch(arr);
+  };
+
   const onReviewClick = () => {
-    const updatedData = data.filter((row) => !errorRows.includes(row));
-    setData(data.filter((row) => !errorRows.includes(row)));
+    const filteredForErrors = data.filter((row) => !errorRows.includes(row));
+    const headerNames = headers.map((header) => header.name);
+    const updatedData = filteredForErrors.map((row, index) => {
+      Object.keys(row).map((key, index) => {
+        row[headerNames[index]] = row[key];
+        delete row[key];
+      });
+      return row;
+    });
+    setData(updatedData);
     setFrame("Review");
   };
 
@@ -113,6 +128,7 @@ const Match = ({
                 headers={headers}
                 confirmHeader={confirmHeader}
                 dropDownData={remainingHeaders}
+                updateHeaderName={updateHeaderName}
               />
             );
           })}

@@ -9,14 +9,10 @@ const CsvHeader = ({
   header,
   headers,
   confirmHeader,
-  updateHeader,
-  updateData,
+  updateHeaderName,
   dropDownData,
-  data,
 }) => {
   const [active, setActive] = useState(false);
-
-  console.log(header, "header");
 
   return (
     <div id="csv-header" className="csv-header">
@@ -26,20 +22,20 @@ const CsvHeader = ({
             <h4>{header.name}</h4>
           </div>
           <div className="table-header-right">
-            <div className="table-header-right-content">
+            <div
+              className="table-header-right-content"
+              onClick={() => {
+                setActive(!active);
+              }}
+            >
               <p>
                 {header.matchedWith.length > 0
                   ? header.matchedWith
                   : "Look up matching fields"}
               </p>
-              <div
-                className=""
-                onClick={() => {
-                  setActive(!active);
-                }}
-              >
-                <BiX />
-                |
+              <div className="">
+                {/* <BiX />
+                | */}
                 <BiChevronDown />
               </div>
             </div>
@@ -51,7 +47,10 @@ const CsvHeader = ({
               {dropDownData.map((item, index) => {
                 return (
                   <div
-                    // onClick={() => updateHeader(header.name, item.name)}
+                    onClick={() => {
+                      updateHeaderName(header, item.name, header.index);
+                      setActive(!active);
+                    }}
                     key={index}
                     className="drop-down-item"
                   >
