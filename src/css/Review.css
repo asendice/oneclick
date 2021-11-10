@@ -1,16 +1,26 @@
 .review {
   width: 1200px;
   height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .review-header {
   display: flex;
   justify-content: space-between;
   font-size: 2rem;
-  padding: 20px;
+  width: 80%;
+  align-self: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  border-bottom: solid 1px #383634;
 }
 
 .review-table {
+  margin: 20px;
   height: 500px;
   display: flex;
   flex-direction: column;
@@ -58,12 +68,11 @@
   margin-left: 3px;
 }
 
-
-.no-scrollbars{
+.no-scrollbars {
   scrollbar-width: thin;
   /* scrollbar-color: transparent transparent; */
 }
- 
-.no-scrollbars::-webkit-scrollbar { 
-  display: none; 
+
+.no-scrollbars::-webkit-scrollbar {
+  display: none;
 }

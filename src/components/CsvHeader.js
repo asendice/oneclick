@@ -16,17 +16,7 @@ const CsvHeader = ({
 }) => {
   const [active, setActive] = useState(false);
 
-  // useEffect(() => {
-  //   const arrOfErrorIndex = header.values.reduce((array, item, index) => {
-  //     if (item === "") array.push(index);
-  //     return array;
-  //   }, []);
-  //   const arrOfRowsWithError = arrOfErrorIndex.map((i) => {
-  //     data[i].index = i;
-  //     return data[i];
-  //   });
-  //   setErrorData(arrOfRowsWithError);
-  // }, [data, header]);
+  console.log(header, "header");
 
   return (
     <div id="csv-header" className="csv-header">
@@ -61,7 +51,7 @@ const CsvHeader = ({
               {/* {dropDownData.map((item, index) => {
                 return (
                   <div
-                    onClick={() => updateHeader(header.name, item.name)}
+                    // onClick={() => updateHeader(header.name, item.name)}
                     key={index}
                     className="drop-down-item"
                   >
@@ -100,7 +90,7 @@ const CsvHeader = ({
             <FaCheck className="small-check-icon" />
             <h1>Header Confirmed</h1>
           </div>
-        ) : (
+        ) : !header.confirmed && header.matchedWith.length > 0 ? (
           <div className="results-button-container">
             <div
               className="confirm button"
@@ -109,24 +99,9 @@ const CsvHeader = ({
               Confirm Matching
             </div>
           </div>
-        )}
-        {/* {header.headerValues && header.headerValues.match === true ? (
-          <div className="results">
-            <FaCheck className="small-check-icon" />
-            <h1>100% of your rows have a value for this column</h1>
-          </div>
         ) : (
-          <div className="results error-text">
-            <BiError style={{ fontSize: "1.4rem" }} />
-            <h1>
-              {roundPercent(
-                header.headerValues.errors.length,
-                header.values.length
-              )}
-              % of your rows have a value for this column
-            </h1>
-          </div>
-        )} */}
+          <div> </div>
+        )}
       </div>
     </div>
   );

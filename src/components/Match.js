@@ -16,8 +16,9 @@ const Match = ({
   const [matched, setMatched] = useState(false);
   const [headers, setHeaders] = useState([]);
   const [errorRows, setErrorRows] = useState([]);
+  const [remainingHeaders, setRemainingHeaders] = useState([]);
 
-  console.log(data.filter((row) => !errorRows.includes(row)));
+  
 
   useEffect(() => {
     if (headers.length > 0) {
@@ -44,7 +45,7 @@ const Match = ({
         });
         const obj = {
           name: header,
-          matchedWith: [],
+          matchedWith: "",
           confirmed: false,
           values: values,
         };
@@ -59,17 +60,24 @@ const Match = ({
       const backendMatch = backEndHeaders.filter((item) => {
         return header.name === item.name || item.altNames.includes(header.name);
       });
-      header.matchedWith = backendMatch[0] ? backendMatch[0].name : [];
+      header.matchedWith = backendMatch[0] ? backendMatch[0].name : "";
       return header;
     });
     setHeaders(matching);
   };
 
   const confirmHeader = (header, index) => {
+    header.name = header.matchedWith;
     header.confirmed = true;
     const arr = [...headers];
     arr.splice(index, 1, header);
     setHeaders(arr);
+  };
+
+  const onReviewClick = () => {
+    const updatedData = data.filter((row) => !errorRows.includes(row));
+    setData(data.filter((row) => !errorRows.includes(row)));
+    setFrame("Review");
   };
 
   if (file) {
@@ -82,10 +90,7 @@ const Match = ({
               to="/review"
               style={{ textDecoration: "none" }}
               className="trove-button"
-              onClick={() => {
-                setData(data.filter((row) => !errorRows.includes(row)));
-                setFrame("Review");
-              }}
+              onClick={() => onReviewClick()}
             >
               Review
             </Link>
@@ -104,6 +109,7 @@ const Match = ({
                 header={header}
                 headers={headers}
                 confirmHeader={confirmHeader}
+                // dropDownData={}
               />
             );
           })}

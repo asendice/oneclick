@@ -13,14 +13,14 @@ const MatchDisplay = ({ headers, errorRows, dataLength }) => {
       <div className="display-container">
         <div className="display-item">
           <VscTable className="display-item-icon" />
-          <h3>
+          <h4>
             {dataLength - errorRows.length} / {dataLength} rows are being
             accepted
-          </h3>
+          </h4>
         </div>
         <div className="display-item">
           <BiError className="display-item-icon" />
-          <h3>{errorRows.length} rows are missing value(s)</h3>
+          <h4>{errorRows.length} rows are missing value(s)</h4>
           <CSVLink
             style={{ textDecoration: "none" }}
             data={errorRows}
@@ -32,10 +32,10 @@ const MatchDisplay = ({ headers, errorRows, dataLength }) => {
         </div>
         <div className="display-item">
           <BiCheck className="display-item-icon" />
-          <h3>
+          <h4>
             {roundPercent(unMatched.length, headers.length)} % of your headers
             matched
-          </h3>
+          </h4>
         </div>
       </div>
     </div>
