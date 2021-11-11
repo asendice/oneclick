@@ -8,6 +8,7 @@ const Review = ({ file, data, setFrame }) => {
   const [headers, setHeaders] = useState([]);
   const [rows, setRows] = useState([]);
 
+
   useEffect(() => {
     if (data.length > 0) {
       const headers = Object.keys(data[0]);
@@ -87,7 +88,7 @@ const Review = ({ file, data, setFrame }) => {
               {({ height, width }) => (
                 <>
                   <List
-                    height={height}
+                    height={height - 40}
                     width={width}
                     itemData={rows}
                     itemCount={rows.length}

@@ -6,7 +6,6 @@ import "../css/Progress.css";
 const Progress = ({ frame }) => {
   const progressHeaders = ["Upload", "Match", "Review", "Complete"];
 
-  console.log();
 
   return (
     <div className="progress">

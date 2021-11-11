@@ -6,6 +6,7 @@ import { Redirect } from "react-router";
 const Complete = ({ data, file }) => {
   const [status, setStatus] = useState();
 
+
   const postData = async () => {
     await axios
       .post("http://localhost:3000/userdata", data)

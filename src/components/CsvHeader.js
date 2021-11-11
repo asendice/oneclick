@@ -13,6 +13,9 @@ const CsvHeader = ({
   dropDownData,
 }) => {
   const [active, setActive] = useState(false);
+  const [selection, setSelection] = useState("")
+
+  console.log(dropDownData, "ddd")
 
   return (
     <div id="csv-header" className="csv-header">

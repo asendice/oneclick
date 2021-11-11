@@ -18,6 +18,8 @@ const Match = ({
   const [errorRows, setErrorRows] = useState([]);
   const [remainingHeaders, setRemainingHeaders] = useState([]);
 
+  console.log(headers, "headers");
+
   useEffect(() => {
     if (headers.length > 0) {
       const unMatched = headers.filter((header) => header.confirmed === false);
@@ -71,14 +73,15 @@ const Match = ({
   };
 
   const confirmHeader = (header, index) => {
+    header.name = header.matchedWith;
     header.confirmed = true;
-    const arr = [...headers];
+    let arr = [...headers];
     arr.splice(index, 1, header);
-    setHeaders(arr);
+    headerMatch(arr);
   };
 
   const updateHeaderName = (header, newName, index) => {
-    const arr = [...headers];
+    let arr = [...headers];
     header.name = newName;
     arr.splice(index, 1, header);
     headerMatch(arr);
@@ -89,8 +92,10 @@ const Match = ({
     const headerNames = headers.map((header) => header.name);
     const updatedData = filteredForErrors.map((row, index) => {
       Object.keys(row).map((key, index) => {
-        row[headerNames[index]] = row[key];
-        delete row[key];
+        if (headerNames[index] !== key) {
+          row[headerNames[index]] = row[key];
+          delete row[key];
+        }
       });
       return row;
     });

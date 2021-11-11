@@ -15,18 +15,18 @@ const App = () => {
   const [frame, setFrame] = useState("Upload");
   const [backEndHeaders, setBackEndHeaders] = useState([]);
 
-  console.log(data, "data");
+  console.log(data, "data from app");
 
   const handleCSV = (str) => {
     const headers = str
       .slice(0, str.indexOf("\n"))
       .split(",")
-      .map((header) => header.replace("\r", ""));
+      .map((header) => header.replace("\r", "").replace(/"/g, ""));
     const rows = str.slice(str.indexOf("\n") + 1).split("\n");
     const arr = rows.map((row) => {
       const values = row.split(",");
       const eachObject = headers.reduce((obj, header, i) => {
-        obj[header] = values[i].replace("\r", "");
+        obj[header] = values[i].replace("\r", "").replace(/"/g, "");
         return obj;
       }, {});
       return eachObject;
