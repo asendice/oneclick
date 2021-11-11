@@ -123,6 +123,7 @@ const Match = ({
           headers={headers}
           errorRows={errorRows}
           dataLength={data.length}
+          file={file}
         />
         <div className="match-main">
           {headers.map((header, index) => {

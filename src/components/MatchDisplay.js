@@ -5,7 +5,7 @@ import { VscTable } from "react-icons/vsc";
 import { CSVLink } from "react-csv";
 import { roundPercent } from "../utils/auth";
 
-const MatchDisplay = ({ headers, errorRows, dataLength }) => {
+const MatchDisplay = ({ headers, errorRows, dataLength, file }) => {
   const unMatched = headers.filter((header) => header.matchedWith.length === 0);
 
   return (
@@ -25,7 +25,10 @@ const MatchDisplay = ({ headers, errorRows, dataLength }) => {
             style={{ textDecoration: "none" }}
             data={errorRows}
             className="trove-button"
-            filename="onboardingErrors"
+            filename={`${file.name.slice(
+              0,
+              file.name.length - 4
+            )}_missing_values`}
           >
             Export Rows
           </CSVLink>
