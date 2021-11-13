@@ -182,3 +182,11 @@ h1 {
 .result-confirmed {
   color: rgb(19, 125, 88);
 }
+
+.arrow-right {
+  width: 0; 
+  height: 0; 
+  border-top: 21px solid transparent;
+  border-bottom: 21px solid transparent;
+  border-left: 21px solid #d3d3d3;
+}

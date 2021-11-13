@@ -3,12 +3,12 @@
     {
       "id": 0,
       "name": "SKU",
-      "altNames": []
+      "altNames": ["Stock Keeping Unit", "Product Number"]
     },
     {
       "id": 1,
       "name": "Category",
-      "altNames": []
+      "altNames": ["Type", "bracket", "class", "classification", "group"]
     },
     {
       "id": 2,
@@ -19,23 +19,28 @@
       "id": 3,
       "name": "Gender",
       "altNames": [
-        "Gener"
+        "Sex",
+        "M/F"
       ]
     },
     {
       "id": 4,
       "name": "Description",
-      "altNames": []
+      "altNames": [
+        "About"
+      ]
     },
     {
       "id": 5,
       "name": "Materials",
-      "altNames": []
+      "altNames": [
+        "Mats"
+      ]
     },
     {
       "id": 6,
       "name": "MSRP",
-      "altNames": []
+      "altNames": ["Price"]
     },
     {
       "id": 7,

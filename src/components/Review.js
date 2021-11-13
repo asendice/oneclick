@@ -4,7 +4,6 @@ import { Redirect, Link } from "react-router-dom";
 import { FixedSizeList as List } from "react-window";
 import AutoSizer from "react-virtualized-auto-sizer";
 const Review = ({ file, data, setFrame }) => {
-  const [reviewData, setReviewData] = useState([]);
   const [headers, setHeaders] = useState([]);
   const [rows, setRows] = useState([]);
 
@@ -23,23 +22,6 @@ const Review = ({ file, data, setFrame }) => {
     }
   }, [data]);
 
-  useEffect(() => {
-    if (data.length > 0) {
-      let keys = Object.keys(data[0]);
-      let newArr = keys.map((header, index) => {
-        let values = data.map((item, index) => {
-          return item[header];
-        });
-        let obj = {
-          name: header,
-          values: values,
-        };
-        return obj;
-      });
-      setReviewData(newArr);
-    }
-  }, []);
-
   const Row = ({ index, style }) => (
     <div key={index} style={style} className="review-table-row">
       {rows[index].map((item, index) => {
@@ -53,11 +35,6 @@ const Review = ({ file, data, setFrame }) => {
     </div>
   );
 
-  // const renderRows = () => {
-  //   return (
-
-  //   );
-  // };
 
   if (data.length > 0) {
     return (
