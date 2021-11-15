@@ -45,12 +45,12 @@
     {
       "id": 7,
       "name": "Active_Date",
-      "altNames": []
+      "altNames": ["Date"]
     },
     {
       "id": 8,
       "name": "Sunset_Date",
-      "altNames": []
+      "altNames": ["Date"]
     }
   ],
   "userdata": [

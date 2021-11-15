@@ -1,20 +1,29 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "../css/CsvHeader.css";
 import { FaCheck } from "react-icons/fa";
-import { BiError, BiX, BiChevronDown } from "react-icons/bi";
-import { roundPercent } from "../utils/auth";
-import LoadingSpinner from "./LoadingSpinner";
+import { BiError, BiChevronDown } from "react-icons/bi";
 
-const CsvHeader = ({
-  header,
-  headers,
-  confirmHeader,
-  updateHeaderName,
-  dropDownData,
-}) => {
+const CsvHeader = ({ header, headers, confirmHeader, dropDownData }) => {
   const [active, setActive] = useState(false);
   const [selection, setSelection] = useState(header.matchedWith);
+  const dropDownRef = useRef();
 
+  useEffect(() => {
+    const outsideClick = (e) => {
+      if (
+        active &&
+        dropDownRef.current &&
+        !dropDownRef.current.contains(e.target)
+      ) {
+        setActive(false);
+      }
+    };
+    document.addEventListener("mousedown", outsideClick);
+    return () => {
+      // cleans up the eventlistener
+      document.removeEventListener("mousedown", outsideClick);
+    };
+  }, [active]);
 
   return (
     <div id="csv-header" className="csv-header">
@@ -32,34 +41,39 @@ const CsvHeader = ({
               }}
             >
               <p>
-                {header.matchedWith ? header.matchedWith : selection ? selection : "Lookup For Matching Fields  "}
+                {header.matchedWith
+                  ? header.matchedWith
+                  : selection
+                  ? selection
+                  : "Lookup For Matching Fields  "}
               </p>
               <div className="">
-                {/* <BiX />
-                | */}
                 <BiChevronDown />
               </div>
             </div>
-            <div
-              id="drop-down"
-              className="drop-down"
-              style={{ display: `${active ? "block" : "none"}` }}
-            >
-              {dropDownData.map((item, index) => {
-                return (
-                  <div
-                    onClick={() => {
-                      setSelection(item.name);
-                      setActive(!active);
-                    }}
-                    key={index}
-                    className="drop-down-item"
-                  >
-                    {item.name}
-                  </div>
-                );
-              })}
-            </div>
+            {!header.confirmed && (
+              <div
+                ref={dropDownRef}
+                id="drop-down"
+                className="drop-down"
+                style={{ display: `${active ? "block" : "none"}` }}
+              >
+                {dropDownData.map((item, index) => {
+                  return (
+                    <div
+                      onClick={() => {
+                        setSelection(item.name);
+                        setActive(!active);
+                      }}
+                      key={index}
+                      className="drop-down-item"
+                    >
+                      {item.name}
+                    </div>
+                  );
+                })}
+              </div>
+            )}
           </div>
         </div>
         {header.values.slice(1, 4).map((item, index) => {
@@ -96,8 +110,8 @@ const CsvHeader = ({
               className="confirm button"
               onClick={() => {
                 header.matchedWith = selection;
-                confirmHeader(header, headers.indexOf(header))
-                }}
+                confirmHeader(header, headers.indexOf(header));
+              }}
             >
               Confirm Matching
             </div>

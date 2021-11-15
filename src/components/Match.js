@@ -80,12 +80,6 @@ const Match = ({
     headerMatch(arr);
   };
 
-  const updateHeaderName = (header, newName, index) => {
-    let arr = [...headers];
-    header.name = newName;
-    arr.splice(index, 1, header);
-    headerMatch(arr);
-  };
 
   const onReviewClick = () => {
     const filteredForErrors = data.filter((row) => !errorRows.includes(row));
@@ -134,7 +128,6 @@ const Match = ({
                 headers={headers}
                 confirmHeader={confirmHeader}
                 dropDownData={remainingHeaders}
-                updateHeaderName={updateHeaderName}
               />
             );
           })}

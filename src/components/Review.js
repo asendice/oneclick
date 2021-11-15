@@ -31,7 +31,6 @@ const Review = ({ file, data, setFrame }) => {
           </div>
         );
       })}
-      {/* <div className="review-table-cell">{rows[index]}</div> */}
     </div>
   );
 
@@ -78,24 +77,7 @@ const Review = ({ file, data, setFrame }) => {
               )}
             </AutoSizer>
           )}
-          {/* {reviewData.map((item, index) => {
-            return (
-              <div key={index} className="review-table-col">
-                <div className="review-table-headers">
-                  <div className="review-table-header">
-                    <p>{item.name}</p>
-                  </div>
-                </div>
-                {item.values.map((value, index) => {
-                  return (
-                    <div key={index} className="review-table-cell">
-                      <p>{value}</p>
-                    </div>
-                  );
-                })}
-              </div>
-            );
-          })} */}
+         
         </div>
       </div>
     );
