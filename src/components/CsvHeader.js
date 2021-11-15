@@ -13,7 +13,7 @@ const CsvHeader = ({
   dropDownData,
 }) => {
   const [active, setActive] = useState(false);
-  const [selection, setSelection] = useState("");
+  const [selection, setSelection] = useState(header.matchedWith);
 
 
   return (
@@ -50,7 +50,6 @@ const CsvHeader = ({
                   <div
                     onClick={() => {
                       setSelection(item.name);
-                      // updateHeaderName(header, item.name, header.index);
                       setActive(!active);
                     }}
                     key={index}
@@ -73,11 +72,11 @@ const CsvHeader = ({
         })}
       </div>
       <div className="csv-results">
-        {header.matchedWith !== "" ? (
+        {selection.length > 0 ? (
           <div className="results">
             <FaCheck className="small-check-icon" />
             <h1>
-              Matched to the <p>{header.matchedWith}</p> field{" "}
+              Matched to the <p>{selection}</p> field{" "}
             </h1>
           </div>
         ) : (
@@ -91,11 +90,14 @@ const CsvHeader = ({
             <FaCheck className="small-check-icon" />
             <h1>Header Confirmed</h1>
           </div>
-        ) : !header.confirmed && header.matchedWith.length > 0 ? (
+        ) : !header.confirmed && selection.length > 0 ? (
           <div className="results-button-container">
             <div
               className="confirm button"
-              onClick={() => confirmHeader(header, headers.indexOf(header))}
+              onClick={() => {
+                header.matchedWith = selection;
+                confirmHeader(header, headers.indexOf(header))
+                }}
             >
               Confirm Matching
             </div>
