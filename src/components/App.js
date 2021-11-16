@@ -34,6 +34,7 @@ const App = () => {
     setData(arr);
   };
 
+
   const getBackEndHeaders = async () => {
     await axios
       .get("http://localhost:3000/headers")
@@ -77,6 +78,7 @@ const App = () => {
                 setFile={setFile}
                 handleCSV={handleCSV}
                 setFrame={setFrame}
+                setData={setData}
               />
             )}
           />

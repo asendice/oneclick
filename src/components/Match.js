@@ -9,16 +9,12 @@ const Match = ({
   data,
   backEndHeaders,
   setData,
-  updateData,
-  updateHeader,
   setFrame,
 }) => {
   const [matched, setMatched] = useState(false);
   const [headers, setHeaders] = useState([]);
   const [errorRows, setErrorRows] = useState([]);
   const [remainingHeaders, setRemainingHeaders] = useState([]);
-
-  console.log(headers, "headers");
 
   useEffect(() => {
     if (headers.length > 0) {

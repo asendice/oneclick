@@ -1,10 +1,11 @@
 import React from "react";
 import "../css/Upload.css";
+import XLSX from "xlsx";
 import { useDropzone } from "react-dropzone";
 import { FaCloudUploadAlt } from "react-icons/fa";
 import FileItem from "./FileItem";
 
-const Upload = ({ setFile, handleCSV, setFrame }) => {
+const Upload = ({ setFile, handleCSV, setFrame, setData }) => {
   const {
     acceptedFiles,
     fileRejections,
@@ -12,17 +13,35 @@ const Upload = ({ setFile, handleCSV, setFrame }) => {
     getInputProps,
     isDragActive,
   } = useDropzone({
-    accept: ".csv",
+    accept:
+      ".csv, application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
   });
 
   const submit = () => {
     const file = acceptedFiles[0];
+    console.log(file, "File");
     const reader = new FileReader();
-    reader.onload = (e) => {
-      const text = e.target.result;
-      handleCSV(text);
-    };
-    reader.readAsText(file);
+
+    if (file.type === "text/csv") {
+      reader.onload = (e) => {
+        const text = e.target.result;
+        handleCSV(text);
+      };
+      reader.readAsText(file);
+    } else {
+      reader.onload = (e) => {
+        const data = e.target.result;
+        const wb = XLSX.read(data, {
+          type: "binary",
+        });
+        const wsname = wb.SheetNames[0];
+        const ws = wb.Sheets[wsname];
+        const wbData = XLSX.utils.sheet_to_json(ws, {raw: false , defval: ""});
+        setData(wbData);
+      };
+      reader.readAsBinaryString(file)
+    }
+
     setFile(file);
     setFrame("Match");
   };
@@ -48,7 +67,7 @@ const Upload = ({ setFile, handleCSV, setFrame }) => {
             <p>Or</p>
             <div className="trove-button">Browse Files</div>
             <p style={{ fontStyle: "italic" }}>
-              (Only *.csv files will be accepted)
+              (Only *.csv, *.xlsx, *.xls files will be accepted)
             </p>
           </div>
         </div>
