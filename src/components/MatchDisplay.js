@@ -1,5 +1,6 @@
 import React from "react";
 import "../css/MatchDisplay.css";
+import XLSX from "xlsx";
 import { BiError, BiCheck } from "react-icons/bi";
 import { VscTable } from "react-icons/vsc";
 import { CSVLink } from "react-csv";
@@ -7,6 +8,13 @@ import { roundPercent } from "../utils/auth";
 
 const MatchDisplay = ({ headers, errorRows, dataLength, file }) => {
   const unMatched = headers.filter((header) => header.matchedWith.length === 0);
+  const exportXlsx = () => {
+
+    const ws = XLSX.utils.json_to_sheet(errorRows);
+    const wb = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, `Sheet1`);
+    XLSX.writeFile(wb, `${file.name.slice(0, file.name.length - 5)}_missing_values`);
+  };
 
   return (
     <div className="match-display">
@@ -21,17 +29,23 @@ const MatchDisplay = ({ headers, errorRows, dataLength, file }) => {
         <div className="display-item">
           <BiError className="display-item-icon" />
           <h4>{errorRows.length} rows are missing value(s)</h4>
-          <CSVLink
-            style={{ textDecoration: "none" }}
-            data={errorRows}
-            className="trove-button"
-            filename={`${file.name.slice(
-              0,
-              file.name.length - 4
-            )}_missing_values`}
-          >
-            Export Rows
-          </CSVLink>
+          {file.type === "text/csv" ? (
+            <CSVLink
+              style={{ textDecoration: "none" }}
+              data={errorRows}
+              className="trove-button"
+              filename={`${file.name.slice(
+                0,
+                file.name.length - 4
+              )}_missing_values`}
+            >
+              Export Rows .CSV
+            </CSVLink>
+          ) : (
+            <div className="trove-button" onClick={() => exportXlsx()}>
+              Export Rows .XLSX{" "}
+            </div>
+          )}
         </div>
         <div className="display-item">
           <BiCheck className="display-item-icon" />

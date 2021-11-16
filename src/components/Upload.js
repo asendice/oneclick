@@ -14,7 +14,7 @@ const Upload = ({ setFile, handleCSV, setFrame, setData }) => {
     isDragActive,
   } = useDropzone({
     accept:
-      ".csv, application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      ".csv, application/vnd.ms-excel, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
   });
 
   const submit = () => {

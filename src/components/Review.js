@@ -10,6 +10,10 @@ const Review = ({ file, data, setFrame }) => {
 
   useEffect(() => {
     if (data.length > 0) {
+      // incase I want to add index to the review table we can add like this: 
+      // const newData = data.map((item, index) => {
+      //   return {'index': index, ...item}
+      // })
       const headers = Object.keys(data[0]);
       const rows = data.map((row) => {
         const values = headers.map((header) => {
@@ -27,7 +31,7 @@ const Review = ({ file, data, setFrame }) => {
       {rows[index].map((item, index) => {
         return (
           <div key={index} className="review-table-cell">
-            <p>{item}</p>
+            <p>{item.length > 15 ? item.slice(0, 14) + "..." : item}</p>
           </div>
         );
       })}
