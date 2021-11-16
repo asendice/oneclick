@@ -20,7 +20,7 @@ const FileItem = ({ submit, file, rejected }) => {
           Next
         </Link>
       ) : (
-        <div className="fileRejected rejected">File Rejected, Only *.csv files are accepted</div>
+        <div className="fileRejected rejected">File Rejected, Only *.csv, *.xlsx, *.xls files are accepted</div>
       )}
     </div>
   );

@@ -30,7 +30,7 @@
   border-radius: 5px;
   /* border: solid 1px #333; */
   cursor: pointer;
-  background-color: #4BB543;
+  background-color: rgb(19, 125, 88);
   color: #ffff;
 }
 .complete-post-button:active {
