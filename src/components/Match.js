@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "../css/Match.css";
 import MatchDisplay from "./MatchDisplay";
 import CsvHeader from "./CsvHeader";
+import LoadingHeaders from "./LoadingHeaders"
 import { Redirect, Link } from "react-router-dom";
 
 const Match = ({ file, data, backEndHeaders, setData, setFrame }) => {
@@ -10,7 +11,6 @@ const Match = ({ file, data, backEndHeaders, setData, setFrame }) => {
   const [errorRows, setErrorRows] = useState([]);
   const [remainingHeaders, setRemainingHeaders] = useState([]);
   const [allSelected, setAllSelected] = useState([]);
-
 
   useEffect(() => {
     if (headers.length > 0) {
@@ -21,10 +21,13 @@ const Match = ({ file, data, backEndHeaders, setData, setFrame }) => {
       const headerNames = headers.map((header) => header.matchedWith);
       const allSelectedNames = allSelected.map((item) => item.name);
       const filteredBackEndHeaders = backEndHeaders.filter(
-        (item) =>
-          !headerNames.includes(item.name)
+        (item) => !headerNames.includes(item.name)
       );
-      setRemainingHeaders(filteredBackEndHeaders.filter(item => !allSelectedNames.includes(item.name)));
+      setRemainingHeaders(
+        filteredBackEndHeaders.filter(
+          (item) => !allSelectedNames.includes(item.name)
+        )
+      );
     }
   }, [headers, allSelected]);
 
@@ -113,19 +116,23 @@ const Match = ({ file, data, backEndHeaders, setData, setFrame }) => {
           file={file}
         />
         <div className="match-main">
-          {headers.map((header, index) => {
-            return (
-              <CsvHeader
-                key={index}
-                header={header}
-                headers={headers}
-                confirmHeader={confirmHeader}
-                dropDownData={remainingHeaders}
-                allSelected={allSelected}
-                setAllSelected={setAllSelected}
-              />
-            );
-          })}
+          {headers.length > 0 ? (
+            headers.map((header, index) => {
+              return (
+                <CsvHeader
+                  key={index}
+                  header={header}
+                  headers={headers}
+                  confirmHeader={confirmHeader}
+                  dropDownData={remainingHeaders}
+                  allSelected={allSelected}
+                  setAllSelected={setAllSelected}
+                />
+              );
+            })
+          ) : (
+            <LoadingHeaders />
+          )}
         </div>
       </div>
     );

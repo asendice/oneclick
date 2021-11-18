@@ -56,7 +56,7 @@ const Upload = ({ setFile, handleCSV, setFrame, setData }) => {
           {...getRootProps(isDragActive)}
           className={`dropzone ${isDragActive && "active-dropzone"} `}
         >
-          <input {...getInputProps()} accept=".csv" />
+          <input {...getInputProps()} accept=".csv, .xlsx, .xls" />
           <div
             className={`dropzone-content ${
               isDragActive && "active-dropzone-content"
