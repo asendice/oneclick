@@ -4,17 +4,13 @@ import MatchDisplay from "./MatchDisplay";
 import CsvHeader from "./CsvHeader";
 import { Redirect, Link } from "react-router-dom";
 
-const Match = ({
-  file,
-  data,
-  backEndHeaders,
-  setData,
-  setFrame,
-}) => {
+const Match = ({ file, data, backEndHeaders, setData, setFrame }) => {
   const [matched, setMatched] = useState(false);
   const [headers, setHeaders] = useState([]);
   const [errorRows, setErrorRows] = useState([]);
   const [remainingHeaders, setRemainingHeaders] = useState([]);
+  const [allSelected, setAllSelected] = useState([]);
+
 
   useEffect(() => {
     if (headers.length > 0) {
@@ -22,13 +18,15 @@ const Match = ({
       if (unMatched.length === 0) {
         setMatched(true);
       }
-      const headerNames = headers.map((header) => header.name);
+      const headerNames = headers.map((header) => header.matchedWith);
+      const allSelectedNames = allSelected.map((item) => item.name);
       const filteredBackEndHeaders = backEndHeaders.filter(
-        (item) => !headerNames.includes(item.name)
+        (item) =>
+          !headerNames.includes(item.name)
       );
-      setRemainingHeaders(filteredBackEndHeaders);
+      setRemainingHeaders(filteredBackEndHeaders.filter(item => !allSelectedNames.includes(item.name)));
     }
-  }, [headers]);
+  }, [headers, allSelected]);
 
   useEffect(() => {
     const rowsWithMissingValues = data.filter((row) => {
@@ -75,7 +73,6 @@ const Match = ({
     arr.splice(index, 1, header);
     headerMatch(arr);
   };
-
 
   const onReviewClick = () => {
     const filteredForErrors = data.filter((row) => !errorRows.includes(row));
@@ -124,6 +121,8 @@ const Match = ({
                 headers={headers}
                 confirmHeader={confirmHeader}
                 dropDownData={remainingHeaders}
+                allSelected={allSelected}
+                setAllSelected={setAllSelected}
               />
             );
           })}

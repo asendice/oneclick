@@ -3,10 +3,33 @@ import "../css/CsvHeader.css";
 import { FaCheck } from "react-icons/fa";
 import { BiError, BiChevronDown } from "react-icons/bi";
 
-const CsvHeader = ({ header, headers, confirmHeader, dropDownData }) => {
+const CsvHeader = ({
+  header,
+  headers,
+  confirmHeader,
+  dropDownData,
+  allSelected,
+  setAllSelected,
+}) => {
   const [active, setActive] = useState(false);
   const [selection, setSelection] = useState(header.matchedWith);
   const dropDownRef = useRef();
+
+  useEffect(() => {
+    const item = {
+      name: selection,
+      index: headers.indexOf(header),
+    };
+    const sameIndex = allSelected.filter((itm) => itm.index === item.index);
+    if (sameIndex.length > 0) {
+      const restOfSelected = allSelected.filter(
+        (itm) => itm.index !== item.index
+      );
+      setAllSelected([...restOfSelected, item]);
+    } else {
+      setAllSelected([...allSelected, item]);
+    }
+  }, [selection]);
 
   useEffect(() => {
     const outsideClick = (e) => {

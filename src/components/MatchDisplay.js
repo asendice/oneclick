@@ -13,7 +13,7 @@ const MatchDisplay = ({ headers, errorRows, dataLength, file }) => {
     const ws = XLSX.utils.json_to_sheet(errorRows);
     const wb = XLSX.utils.book_new();
     XLSX.utils.book_append_sheet(wb, ws, `Sheet1`);
-    XLSX.writeFile(wb, `${file.name.slice(0, file.name.length - 5)}_missing_values`);
+    XLSX.writeFile(wb, `${file.name.slice(0, file.name.length - 5)}_missing_values.xlsx`);
   };
 
   return (
