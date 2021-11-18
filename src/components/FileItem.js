@@ -1,5 +1,6 @@
 import React from "react";
 import "../css/FileItem.css";
+import { byteConverter } from "../utils/auth";
 import { BsFileEarmarkCheckFill, BsFillFileEarmarkXFill } from "react-icons/bs";
 import { Link } from "react-router-dom";
 const FileItem = ({ submit, file, rejected }) => {
@@ -13,7 +14,7 @@ const FileItem = ({ submit, file, rejected }) => {
       )}
       <div className="fileContent">
         <h3>{file.name}</h3>
-        <p>{file.size} bytes</p>
+        <p>{byteConverter(file.size)}</p>
       </div>
       {!rejected ? (
         <Link style={{textDecoration: "none"}} to="/match" className="fileButton" onClick={() => submit()}>

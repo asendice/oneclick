@@ -16,6 +16,7 @@ const App = () => {
   const [backEndHeaders, setBackEndHeaders] = useState([]);
 
   console.log(data, "data from app");
+  console.log(file, 'file from app')
 
   const handleCSV = (str) => {
     const headers = str
