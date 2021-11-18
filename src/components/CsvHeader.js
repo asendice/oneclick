@@ -1,35 +1,30 @@
 import React, { useState, useEffect, useRef } from "react";
 import "../css/CsvHeader.css";
 import { FaCheck } from "react-icons/fa";
-import { BiError, BiChevronDown } from "react-icons/bi";
+import { BiError, BiChevronDown, BiX } from "react-icons/bi";
 
 const CsvHeader = ({
   header,
   headers,
+  setHeaders,
   confirmHeader,
   dropDownData,
-  allSelected,
-  setAllSelected,
 }) => {
   const [active, setActive] = useState(false);
-  const [selection, setSelection] = useState(header.matchedWith);
   const dropDownRef = useRef();
 
-  useEffect(() => {
-    const item = {
-      name: selection,
-      index: headers.indexOf(header),
-    };
-    const sameIndex = allSelected.filter((itm) => itm.index === item.index);
-    if (sameIndex.length > 0) {
-      const restOfSelected = allSelected.filter(
-        (itm) => itm.index !== item.index
-      );
-      setAllSelected([...restOfSelected, item]);
-    } else {
-      setAllSelected([...allSelected, item]);
-    }
-  }, [selection]);
+  const onCancelClick = () => {
+    let newArr = [...headers];
+    header.matchedWith = '';
+    newArr.splice(headers.indexOf(header), 1, header)
+    setHeaders(newArr)
+  }
+  const onSelectClick = (name) => {
+    let newArr = [...headers];
+    header.matchedWith = name;
+    newArr.splice(headers.indexOf(header), 1, header)
+    setHeaders(newArr)
+  }
 
   useEffect(() => {
     const outsideClick = (e) => {
@@ -57,22 +52,18 @@ const CsvHeader = ({
           </div>
           <div className="arrow-right"></div>
           <div className="table-header-right">
-            <div
-              className="table-header-right-content"
-              onClick={() => {
-                setActive(!active);
-              }}
-            >
-              <p>
-                {header.matchedWith
-                  ? header.matchedWith
-                  : selection
-                  ? selection
-                  : "Lookup For Matching Fields  "}
-              </p>
-              <div className="">
-                <BiChevronDown />
-              </div>
+            <div className="table-header-right-content">
+              <p>{header.matchedWith ? header.matchedWith : "Search For Match"}</p>
+             { !header.confirmed &&
+               <div className="">
+                <BiX onClick={() => onCancelClick()} />
+                |
+                <BiChevronDown
+                  onClick={() => {
+                    setActive(!active);
+                  }}
+                />
+              </div>}
             </div>
             {!header.confirmed && (
               <div
@@ -85,7 +76,7 @@ const CsvHeader = ({
                   return (
                     <div
                       onClick={() => {
-                        setSelection(item.name);
+                        onSelectClick(item.name);
                         setActive(!active);
                       }}
                       key={index}
@@ -109,11 +100,11 @@ const CsvHeader = ({
         })}
       </div>
       <div className="csv-results">
-        {selection.length > 0 ? (
+        {header.matchedWith.length > 0 ? (
           <div className="results">
             <FaCheck className="small-check-icon" />
             <h1>
-              Matched to the <p>{selection}</p> field{" "}
+              Matched to the <p>{header.matchedWith}</p> field{" "}
             </h1>
           </div>
         ) : (
@@ -127,12 +118,11 @@ const CsvHeader = ({
             <FaCheck className="small-check-icon" />
             <h1>Header Confirmed</h1>
           </div>
-        ) : !header.confirmed && selection.length > 0 ? (
+        ) : !header.confirmed && header.matchedWith.length > 0 ? (
           <div className="results-button-container">
             <div
               className="confirm button"
               onClick={() => {
-                header.matchedWith = selection;
                 confirmHeader(header, headers.indexOf(header));
               }}
             >

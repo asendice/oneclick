@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "../css/Match.css";
 import MatchDisplay from "./MatchDisplay";
 import CsvHeader from "./CsvHeader";
-import LoadingHeaders from "./LoadingHeaders"
+import LoadingHeaders from "./LoadingHeaders";
 import { Redirect, Link } from "react-router-dom";
 
 const Match = ({ file, data, backEndHeaders, setData, setFrame }) => {
@@ -10,7 +10,6 @@ const Match = ({ file, data, backEndHeaders, setData, setFrame }) => {
   const [headers, setHeaders] = useState([]);
   const [errorRows, setErrorRows] = useState([]);
   const [remainingHeaders, setRemainingHeaders] = useState([]);
-  const [allSelected, setAllSelected] = useState([]);
 
   useEffect(() => {
     if (headers.length > 0) {
@@ -19,17 +18,11 @@ const Match = ({ file, data, backEndHeaders, setData, setFrame }) => {
         setMatched(true);
       }
       const headerNames = headers.map((header) => header.matchedWith);
-      const allSelectedNames = allSelected.map((item) => item.name);
-      const filteredBackEndHeaders = backEndHeaders.filter(
-        (item) => !headerNames.includes(item.name)
-      );
       setRemainingHeaders(
-        filteredBackEndHeaders.filter(
-          (item) => !allSelectedNames.includes(item.name)
-        )
+        backEndHeaders.filter((item) => !headerNames.includes(item.name))
       );
     }
-  }, [headers, allSelected]);
+  }, [headers]);
 
   useEffect(() => {
     const rowsWithMissingValues = data.filter((row) => {
@@ -123,10 +116,9 @@ const Match = ({ file, data, backEndHeaders, setData, setFrame }) => {
                   key={index}
                   header={header}
                   headers={headers}
+                  setHeaders={setHeaders}
                   confirmHeader={confirmHeader}
                   dropDownData={remainingHeaders}
-                  allSelected={allSelected}
-                  setAllSelected={setAllSelected}
                 />
               );
             })
