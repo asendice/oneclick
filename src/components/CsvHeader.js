@@ -31,7 +31,7 @@ const CsvHeader = ({
       if (
         active &&
         dropDownRef.current &&
-        !dropDownRef.current.contains(e.target)
+       !dropDownRef.current.contains(e.target)
       ) {
         setActive(false);
       }
@@ -75,8 +75,8 @@ const CsvHeader = ({
             </div>
             {!header.confirmed && (
               <div
-                ref={dropDownRef}
                 id="drop-down"
+                ref={dropDownRef}
                 className="drop-down"
                 style={{ display: `${active ? "block" : "none"}` }}
               >

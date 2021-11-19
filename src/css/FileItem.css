@@ -3,7 +3,9 @@
   align-items: center;
   height: 70px;
   width: 600px;
-  border: solid 1px #383634;
+  background-color: #fff;
+  /* border: solid 1px #383634; */
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   margin-top: 20px;
 }
 .fileContent {
