@@ -47,7 +47,7 @@ const Upload = ({ setFile, handleCSV, setFrame, setData }) => {
     <div className="upload">
       <div className="upload-content">
         <div className="upload-header">
-          <h3>Upload .csv file for onboard</h3>
+          <h3>Upload file for onboard</h3>
         </div>
         <div
           {...getRootProps(isDragActive)}

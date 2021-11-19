@@ -7,11 +7,15 @@
 }
 
 .match-header {
+  display: flex;
+  justify-content: space-between;
+  height: 102px;
+  font-size: 2rem;
   width: 80%;
   align-self: center;
   display: flex;
   justify-content: space-between;
-  align-items: baseline;
+  align-items: center;
   border-bottom: solid 1px #383634;
 }
 
