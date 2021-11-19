@@ -19,9 +19,7 @@ const Upload = ({ setFile, handleCSV, setFrame, setData }) => {
 
   const submit = () => {
     const file = acceptedFiles[0];
-    console.log(file, "File");
     const reader = new FileReader();
-
     if (file.type === "text/csv") {
       reader.onload = (e) => {
         const text = e.target.result;
@@ -36,12 +34,11 @@ const Upload = ({ setFile, handleCSV, setFrame, setData }) => {
         });
         const wsname = wb.SheetNames[0];
         const ws = wb.Sheets[wsname];
-        const wbData = XLSX.utils.sheet_to_json(ws, {raw: false , defval: ""});
+        const wbData = XLSX.utils.sheet_to_json(ws, { raw: false, defval: "" });
         setData(wbData);
       };
-      reader.readAsBinaryString(file)
+      reader.readAsBinaryString(file);
     }
-
     setFile(file);
     setFrame("Match");
   };

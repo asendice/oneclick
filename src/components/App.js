@@ -16,7 +16,7 @@ const App = () => {
   const [backEndHeaders, setBackEndHeaders] = useState([]);
 
   console.log(data, "data from app");
-  console.log(file, 'file from app')
+  console.log(file, "file from app");
 
   const handleCSV = (str) => {
     const headers = str
@@ -34,7 +34,6 @@ const App = () => {
     });
     setData(arr);
   };
-
 
   const getBackEndHeaders = async () => {
     await axios
@@ -70,47 +69,41 @@ const App = () => {
           )}
           <Progress frame={frame} />
         </div>
-        <div className="content">
-          <Route
-            exact
-            path="/"
-            render={() => (
-              <Upload
-                setFile={setFile}
-                handleCSV={handleCSV}
-                setFrame={setFrame}
-                setData={setData}
-              />
-            )}
-          />
-          <Route
-            exact
-            path="/match"
-            render={() => (
-              <Match
-                file={file}
-                data={data}
-                setData={setData}
-                backEndHeaders={backEndHeaders}
-                // updateData={updateData}
-                // updateHeader={updateHeader}
-                setFrame={setFrame}
-              />
-            )}
-          />
-          <Route
-            exact
-            path="/review"
-            render={() => (
-              <Review file={file} data={data} setFrame={setFrame} />
-            )}
-          />
-          <Route
-            exact
-            path="/complete"
-            render={() => <Complete file={file} data={data} />}
-          />
-        </div>
+        <Route
+          exact
+          path="/"
+          render={() => (
+            <Upload
+              setFile={setFile}
+              handleCSV={handleCSV}
+              setFrame={setFrame}
+              setData={setData}
+            />
+          )}
+        />
+        <Route
+          exact
+          path="/match"
+          render={() => (
+            <Match
+              file={file}
+              data={data}
+              setData={setData}
+              backEndHeaders={backEndHeaders}
+              setFrame={setFrame}
+            />
+          )}
+        />
+        <Route
+          exact
+          path="/review"
+          render={() => <Review file={file} data={data} setFrame={setFrame} />}
+        />
+        <Route
+          exact
+          path="/complete"
+          render={() => <Complete file={file} data={data} />}
+        />
       </BrowserRouter>
       <Footer />
     </div>

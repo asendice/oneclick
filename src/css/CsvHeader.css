@@ -41,18 +41,33 @@
   justify-content: space-between;
   height: 100%;
   width: 100%;
-  cursor: pointer;
 }
 .table-header-right-content p {
   margin-left: 5px;
 }
-.table-header-right-content div {
+.table-icons-container {
   height: 100%;
   display: flex;
   align-items: center;
+  justify-content: space-between;
   margin-right: 10px;
+}
+.table-icons {
+  padding: 5px;
   font-size: 1.4rem;
-  color: grey;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #333;
+  border-radius: 100%;
+  cursor: pointer;
+  transition: background-color 0.4s ease-in-out;
+}
+.table-icons:hover {
+  background-color: #d3d3d3;
+}
+.table-icons:active {
+  opacity: 0.3;
 }
 .drop-down {
   margin-top: 40px;
@@ -184,8 +199,8 @@ h1 {
 }
 
 .arrow-right {
-  width: 0; 
-  height: 0; 
+  width: 0;
+  height: 0;
   border-top: 21px solid transparent;
   border-bottom: 21px solid transparent;
   border-left: 21px solid #d3d3d3;

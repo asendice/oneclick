@@ -15,16 +15,16 @@ const CsvHeader = ({
 
   const onCancelClick = () => {
     let newArr = [...headers];
-    header.matchedWith = '';
-    newArr.splice(headers.indexOf(header), 1, header)
-    setHeaders(newArr)
-  }
+    header.matchedWith = "";
+    newArr.splice(headers.indexOf(header), 1, header);
+    setHeaders(newArr);
+  };
   const onSelectClick = (name) => {
     let newArr = [...headers];
     header.matchedWith = name;
-    newArr.splice(headers.indexOf(header), 1, header)
-    setHeaders(newArr)
-  }
+    newArr.splice(headers.indexOf(header), 1, header);
+    setHeaders(newArr);
+  };
 
   useEffect(() => {
     const outsideClick = (e) => {
@@ -53,17 +53,25 @@ const CsvHeader = ({
           <div className="arrow-right"></div>
           <div className="table-header-right">
             <div className="table-header-right-content">
-              <p>{header.matchedWith ? header.matchedWith : "Search For Match"}</p>
-             { !header.confirmed &&
-               <div className="">
-                <BiX onClick={() => onCancelClick()} />
-                |
-                <BiChevronDown
-                  onClick={() => {
-                    setActive(!active);
-                  }}
-                />
-              </div>}
+              <p>
+                {header.matchedWith ? header.matchedWith : "Search For Match"}
+              </p>
+              {!header.confirmed && (
+                <div className="table-icons-container">
+                  <div onClick={() => onCancelClick()} className="table-icons">
+                    <BiX />
+                  </div>
+                  |
+                  <div
+                    className="table-icons"
+                    onClick={() => {
+                      setActive(!active);
+                    }}
+                  >
+                    <BiChevronDown />
+                  </div>
+                </div>
+              )}
             </div>
             {!header.confirmed && (
               <div

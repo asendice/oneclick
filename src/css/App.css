@@ -12,15 +12,6 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  /* background-color: #383634; */
-}
-.content {
-  height: 100%;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  /* justify-content: center; */
 }
 
 .back-arrow {
@@ -37,7 +28,6 @@
   border: solid 1px #383634;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
-  margin-top: 20px;
   text-transform: uppercase;
 }
 .trove-button:active {
