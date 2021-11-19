@@ -52,7 +52,7 @@ const MatchDisplay = ({ headers, errorRows, dataLength, file }) => {
               Export Rows .CSV
             </CSVLink>
           ) : (
-            <div className="trove-button" onClick={() => exportXlsx()}>
+            <div className="trove-button" style={{marginTop: "20px"}} onClick={() => exportXlsx()}>
               Export Rows .XLSX{" "}
             </div>
           )}

@@ -6,7 +6,7 @@
 .app {
   display: flex;
   flex-direction: column;
-  background-color: #d5cdc2;
+  background-color: #D6CDC2;
 }
 .header {
   display: flex;
