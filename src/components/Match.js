@@ -67,7 +67,7 @@ const Match = ({ file, data, backEndHeaders, setData, setFrame }) => {
     header.confirmed = true;
     let arr = [...headers];
     arr.splice(index, 1, header);
-    headerMatch(arr);
+    setHeaders(arr);
   };
 
   const onReviewClick = () => {

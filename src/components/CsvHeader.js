@@ -13,6 +13,8 @@ const CsvHeader = ({
   const [active, setActive] = useState(false);
   const dropDownRef = useRef();
 
+  // console.log(header, "header")
+
   const onCancelClick = () => {
     let newArr = [...headers];
     header.matchedWith = "";
