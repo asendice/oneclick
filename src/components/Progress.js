@@ -1,7 +1,6 @@
 import React from "react";
 import { FaCheckCircle } from "react-icons/fa";
 import { MdArrowForwardIos } from "react-icons/md";
-import "../css/Progress.css";
 
 const Progress = ({ frame }) => {
   const progressHeaders = ["Upload", "Match", "Review", "Complete"];

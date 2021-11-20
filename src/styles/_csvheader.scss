@@ -1,0 +1,187 @@
+.csv-header {
+  @include flex(center, space-between, row);
+  margin-top: 20px;
+  height: 220px;
+  width: 900px;
+  border: solid 1px $lightgrey;
+  background-color: $white;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+.table-header {
+  @include flex(center, space-between, row);
+  height: 40px;
+  font-size: 1rem;
+  h4 {
+    font-size: 1rem;
+    margin-left: 30px;
+  }
+}
+
+.table-header-left {
+  @include flex(center, space-between, row);
+  height: 100%;
+  width: 50%;
+  background-color: $lightgrey;
+}
+.table-header-right {
+  @include flex(center, '', column);
+  width: 50%;
+  height: 100%;
+}
+.table-header-right-content {
+  @include flex(center, space-between, row);
+  height: 100%;
+  width: 100%;
+  p {
+    margin-left: 5px;
+  }
+}
+
+.table-icons-container {
+  @include flex(center, space-between, row);
+  height: 100%;
+  margin-right: 10px;
+}
+.table-icons {
+  @include flex(center, center, row);
+  padding: 5px;
+  font-size: 1.4rem;
+  color: $darkgrey;
+  border-radius: 100%;
+  cursor: pointer;
+  transition: background-color 0.4s ease-in-out;
+}
+.table-icons:hover {
+  background-color: $lightgrey;
+}
+.table-icons:active {
+  opacity: 0.3;
+}
+.drop-down {
+  margin-top: 40px;
+  position: absolute;
+  width: 200px;
+  background-color: $white;
+  border: solid 1px $lightgrey;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  display: none;
+}
+.drop-down-item {
+  padding: 5px;
+  cursor: pointer;
+}
+.drop-down-item:hover {
+  background-color: $lightgrey;
+}
+
+h1 {
+  font-size: 1rem;
+}
+.csv-table {
+  @include flex('', '', column);
+  margin-left: 25px;
+  border: solid 1px grey;
+  width: 400px;
+}
+
+.cell {
+  @include flex(center, '', row);
+  height: 40px;
+  border-top: solid 1px grey;
+  p {
+    margin-left: 10px;
+    font-size: 1rem;
+  }
+}
+
+.cell-index {
+  @include flex(center, center, row);
+  background-color: $lightgrey;
+  border-right: solid 1px grey;
+  height: 100%;
+  width: 25px;
+}
+
+.csv-results {
+  @include flex('', space-between, column);
+  margin-right: 25px;
+  height: 70px;
+  width: 400px;
+}
+.results {
+  @include flex(center, flex-start, row);
+  color: $darkgrey;
+  h1 {
+    display: flex;
+    margin-left: 5px;
+    background-color: $white;
+    color: $darkgrey;
+  }
+  p {
+    background-color: $lightgrey;
+    padding-left: 5px;
+    padding-right: 5px;
+    margin-left: 2px;
+    margin-right: 2px;
+    border-radius: 5px;
+  }
+}
+
+.error-text {
+  color: orange;
+}
+.small-check-icon {
+  font-size: 1.2rem;
+  color: $green;
+}
+.results-button-container {
+  @include flex(center, flex-start, row);
+  margin-top: 20px;
+}
+.confirm {
+  background-color: $green;
+  border-color: $green;
+  color: $white;
+}
+.ignore {
+  background-color: $white;
+  color: grey;
+  border: solid 1px grey;
+}
+.error {
+  background-color: $white;
+  color: orange;
+  border: solid 1px orange;
+}
+.button {
+  padding: 10px;
+  cursor: pointer;
+}
+.button:active {
+  opacity: 0.6;
+}
+
+.header-confirmed {
+  display: flex;
+  align-items: center;
+  h2 {
+    margin-left: 5px;
+  }
+}
+
+.large-check-icon {
+  font-size: 1.4rem;
+  color: $green;
+}
+
+.result-confirmed {
+  color: $green;
+}
+
+.arrow-right {
+  width: 0;
+  height: 0;
+  border-top: 21px solid transparent;
+  border-bottom: 21px solid transparent;
+  border-left: 21px solid $lightgrey;
+}

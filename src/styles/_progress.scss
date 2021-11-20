@@ -1,0 +1,46 @@
+.progress {
+  @include flex(center, space-evenly, row);
+  height: 10vh;
+  width: 800px;
+}
+
+.progress-item {
+  @include flex(center, flex-start, row);
+  color: grey;
+  h3 {
+    font-size: 1.6rem;
+    color: grey;
+  }
+}
+
+.progress-arrow {
+  font-size: 1.8rem;
+}
+
+.invis {
+  color: $white;
+}
+.check-icon {
+  font-size: 2rem;
+  color: $green;
+}
+
+@media only screen and (max-width: 800px) {
+  .progress {
+    width: 600px;
+  }
+  .progress-item {
+    h3 {
+      font-size: 1.2rem;
+    }
+  }
+  .progress-arrow {
+    font-size: 1.4rem;
+  }
+}
+
+@media only screen and (max-width: 650px) {
+  .progress {
+    width: 400px;
+  }
+}

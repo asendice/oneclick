@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import "../css/Match.css";
 import MatchDisplay from "./MatchDisplay";
 import CsvHeader from "./CsvHeader";
 import LoadingHeaders from "./LoadingHeaders";

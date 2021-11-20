@@ -1,5 +1,4 @@
 import React from "react";
-import "../css/MatchDisplay.css";
 import XLSX from "xlsx";
 import { BiError, BiCheck } from "react-icons/bi";
 import { VscTable } from "react-icons/vsc";

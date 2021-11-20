@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import "../css/Review.css";
 import { Redirect, Link } from "react-router-dom";
 import { FixedSizeList as List } from "react-window";
 import AutoSizer from "react-virtualized-auto-sizer";

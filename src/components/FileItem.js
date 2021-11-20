@@ -1,5 +1,4 @@
 import React from "react";
-import "../css/FileItem.css";
 import { byteConverter } from "../utils/auth";
 import { BsFileEarmarkCheckFill, BsFillFileEarmarkXFill } from "react-icons/bs";
 import { Link } from "react-router-dom";

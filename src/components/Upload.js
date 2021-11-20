@@ -1,5 +1,4 @@
 import React from "react";
-import "../css/Upload.css";
 import XLSX from "xlsx";
 import { useDropzone } from "react-dropzone";
 import { FaCloudUploadAlt } from "react-icons/fa";

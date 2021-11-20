@@ -1,0 +1,9 @@
+.loading-header {
+  @include flex(center, space-between, row);
+  margin-top: 20px;
+  height: 220px;
+  width: 900px;
+  border: solid 1px $lightgrey;
+  background-color: $white;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}

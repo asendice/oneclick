@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from "react";
-import "../css/CsvHeader.css";
 import { FaCheck } from "react-icons/fa";
 import { BiError, BiChevronDown, BiX } from "react-icons/bi";
 

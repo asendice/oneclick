@@ -1,0 +1,18 @@
+.match-display {
+  @include flex(center, center, column);
+  width: 1000px;
+  margin: 40px 0px 40px 0px;
+}
+.display-container {
+  @include flex('', space-evenly, row);
+  width: 100%;
+  flex-wrap: wrap;
+}
+.display-item {
+  @include flex(center, '', column)
+}
+.display-item-icon {
+  font-size: 5rem;
+  color: $darkgrey;
+}
+

@@ -1,5 +1,4 @@
 import React from "react";
-import "../css/LoadingHeaders.css";
 const LoadingHeaders = () => {
   const arr = [0, 1, 2, 3, 4];
     return (
