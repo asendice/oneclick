@@ -2,6 +2,13 @@
   @include flex(center, space-evenly, row);
   height: 10vh;
   width: 800px;
+  @include md{
+    width: 540px;
+    background-color: pink;
+  };
+  @include sm {
+    width: 380px;
+  }
 }
 .progress-item {
   @include flex(center, flex-start, row);
@@ -9,6 +16,12 @@
   h3 {
     font-size: 1.6rem;
     color: grey;
+    @include md {
+      font-size: 1.2rem;
+    }
+    @include sm {
+      font-size: 1rem;
+    }
   }
 }
 .progress-arrow {
@@ -20,22 +33,4 @@
 .check-icon {
   font-size: 2rem;
   color: $green;
-}
-@media only screen and (max-width: 800px) {
-  .progress {
-    width: 600px;
-  }
-  .progress-item {
-    h3 {
-      font-size: 1.2rem;
-    }
-  }
-  .progress-arrow {
-    font-size: 1.4rem;
-  }
-}
-@media only screen and (max-width: 650px) {
-  .progress {
-    width: 400px;
-  }
 }

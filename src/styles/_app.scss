@@ -1,0 +1,39 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Montserrat", sans-serif;
+}
+.app {
+  display: flex;
+  flex-direction: column;
+  background-color: $background;
+}
+.header {
+  @include flex(center, space-between, row);
+}
+.back-arrow {
+  margin-left: 10px;
+  font-size: 3rem;
+  @include sm {
+    font-size: 2rem;
+    margin-left: 0px;
+  }
+  color: grey;
+  cursor: pointer;
+}
+.trove-button {
+  text-align: center;
+  color: $darkbrown;
+  padding: 15px 30px;
+  border: solid 1px $darkbrown;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  text-transform: uppercase;
+  &:hover {
+    background-color: $darkbrown;
+    color: $white;
+  }
+  &:active {
+    opacity: 0.7;
+  }
+}
