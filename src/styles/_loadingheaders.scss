@@ -3,6 +3,16 @@
   margin-top: 20px;
   height: 220px;
   width: 900px;
+  @include lg {
+    width: 700px;
+  }
+  @include md {
+    width: 440px;
+    min-height: 270px;
+  }
+  @include sm {
+    width: 300px;
+  }
   border: solid 1px $lightgrey;
   background-color: $white;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;

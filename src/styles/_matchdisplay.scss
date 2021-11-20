@@ -7,6 +7,9 @@
   @include md {
     width: 460px;
   }
+  @include sm {
+    width: 300px;
+  }
   margin: 40px 0px 40px 0px;
 }
 .display-container {

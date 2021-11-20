@@ -55,7 +55,7 @@ const App = () => {
     <div className="app">
       <BrowserRouter>
         <div className="header">
-          {frame === "Match" && (
+          {frame === "Match" ? (
             <Link
               to="/"
               className="back-arrow"
@@ -63,7 +63,7 @@ const App = () => {
             >
               <MdArrowBack />
             </Link>
-          )}
+          ) : <div></div>}
           <Progress frame={frame} />
         </div>
         <Route

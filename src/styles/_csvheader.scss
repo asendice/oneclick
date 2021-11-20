@@ -1,8 +1,20 @@
 .csv-header {
-  @include flex(center, space-between, row);
+  @include flex(center, space-evenly, row);
+  flex-wrap: wrap;
   margin-top: 20px;
-  height: 220px;
+  padding: 10px;
+  min-height: 220px;
   width: 900px;
+  @include lg {
+    width: 700px;
+  }
+  @include md {
+    width: 440px;
+    min-height: 270px;
+  }
+  @include sm {
+    width: 300px;
+  }
   border: solid 1px $lightgrey;
   background-color: $white;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
@@ -24,8 +36,8 @@
 }
 .table-header-right {
   @include flex(center, "", column);
-  width: 50%;
   height: 100%;
+  width: 50%;
 }
 .table-header-right-content {
   @include flex(center, space-between, row);
@@ -74,11 +86,15 @@
 h1 {
   font-size: 1rem;
 }
+.left-side {
+  flex: 1;
+  min-width: 300px;
+  @include flex(center, '', column);
+}
 .csv-table {
   @include flex("", "", column);
-  margin-left: 25px;
   border: solid 1px grey;
-  width: 400px;
+  min-width: 90%;
 }
 .cell {
   @include flex(center, "", row);
@@ -97,11 +113,16 @@ h1 {
   height: 100%;
   width: 25px;
 }
+.right-side {
+  flex: 1;
+  min-width: 300px;
+  @include flex(center, center, column)
+}
 .csv-results {
-  @include flex("", space-between, column);
-  margin-right: 25px;
-  height: 70px;
-  width: 400px;
+  @include flex(flex-start, space-between, column);
+  height: 90px;
+  width: 80%;
+
 }
 .results {
   @include flex(center, flex-start, row);

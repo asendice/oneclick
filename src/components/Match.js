@@ -90,16 +90,18 @@ const Match = ({ file, data, backEndHeaders, setData, setFrame }) => {
       <div className="match">
         <div className="match-header">
           <h3>{file.name}</h3>
-          {matched && (
-            <Link
-              to="/review"
-              style={{ textDecoration: "none", flex: 1 }}
-              className="trove-button"
-              onClick={() => onReviewClick()}
-            >
-              Review
-            </Link>
-          )}
+          <div>
+            {matched && (
+              <Link
+                to="/review"
+                style={{ textDecoration: "none"}}
+                className="trove-button"
+                onClick={() => onReviewClick()}
+              >
+                Review
+              </Link>
+            )}
+          </div>
         </div>
         <MatchDisplay
           headers={headers}

@@ -35,5 +35,11 @@
 }
 .check-icon {
   font-size: 2rem;
+  @include md {
+    font-size: 1.2rem;
+  }
+  @include sm {
+    font-size: .8rem;
+  }
   color: $green;
 }
