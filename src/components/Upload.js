@@ -62,7 +62,7 @@ const Upload = ({ setFile, handleCSV, setFrame, setData }) => {
             <p>Drag and drop to upload</p>
             <p>Or</p>
             <div className="trove-button">Browse Files</div>
-            <p style={{ fontStyle: "italic" }}>
+            <p className="info-text">
               (Only *.csv, *.xlsx, *.xls files will be accepted)
             </p>
           </div>

@@ -2,10 +2,9 @@
   @include flex(center, space-evenly, row);
   height: 10vh;
   width: 800px;
-  @include md{
+  @include md {
     width: 540px;
-    background-color: pink;
-  };
+  }
   @include sm {
     width: 380px;
   }
@@ -20,13 +19,17 @@
       font-size: 1.2rem;
     }
     @include sm {
-      font-size: 1rem;
+      font-size: .8rem;
     }
   }
 }
 .progress-arrow {
   font-size: 1.8rem;
+  @include sm {
+    font-size: 1.2rem;
+  }
 }
+
 .invis {
   color: $white;
 }

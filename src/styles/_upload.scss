@@ -4,25 +4,51 @@
 }
 .upload-header {
   margin-top: 50px;
+  align-self: flex-start;
 }
+
+.upload-content {
+  @include flex (center, '', column)
+}
+
 .dropzone {
   @include flex(center, center, row);
+  height: 400px;
+  width: 800px;
+  @include lg {
+    width: 600px;
+  }
+  @include md {
+    width: 400px;
+  }
+  @include sm {
+    width: 320px;
+  }
+  @include xs {
+    width: 240px;
+  }
   border: dashed 2px $darkbrown;
-  height: 300px;
-  width: 600px;
   background-color: $background;
   cursor: pointer;
 }
 .dropzone-content {
   @include flex(center, space-around, column);
-  height: 80%;
+  height: 60%;
   p {
     color: grey;
   }
-  
+  .info-text {
+    font-style: italic;
+    text-align:center;  
+    @include sm {
+      width: 200px;
+    }
+  }
 }
+
 .active-dropzone {
-  background-color: $darkbrown;
+  background-color: $lightgrey;
+  border: solid 2px $darkbrown;
 }
 .upload-icon {
   font-size: 4rem;
