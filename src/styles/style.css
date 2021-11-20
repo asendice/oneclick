@@ -1017,12 +1017,12 @@ h1 {
   text-transform: uppercase;
 }
 
-.trove-button:active {
-  opacity: 0.7;
-}
-
 .trove-button:hover {
   background-color: #383634;
   color: #fff;
+}
+
+.trove-button:active {
+  opacity: 0.7;
 }
 /*# sourceMappingURL=style.css.map */

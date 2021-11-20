@@ -26,7 +26,7 @@
   cursor: pointer;
   background-color: $green;
   color: $white;
-}
-.complete-post-button:active {
-  opacity: 0.7;
+  &:active {
+    opacity: 0.7;
+  }
 }

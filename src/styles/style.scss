@@ -22,7 +22,7 @@
   background-color: $background;
 }
 .header {
-  @include flex(center, space-between, row)
+  @include flex(center, space-between, row);
 }
 .back-arrow {
   margin-left: 20px;
@@ -38,11 +38,11 @@
   cursor: pointer;
   transition: all 0.2s ease-in-out;
   text-transform: uppercase;
-}
-.trove-button:active {
-  opacity: 0.7;
-}
-.trove-button:hover {
-  background-color: $darkbrown;
-  color: $white;
+  &:hover {
+    background-color: $darkbrown;
+    color: $white;
+  }
+  &:active {
+    opacity: 0.7;
+  }
 }

@@ -11,7 +11,6 @@
   width: 80%;
   border-bottom: solid 1px $darkbrown;
 }
-
 .review-table {
   @include flex('', '', column);
   margin: 20px;
@@ -23,12 +22,10 @@
     margin-left: 3px;
   }
 }
-
 .review-table-headers {
   @include flex(center, space-evenly, row);
   width: 1001px;
 }
-
 .review-table-header {
   @include flex(center, '', row);
   background-color: $lightgrey;
@@ -43,7 +40,6 @@
   height: 40px;
   background-color: $white;
 }
-
 .review-table-cell {
   @include flex(center, '', row);
   border-right: solid 1px $darkgrey;
@@ -51,12 +47,10 @@
   height: 40px;
   width: 100%;
 }
-
 .no-scrollbars {
   scrollbar-width: thin;
   /* scrollbar-color: transparent transparent; */
 }
-
 .no-scrollbars::-webkit-scrollbar {
   display: none;
 }

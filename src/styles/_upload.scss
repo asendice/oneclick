@@ -13,7 +13,6 @@
   background-color: $background;
   cursor: pointer;
 }
-
 .dropzone-content {
   @include flex(center, space-around, column);
   height: 80%;

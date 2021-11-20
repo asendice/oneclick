@@ -16,7 +16,6 @@
     margin-left: 30px;
   }
 }
-
 .table-header-left {
   @include flex(center, space-between, row);
   height: 100%;
@@ -24,7 +23,7 @@
   background-color: $lightgrey;
 }
 .table-header-right {
-  @include flex(center, '', column);
+  @include flex(center, "", column);
   width: 50%;
   height: 100%;
 }
@@ -36,7 +35,6 @@
     margin-left: 5px;
   }
 }
-
 .table-icons-container {
   @include flex(center, space-between, row);
   height: 100%;
@@ -50,12 +48,12 @@
   border-radius: 100%;
   cursor: pointer;
   transition: background-color 0.4s ease-in-out;
-}
-.table-icons:hover {
-  background-color: $lightgrey;
-}
-.table-icons:active {
-  opacity: 0.3;
+  &:hover {
+    background-color: $lightgrey;
+  }
+  &:active {
+    opacity: 0.3;
+  }
 }
 .drop-down {
   margin-top: 40px;
@@ -69,23 +67,21 @@
 .drop-down-item {
   padding: 5px;
   cursor: pointer;
+  &:hover {
+    background-color: $lightgrey;
+  }
 }
-.drop-down-item:hover {
-  background-color: $lightgrey;
-}
-
 h1 {
   font-size: 1rem;
 }
 .csv-table {
-  @include flex('', '', column);
+  @include flex("", "", column);
   margin-left: 25px;
   border: solid 1px grey;
   width: 400px;
 }
-
 .cell {
-  @include flex(center, '', row);
+  @include flex(center, "", row);
   height: 40px;
   border-top: solid 1px grey;
   p {
@@ -101,9 +97,8 @@ h1 {
   height: 100%;
   width: 25px;
 }
-
 .csv-results {
-  @include flex('', space-between, column);
+  @include flex("", space-between, column);
   margin-right: 25px;
   height: 70px;
   width: 400px;
@@ -156,11 +151,10 @@ h1 {
 .button {
   padding: 10px;
   cursor: pointer;
+  &:active {
+    opacity: 0.6;
+  }
 }
-.button:active {
-  opacity: 0.6;
-}
-
 .header-confirmed {
   display: flex;
   align-items: center;
@@ -168,16 +162,13 @@ h1 {
     margin-left: 5px;
   }
 }
-
 .large-check-icon {
   font-size: 1.4rem;
   color: $green;
 }
-
 .result-confirmed {
   color: $green;
 }
-
 .arrow-right {
   width: 0;
   height: 0;
