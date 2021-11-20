@@ -19,9 +19,9 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -webkit-box-align: baseline;
+      -ms-flex-align: baseline;
+          align-items: baseline;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
@@ -29,19 +29,25 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
+  background-color: #fff;
 }
 
 .back-arrow {
   margin-left: 10px;
-  font-size: 3rem;
+  font-size: 2.4rem;
   color: grey;
   cursor: pointer;
 }
 
-@media (max-width: 480px) {
+@media (max-width: 720px) {
   .back-arrow {
     font-size: 2rem;
-    margin-left: 0px;
+  }
+}
+
+@media (max-width: 480px) {
+  .back-arrow {
+    font-size: 1rem;
   }
 }
 
@@ -49,6 +55,7 @@
   text-align: center;
   color: #383634;
   padding: 15px 30px;
+  max-width: 195px;
   border: solid 1px #383634;
   cursor: pointer;
   -webkit-transition: all 0.2s ease-in-out;
@@ -208,7 +215,7 @@
   cursor: pointer;
 }
 
-@media (max-width: 960px) {
+@media (max-width: 1002px) {
   .dropzone {
     width: 600px;
   }
@@ -457,10 +464,18 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
-  height: 102px;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  min-height: 102px;
   font-size: 2rem;
   width: 80%;
   border-bottom: solid 1px #383634;
+}
+
+.match-header h3 {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
 }
 
 .match-main {
@@ -507,6 +522,18 @@
   margin: 40px 0px 40px 0px;
 }
 
+@media (max-width: 1002px) {
+  .match-display {
+    width: 740px;
+  }
+}
+
+@media (max-width: 720px) {
+  .match-display {
+    width: 460px;
+  }
+}
+
 .display-container {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -540,6 +567,11 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  text-align: center;
+  min-width: 320px;
 }
 
 .display-item-icon {
@@ -601,7 +633,7 @@
   margin-top: 20px;
 }
 
-@media (max-width: 960px) {
+@media (max-width: 1002px) {
   .fileItem {
     width: 600px;
   }

@@ -93,7 +93,7 @@ const Match = ({ file, data, backEndHeaders, setData, setFrame }) => {
           {matched && (
             <Link
               to="/review"
-              style={{ textDecoration: "none" }}
+              style={{ textDecoration: "none", flex: 1 }}
               className="trove-button"
               onClick={() => onReviewClick()}
             >

@@ -1,6 +1,12 @@
 .match-display {
   @include flex(center, center, column);
   width: 1000px;
+  @include lg {
+    width: 740px;
+  }
+  @include md {
+    width: 460px;
+  }
   margin: 40px 0px 40px 0px;
 }
 .display-container {
@@ -9,7 +15,10 @@
   flex-wrap: wrap;
 }
 .display-item {
-  @include flex(center, '', column)
+  @include flex(center, '', column);
+  flex: 1;
+  text-align: center;
+  min-width: 320px;
 }
 .display-item-icon {
   font-size: 5rem;

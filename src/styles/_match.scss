@@ -5,10 +5,14 @@
 }
 .match-header {
   @include flex(center, space-between, row);
-  height: 102px;
+  flex-wrap: wrap;
+  min-height: 102px;
   font-size: 2rem;
   width: 80%;
   border-bottom: solid 1px $darkbrown;
+  h3 {
+    flex: 1;
+  }
 }
 .match-main {
   @include flex(center, '', column);

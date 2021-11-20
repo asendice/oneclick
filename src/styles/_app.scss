@@ -9,14 +9,18 @@
   background-color: $background;
 }
 .header {
-  @include flex(center, space-between, row);
+  @include flex(baseline, space-between, row);
+  background-color: $white;
 }
 .back-arrow {
   margin-left: 10px;
-  font-size: 3rem;
-  @include sm {
+  font-size: 2.4rem;
+
+  @include md {
     font-size: 2rem;
-    margin-left: 0px;
+  }
+  @include sm {
+    font-size: 1rem;
   }
   color: grey;
   cursor: pointer;
@@ -25,6 +29,7 @@
   text-align: center;
   color: $darkbrown;
   padding: 15px 30px;
+  max-width: 195px;
   border: solid 1px $darkbrown;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
