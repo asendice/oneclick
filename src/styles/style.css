@@ -594,11 +594,35 @@
       -ms-flex-direction: row;
           flex-direction: row;
   height: 70px;
-  width: 600px;
+  width: 800px;
   background-color: #fff;
   -webkit-box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
           box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   margin-top: 20px;
+}
+
+@media (max-width: 960px) {
+  .fileItem {
+    width: 600px;
+  }
+}
+
+@media (max-width: 720px) {
+  .fileItem {
+    width: 400px;
+  }
+}
+
+@media (max-width: 480px) {
+  .fileItem {
+    width: 320px;
+  }
+}
+
+@media (max-width: 300px) {
+  .fileItem {
+    width: 240px;
+  }
 }
 
 .fileContent {

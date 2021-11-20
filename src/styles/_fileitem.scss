@@ -1,7 +1,19 @@
 .fileItem {
   @include flex(center, "", row);
   height: 70px;
-  width: 600px;
+  width: 800px;
+  @include lg {
+    width: 600px;
+  }
+  @include md {
+    width: 400px;
+  }
+  @include sm {
+    width: 320px;
+  }
+  @include xs {
+    width: 240px;
+  }
   background-color: $white;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   margin-top: 20px;
