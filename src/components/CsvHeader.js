@@ -119,7 +119,7 @@ const CsvHeader = ({
             <div className="results">
               <FaCheck className="small-check-icon" />
               <h1>
-                Matched to the <p>{header.matchedWith}</p> field{" "}
+                Matched to the <p> {header.matchedWith} </p> field
               </h1>
             </div>
           ) : (
