@@ -1,38 +1,40 @@
 .review {
   @include flex(center, '', column);
-  height: 80vh;
-  width: 100%;
+  min-height: 80vh;
+  overflow: hidden;
+}
+.review-header {
+  @extend .match-header;
 }
 
-.review-header {
-  @include flex(baseline, space-between, row);
-  padding: 15px 0px 15px 0px;
-  font-size: 2rem;
-  width: 80%;
-  border-bottom: solid 1px $darkbrown;
-}
 .review-table {
   @include flex('', '', column);
+  overflow-x: auto;
+  align-self: flex-start;
   margin: 20px;
   height: 500px;
+  background-color: pink;
   border-top: solid 1px $darkgrey;
   border-left: solid 1px $darkgrey;
   width: 1000px;
+  @include lg {
+    width: 700px;
+  }
   p {
-    margin-left: 3px;
+    margin-left: 2px;
   }
 }
 .review-table-headers {
   @include flex(center, space-evenly, row);
-  width: 1001px;
 }
 .review-table-header {
+  flex: 1;
   @include flex(center, '', row);
   background-color: $lightgrey;
   border-bottom: solid 1px $darkgrey;
   border-right: solid 1px $darkgrey;
   height: 40px;
-  width: 100%;
+  min-width: 30px;
 }
 
 .review-table-row {
@@ -41,11 +43,12 @@
   background-color: $white;
 }
 .review-table-cell {
+  flex: 1;
   @include flex(center, '', row);
   border-right: solid 1px $darkgrey;
   border-bottom: solid 1px $darkgrey;
   height: 40px;
-  width: 100%;
+  min-width: 30px;
 }
 .no-scrollbars {
   scrollbar-width: thin;

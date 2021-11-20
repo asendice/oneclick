@@ -6,10 +6,9 @@ const Review = ({ file, data, setFrame }) => {
   const [headers, setHeaders] = useState([]);
   const [rows, setRows] = useState([]);
 
-
   useEffect(() => {
     if (data.length > 0) {
-      // incase I want to add index to the review table we can add like this: 
+      // incase I want to add index to the review table we can add like this:
       // const newData = data.map((item, index) => {
       //   return {'index': index, ...item}
       // })
@@ -30,58 +29,58 @@ const Review = ({ file, data, setFrame }) => {
       {rows[index].map((item, index) => {
         return (
           <div key={index} className="review-table-cell">
-            <p>{item.length > 15 ? item.slice(0, 14) + "..." : item}</p>
+            <p>{item.length > 8 ? item.slice(0, 7) + "..." : item}</p>
           </div>
         );
       })}
     </div>
   );
 
-
   if (data.length > 0) {
     return (
       <div className="review">
         <div className="review-header">
           <h3>{file.name}</h3>
-          <Link
-            className="trove-button"
-            style={{ textDecoration: "none" }}
-            onClick={() => setFrame("Complete")}
-            to="/complete"
-          >
-            Complete
-          </Link>
-        </div>
-        <div className="review-table">
-          <div className="review-table-headers">
-            {headers.map((header, index) => {
-              return (
-                <div key={index} className="review-table-header">
-                  <p>{header}</p>{" "}
-                </div>
-              );
-            })}
+          <div>
+            <Link
+              className="trove-button"
+              style={{ textDecoration: "none" }}
+              onClick={() => setFrame("Complete")}
+              to="/complete"
+            >
+              Complete
+            </Link>
           </div>
-          {rows.length > 0 && (
-            <AutoSizer>
-              {({ height, width }) => (
-                <>
-                  <List
-                    height={height - 40}
-                    width={width}
-                    itemData={rows}
-                    itemCount={rows.length}
-                    itemSize={41}
-                    className="no-scrollbars"
-                  >
-                    {Row}
-                  </List>
-                </>
-              )}
-            </AutoSizer>
-          )}
-         
         </div>
+          <div className="review-table">
+            <div className="review-table-headers">
+              {headers.map((header, index) => {
+                return (
+                  <div key={index} className="review-table-header">
+                    <p>{header}</p>{" "}
+                  </div>
+                );
+              })}
+            </div>
+            {rows.length > 0 && (
+              <AutoSizer>
+                {({ height, width }) => (
+                  <>
+                    <List
+                      height={height - 40}
+                      width={width}
+                      itemData={rows}
+                      itemCount={rows.length}
+                      itemSize={41}
+                      className="no-scrollbars"
+                    >
+                      {Row}
+                    </List>
+                  </>
+                )}
+              </AutoSizer>
+            )}
+          </div>
       </div>
     );
   } else {
