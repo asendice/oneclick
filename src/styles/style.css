@@ -220,7 +220,7 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
-  height: 400px;
+  height: 380px;
   width: 800px;
   border: dashed 2px #383634;
   background-color: #d6cdc2;
@@ -328,12 +328,8 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  overflow-x: auto;
-  -ms-flex-item-align: start;
-      align-self: flex-start;
   margin: 20px;
   height: 500px;
-  background-color: pink;
   border-top: solid 1px #333;
   border-left: solid 1px #333;
   width: 1000px;
@@ -363,12 +359,10 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
+  width: 1002px;
 }
 
 .review-table-header {
-  -webkit-box-flex: 1;
-      -ms-flex: 1;
-          flex: 1;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -386,7 +380,7 @@
   border-bottom: solid 1px #333;
   border-right: solid 1px #333;
   height: 40px;
-  min-width: 30px;
+  width: 100%;
 }
 
 .review-table-row {
@@ -403,14 +397,11 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
-  height: 40px;
   background-color: #fff;
+  width: 1000px;
 }
 
 .review-table-cell {
-  -webkit-box-flex: 1;
-      -ms-flex: 1;
-          flex: 1;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -427,7 +418,7 @@
   border-right: solid 1px #333;
   border-bottom: solid 1px #333;
   height: 40px;
-  min-width: 30px;
+  width: 100%;
 }
 
 .no-scrollbars {

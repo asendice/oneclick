@@ -9,11 +9,8 @@
 
 .review-table {
   @include flex('', '', column);
-  overflow-x: auto;
-  align-self: flex-start;
   margin: 20px;
   height: 500px;
-  background-color: pink;
   border-top: solid 1px $darkgrey;
   border-left: solid 1px $darkgrey;
   width: 1000px;
@@ -26,29 +23,28 @@
 }
 .review-table-headers {
   @include flex(center, space-evenly, row);
+  width: 1002px;
 }
 .review-table-header {
-  flex: 1;
   @include flex(center, '', row);
   background-color: $lightgrey;
   border-bottom: solid 1px $darkgrey;
   border-right: solid 1px $darkgrey;
   height: 40px;
-  min-width: 30px;
+  width: 100%;
 }
 
 .review-table-row {
   @include flex(center, space-evenly, row);
-  height: 40px;
   background-color: $white;
+  width: 1000px;
 }
 .review-table-cell {
-  flex: 1;
   @include flex(center, '', row);
   border-right: solid 1px $darkgrey;
   border-bottom: solid 1px $darkgrey;
   height: 40px;
-  min-width: 30px;
+  width: 100%;
 }
 .no-scrollbars {
   scrollbar-width: thin;
