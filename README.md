@@ -14,19 +14,15 @@ https://oneclick.herokuapp.com
 $ git clone https://github.com/asendice/oneclick
 
 # Go into the repository
-$ cd three
+$ cd oneclick
 
 # Install dependencies
 $ npm install
 
-# Go to Root File three/
-$ cd ..
-
 # Run the server
 $ json-server --watch db.json
 
-
-# Run app
+# Open new terminal and Run app
 $ npm start
 ```
 
