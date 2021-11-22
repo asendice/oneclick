@@ -34,8 +34,8 @@ $ npm start
 ```
 Utilize these two files for testing purposes:
 https://github.com/asendice/oneclick/blob/main/oneclickexample.csv
-https://github.com/asendice/oneclick/blob/main/xlsxFormat.xslx
-
+https://github.com/asendice/oneclick/blob/main/xlsxFormat.xlsx
+```
 ## Technologies
 
 ```Project is created with
