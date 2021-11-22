@@ -14,22 +14,24 @@ const App = () => {
   const [frame, setFrame] = useState("Upload");
   const [backEndHeaders, setBackEndHeaders] = useState([]);
 
-  console.log(data, "data from app");
-  console.log(file, "file from app");
-
   const handleCSV = (str) => {
     const headers = str
       .slice(0, str.indexOf("\n"))
       .split(",")
       .map((header) => header.replace("\r", "").replace(/"/g, ""));
-    const rows = str.slice(str.indexOf("\n") + 1).split("\n");
+    const rows = str
+      .slice(str.indexOf("\n") + 1)
+      .split("\n")
+      .filter((row) => row.length > 0);
     const arr = rows.map((row) => {
       const values = row.split(",");
-      const eachObject = headers.reduce((obj, header, i) => {
-        obj[header] = values[i].replace("\r", "").replace(/"/g, "");
-        return obj;
-      }, {});
-      return eachObject;
+      if (values.length > 0) {
+        const eachObject = headers.reduce((obj, header, i) => {
+          obj[header] = values[i] && values[i].replace("\r", "").replace(/"/g, "");
+          return obj;
+        }, {});
+        return eachObject;
+      }
     });
     setData(arr);
   };
@@ -63,7 +65,9 @@ const App = () => {
             >
               <MdArrowBack />
             </Link>
-          ) : <div></div>}
+          ) : (
+            <div></div>
+          )}
           <Progress frame={frame} />
         </div>
         <Route
