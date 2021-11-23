@@ -1,28 +1,34 @@
 # Oneclick Onboarding
 
-This project I am currently working on is my attempt at solving a real-world
-B2B onboarding problem. Extract, transform, load. The goal is to take the customers data either imported from an excel or csv file and transform the data to become readable and or usable. 
+Oneclick is a web application that follows an extract, transfer, load procedure by copying user uploaded data via .csv or .xlsx files, parsing the data, filtering out invalid rows, and matching uploaded headers with predetermined ones.
 
 
 ## Installation
 
 Live Demo:
-https://oneclick.herokuapp.com
+https://oneclick-dt.herokuapp.com
 
 ```
 # Clone this repository
 $ git clone https://github.com/asendice/oneclick
 
-# Go into the repository
-$ cd oneclick
-
-# Install dependencies
+# Install backend dependencies
 $ npm install
 
-# Run the server
-$ json-server --watch db.json
+# Install frontend dependencies
+$ cd client
+$ npm install
 
-# Open new terminal and Run app
+# Go to Root File oneclick/
+$ cd ..
+
+# Run the server
+$ npm run dev
+
+# Open new terminal and go into client folder
+$ cd client
+
+# Run the app
 $ npm start
 ```
 
