@@ -1,5 +1,5 @@
 .review {
-  @include flex(center, '', column);
+  @include flex(center, null, column);
   min-height: 80vh;
   overflow: hidden;
 }
@@ -8,7 +8,7 @@
 }
 
 .review-table {
-  @include flex('', '', column);
+  @include flex(null, null, column);
   margin: 20px;
   height: 500px;
   border-top: solid 1px $darkgrey;
@@ -26,7 +26,7 @@
   width: 1002px;
 }
 .review-table-header {
-  @include flex(center, '', row);
+  @include flex(center, null, row);
   background-color: $lightgrey;
   border-bottom: solid 1px $darkgrey;
   border-right: solid 1px $darkgrey;
@@ -40,7 +40,7 @@
   width: 1000px;
 }
 .review-table-cell {
-  @include flex(center, '', row);
+  @include flex(center, null, row);
   border-right: solid 1px $darkgrey;
   border-bottom: solid 1px $darkgrey;
   height: 40px;

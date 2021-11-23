@@ -13,12 +13,12 @@
   margin: 40px 0px 40px 0px;
 }
 .display-container {
-  @include flex('', space-evenly, row);
+  @include flex(null, space-evenly, row);
   width: 100%;
   flex-wrap: wrap;
 }
 .display-item {
-  @include flex(center, '', column);
+  @include flex(center, null, column);
   flex: 1;
   text-align: center;
   min-width: 320px;

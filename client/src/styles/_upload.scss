@@ -1,5 +1,5 @@
 .upload {
-  @include flex('', center, row);
+  @include flex(null, center, row);
   height: 80vh;
 }
 .upload-header {
@@ -8,7 +8,7 @@
 }
 
 .upload-content {
-  @include flex (center, '', column)
+  @include flex (center, null, column)
 }
 
 .dropzone {

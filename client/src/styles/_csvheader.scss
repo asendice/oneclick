@@ -35,7 +35,7 @@
   background-color: $lightgrey;
 }
 .table-header-right {
-  @include flex(center, "", column);
+  @include flex(center, null, column);
   height: 100%;
   width: 50%;
 }
@@ -89,15 +89,15 @@ h1 {
 .left-side {
   flex: 1;
   min-width: 340px;
-  @include flex(center, '', column);
+  @include flex(center, null, column);
 }
 .csv-table {
-  @include flex("", "", column);
+  @include flex(null, null, column);
   border: solid 1px grey;
   width: 90%;
 }
 .cell {
-  @include flex(center, "", row);
+  @include flex(center, null, row);
   height: 40px;
   border-top: solid 1px grey;
   p {

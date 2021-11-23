@@ -1,5 +1,5 @@
 .fileItem {
-  @include flex(center, "", row);
+  @include flex(center, null, row);
   height: 70px;
   width: 800px;
   @include lg {
