@@ -47,7 +47,7 @@ react: 17.0.2
 react-csv: 2.0.3
 react-dropzone: 11.4.2
 react-virtualized-auto-sizer: 1.0.6
-react-winder: 1.8.6
+react-window: 1.8.6
 react-dom: 17.0.2
 react-icons: 4.3.1
 react-router-dom: 5.3.0
